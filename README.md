@@ -99,9 +99,17 @@ READ → UNDERSTAND → PROPOSE OR EXECUTE → WRITE → VERIFY
 
 ## Repository Status
 
-MILES는 현재 초기 bootstrap 단계에 있습니다. 루트의 기존 `FIRST_GWG_TEST.md`와 `GWG_WRITE_TEST.md`는 Git Write Gateway 연결, 쓰기, UTF-8/한글 저장을 검증하기 위한 테스트 자산이며 MILES의 본 프로젝트 콘텐츠와는 구분합니다.
+Git Write Gateway bootstrap verification은 완료되었습니다. 루트의 `FIRST_GWG_TEST.md`와 `GWG_WRITE_TEST.md`는 연결, 쓰기, UTF-8/한글 저장 경로를 검증하기 위한 테스트 자산이며 MILES의 본 프로젝트 콘텐츠와는 구분합니다.
 
-이 README를 시작점으로 taxonomy, registry, publication/security policy, 실제 field case, implemented system, experiment, reusable method를 점진적으로 구축합니다.
+**FOUNDATION-001은 완료되었습니다.** 이 단계에서 MILES의 manifesto, public redaction policy, bridge continuity가 확립되었습니다. 현재는 **FOUNDATION-002 planning pending** 상태이며, 세부 구현 범위는 아직 확정되지 않았습니다.
+
+주요 Foundation 문서:
+
+- [`MANIFESTO.md`](MANIFESTO.md) — MILES가 왜 존재하는지와 핵심 실행 철학
+- [`security/REDACTION_POLICY.md`](security/REDACTION_POLICY.md) — public repository의 공개·일반화·제외 기준
+- [`bridge/CURRENT.md`](bridge/CURRENT.md) — 현재 bootstrap/Foundation 상태와 다음 세션 continuity
+
+README는 MILES의 진입점과 저장소 지도 역할을 하며, 세부 원칙과 현재 작업 상태는 위 문서를 기준으로 확인합니다.
 
 ---
 
