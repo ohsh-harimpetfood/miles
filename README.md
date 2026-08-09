@@ -49,15 +49,15 @@ MILES는 다음 taxonomy를 기본 정보 구조로 사용합니다. 모든 콘�
 
 | Area | Role |
 | --- | --- |
-| `GROUNDTRUTH` | 현장 문제, 관찰된 사실, 증거, 제약조건, 요구사항 |
-| `SIGNALS` | 데이터, 분석, 지표, 패턴, 해석, 의사결정에 필요한 신호 |
-| `FORGE` | 실제 구현되어 운영되거나 제품화된 시스템과 실행 결과 |
-| `WORKBENCH` | 실험, PoC, 프로토타입, 탐색적 구현과 검증 과정 |
-| `METHODS` | 반복 적용 가능한 문제 해결 방법, 운영 방식, 설계 원칙 |
-| `DESIGN` | 시각 언어, 인터페이스 원칙, 레퍼런스, 패키징과 아이덴티티 |
-| `REGISTRY` | 프로젝트, 시스템, 방법론 등을 연결하는 machine-readable 인덱스 |
-| `SECURITY` | 공개 범위, 비식별화, redaction, 보안 및 출판 정책 |
-| `BRIDGE` | 현재 프로젝트·세션의 연속성, 진행 맥락, 다음 작업으로 이어지는 연결 정보 |
+| [`GROUNDTRUTH`](groundtruth/README.md) | 현장 문제, 관찰된 사실, 증거, 제약조건, 요구사항 |
+| [`SIGNALS`](signals/README.md) | 데이터, 분석, 지표, 패턴, 해석, 의사결정에 필요한 신호 |
+| [`FORGE`](forge/README.md) | 실제 구현되어 운영되거나 제품화된 시스템과 실행 결과 |
+| [`WORKBENCH`](workbench/README.md) | 실험, PoC, 프로토타입, 탐색적 구현과 검증 과정 |
+| [`METHODS`](methods/README.md) | 반복 적용 가능한 문제 해결 방법, 운영 방식, 설계 원칙 |
+| [`DESIGN`](design/README.md) | 시각 언어, 인터페이스 원칙, 레퍼런스, 패키징과 아이덴티티 |
+| [`REGISTRY`](registry/README.md) | 프로젝트, 시스템, 방법론 등을 연결하는 machine-readable 인덱스 |
+| [`SECURITY`](security/README.md) | 공개 범위, 비식별화, redaction, 보안 및 출판 정책 |
+| [`BRIDGE`](bridge/README.md) | 현재 프로젝트·세션의 연속성, 진행 맥락, 다음 작업으로 이어지는 연결 정보 |
 
 이 taxonomy는 MILES의 기본 지도이며, 저장소가 성장하면서 실제 콘텐츠와 운영 경험을 기준으로 진화할 수 있습니다.
 
@@ -101,7 +101,9 @@ READ → UNDERSTAND → PROPOSE OR EXECUTE → WRITE → VERIFY
 
 Git Write Gateway bootstrap verification은 완료되었습니다. 루트의 `FIRST_GWG_TEST.md`와 `GWG_WRITE_TEST.md`는 연결, 쓰기, UTF-8/한글 저장 경로를 검증하기 위한 테스트 자산이며 MILES의 본 프로젝트 콘텐츠와는 구분합니다.
 
-**FOUNDATION-001은 완료되었습니다.** 이 단계에서 MILES의 manifesto, public redaction policy, bridge continuity가 확립되었습니다. 현재는 **FOUNDATION-002 planning pending** 상태이며, 세부 구현 범위는 아직 확정되지 않았습니다.
+**FOUNDATION-001은 완료되었습니다.** 이 단계에서 MILES의 manifesto, public redaction policy, bridge continuity가 확립되었습니다.
+
+**FOUNDATION-002도 완료되었습니다.** README에 개념으로 정의되어 있던 9개 taxonomy가 실제 lowercase directory와 각 영역의 Content Contract README로 구현되었습니다. 현재는 **FOUNDATION-003 planning pending** 상태이며, 세부 구현 범위는 아직 확정되지 않았습니다.
 
 주요 Foundation 문서:
 
@@ -109,7 +111,7 @@ Git Write Gateway bootstrap verification은 완료되었습니다. 루트의 `FI
 - [`security/REDACTION_POLICY.md`](security/REDACTION_POLICY.md) — public repository의 공개·일반화·제외 기준
 - [`bridge/CURRENT.md`](bridge/CURRENT.md) — 현재 bootstrap/Foundation 상태와 다음 세션 continuity
 
-README는 MILES의 진입점과 저장소 지도 역할을 하며, 세부 원칙과 현재 작업 상태는 위 문서를 기준으로 확인합니다.
+README는 MILES의 진입점과 저장소 지도 역할을 하며, 세부 Content Contract와 현재 작업 상태는 연결된 taxonomy README와 Foundation 문서를 기준으로 확인합니다.
 
 ---
 
