@@ -6,7 +6,7 @@ GitHub `ohsh-harimpetfood/miles`의 `main` 브랜치가 현재 MILES의 Source o
 
 ## Current State
 
-MILES는 현재 **bootstrap / foundation 단계**를 지나 실제 Case planning과 evidence reconstruction으로 이동하고 있습니다.
+MILES는 현재 **bootstrap / foundation 단계**를 지나 실제 Case evidence reconstruction으로 이동하고 있습니다.
 
 완료된 Foundation 단계:
 
@@ -17,7 +17,7 @@ MILES는 현재 **bootstrap / foundation 단계**를 지나 실제 Case planning
 
 - **FOUNDATION-003 — DEFERRED / evidence pending**
 
-다음 실행 단계:
+현재 / 다음 실행 단계:
 
 - **FORGE-001 — WMS evidence reconstruction**
 
@@ -95,9 +95,9 @@ Abstraction Lift는 AI를 통해 사용자의 직접 구현 능력 상한을 넘
 
 ### `bridge/WMS_CASE_RESEARCH_NOTE.md`
 
-WMS Case Research Note는 WMS를 독립적인 현업 소프트웨어 프로젝트로 취급하면서, 실제 기원·data/operating model·AppSheet executable hypothesis·custom web architecture pivot·incremental implementation·운영 진화를 evidence-based chronology로 복원하는 working note입니다.
+WMS Case Research Note는 독립적인 현업 WMS 프로젝트의 기원, 초기 AppSheet/data-model concept, custom web architecture pivot, incremental AI-assisted implementation, V1/V2/V2.5 진화를 정식 FORGE Case 이전에 evidence-based chronology로 복원하는 working note입니다.
 
-현재 단계는 canonical FORGE Case 작성이 아니라 **FORGE-001 — WMS evidence reconstruction**입니다.
+WMS를 Docs as Code, Feature as Code, Git as Action의 직접적인 전신이나 Abstraction Lift의 대표 증거로 해석하지 않으며, 현재 단계에서는 Drive initial design, AI/development log, Git repository/current source, Git commit history를 cross-check하는 evidence reconstruction을 우선합니다.
 
 Research Note의 기본 승격 원칙은 다음과 같습니다.
 
@@ -108,8 +108,6 @@ Research Note
 → refinement
 → METHODS
 ```
-
-WMS Case Research Note는 Method 승격 대상이 아니라 향후 FORGE Case 작성 전 evidence reconstruction을 위한 BRIDGE artifact입니다.
 
 ## FOUNDATION-003 — DEFERRED / Evidence Pending
 
@@ -132,23 +130,22 @@ FOUNDATION-003에서 검토하던 후보 범위는 다음과 같았습니다.
 
 현재 문서에서는 FOUNDATION-003의 실제 구현을 시작하지 않습니다.
 
-## Next Execution Stage — FORGE-001 — WMS Evidence Reconstruction
+## Current / Next Execution — FORGE-001 — WMS Evidence Reconstruction
 
-다음 실행 단계는 **FORGE-001 — WMS evidence reconstruction**입니다.
+현재 실행 단계는 **FORGE-001 — WMS evidence reconstruction**입니다.
 
-이 단계의 목적은 정식 FORGE Case를 작성하기 전에 WMS의 실제 chronology와 evidence를 source별로 cross-check하는 것입니다.
+목적은 정식 FORGE Case를 바로 작성하는 것이 아니라 `bridge/WMS_CASE_RESEARCH_NOTE.md`를 기준으로 WMS의 실제 chronology와 evidence를 재구성하는 것입니다.
 
-우선 확인 대상:
+우선 확인할 evidence source:
 
 - Drive initial design
 - AI / development log
 - Git commit history
 - Git repository / current source
-- chronology cross-check
-- evidence gaps
-- publication sanitization requirements
 
-현재 문서에서는 `forge/WMS-001/`을 생성하거나 canonical FORGE Case를 작성하지 않습니다.
+각 source를 cross-check하고 public publication을 위한 sanitization 경계를 확인한 뒤에만 canonical FORGE Case 작성 여부를 판단합니다.
+
+현재 문서에서는 `forge/WMS-001/`을 생성하거나 정식 FORGE Case 단계로 전환하지 않습니다.
 
 ## Continuity Rule
 
