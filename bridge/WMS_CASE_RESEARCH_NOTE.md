@@ -174,7 +174,7 @@ AppSheet phase의 가치는 최소 다음 네 가지로 본다.
 
 ## 5. 2026-01-14 ~ 2026-01-15 — Architecture Pivot
 
-**Evidence Status: Supported**
+**Evidence Status: Supported, now corroborated by Git history**
 
 2026-01-14~15에는 AppSheet 기반 접근에서 custom Web Application 구조로 전환하는 architecture decision이 이루어진 것으로 현재 재구성한다.
 
@@ -202,18 +202,35 @@ Next.js
 
 이후 AppSheet-era schema와 operating concept를 relational structure로 옮기고, data naming, CRUD, transaction structure를 실서비스형 architecture로 재구성하기 시작한 것으로 기록한다.
 
+### Git Corroboration — 2026-01-16 KST
+
+**Evidence Status: Confirmed**
+
+Git commit:
+
+- `33dabbef4602bf57abba0c673ad44b7be0a5e029` — `fix build config`
+
+확인된 변경 범위:
+
+- Next.js `next.config.ts`
+- `package.json` build configuration
+
+이 commit은 Drive development log의 2026-01-14~15 AppSheet → Next.js/Supabase architecture pivot 직후 **실제 custom web codebase가 존재했음**을 corroborate한다.
+
+이 evidence는 architecture pivot의 존재와 시점을 이전보다 강하게 지지하지만, pivot decision의 전체 trigger sequence를 Git history alone으로 완전히 설명하지는 않는다.
+
 ### Needs Further Verification
 
 - AppSheet → Web 전환을 결정한 정확한 trigger sequence
 - architecture decision의 구체적인 기록
-- 최초 Next.js/Supabase implementation commit
+- 최초 Next.js/Supabase implementation이 어느 commit부터 시작되었는지
 - schema migration 과정에서 유지·변경된 business rule
 
 ---
 
 ## 6. 2026-01 ~ 2026-02 — Incremental Implementation
 
-**Evidence Status: Supported as a working observation**
+**Evidence Status: Strongly Supported as a working observation by Git history**
 
 architecture pivot 이후 개발은 전체 시스템을 한 번에 생성하는 방식보다 다음과 같은 반복에 가까웠던 것으로 현재 정리한다.
 
@@ -235,7 +252,11 @@ Domain Understanding
 
 > **복잡성은 한 번에 생성된 것이 아니라 검증된 작은 구현들이 누적되며 형성됐다.**
 
-이 문장은 현재 formal methodology가 아니다.
+Git history에서 서로 다른 operational capability가 시간에 따라 단계적으로 추가·조정된 흔적이 확인되면서 이 관찰은 이전보다 강하게 supported된다.
+
+다만 Git history는 **기능과 코드의 진화**는 보여줄 수 있어도, 각 increment에서 AI가 정확히 어느 범위까지 관여했는지, 어떤 대화·지시·검증 절차가 있었는지는 단독으로 증명할 수 없다.
+
+따라서 AI involvement의 정확한 범위와 `AI-assisted implementation` characterization은 **AI / Development Log와의 cross-check가 계속 필요하다.**
 
 ### Working Characterization
 
@@ -261,13 +282,183 @@ Generic vibe coding과 완전히 다른 범주라고 과장해서 주장하지 �
 
 현재 evidence가 지지하는 수준의 표현은 **large one-shot generation보다 incremental implementation + verification이 강했다**는 관찰이다.
 
-모든 commit이 동일한 workflow로 만들어졌다고 단정하지 않으며, Git history와 development log를 통해 반복 패턴을 추가 검증해야 한다.
+---
+
+## 7. Git Cross-Check — Commit History
+
+이 섹션은 WMS Git repository에서 확인된 commit history를 chronology cross-check evidence로 기록한다.
+
+### 2026-01-16 KST — Custom Web Codebase Corroboration
+
+**Evidence Status: Confirmed**
+
+- `33dabbef4602bf57abba0c673ad44b7be0a5e029` — `fix build config`
+- Next.js `next.config.ts`와 `package.json` build configuration 변경
+
+의미:
+
+- 2026-01-14~15 architecture pivot 직후 Next.js 기반 custom web codebase가 실제 존재했음을 corroborate
+- Drive chronology의 architecture pivot을 Git history가 독립적으로 지지
+
+### 2026-01-23 — Early History / Inbound / Supabase Implementation
+
+**Evidence Status: Confirmed for implementation presence; version meaning Needs Further Verification**
+
+- `0d738ddcd95e310585cee75b065a18c7f3bfdb6f` — `v2 updated`
+
+이 commit은 2026-01-23 시점에 History / Inbound / Supabase 관련 구현이 이미 진행 중이었음을 보여준다.
+
+그러나 commit message의 `v2`를 공식 **WMS Version 2 milestone**과 동일시하지 않는다. 이 표현이 local implementation revision인지, 공식 major-version naming인지 Git commit title 하나만으로 판단할 수 없다.
+
+따라서 현재 Drive chronology의 **`2026-02-12 V1 operational baseline → 이후 V2 evolution`**은 이 commit title 하나를 이유로 변경하지 않는다.
+
+### 2026-01-27 — Inbound Tuning
+
+**Evidence Status: Confirmed**
+
+- `91e3391ccbef461d6fa24cd43d0ba3737872cbce` — inbound tuning
+
+이 commit은 inbound capability가 일회성 구현이 아니라 이후 조정·고도화되는 흐름을 보여주는 evidence로 취급한다.
+
+### 2026-01-30 — Mobile Mode
+
+**Evidence Status: Confirmed**
+
+- `49789c86d5225f7d09b7d8fab0c7375079ef5167` — mobile mode
+
+이 commit은 custom web architecture 안에서 mobile-use capability가 별도 increment로 추가 또는 조정되었음을 보여준다.
+
+### 2026-02-03 / 2026-02-05 — Transaction Taxonomy Expansion
+
+**Evidence Status: Confirmed**
+
+- `a0e462029cedc030bf84043daf04aacd01cff352`
+- `b146fef06f63d75b3034ea2c86991bd1b3c45ef6`
+
+이 두 commit은 transaction type / taxonomy가 단계적으로 확장된 evidence로 기록한다.
+
+### 2026-02-09 — Login Function
+
+**Evidence Status: Confirmed**
+
+- `7df0c6c637c126f9ce80895bf9e9c0caa12ae045` — login function
+
+authentication capability가 operational baseline 형성 과정에서 별도 increment로 추가된 evidence로 취급한다.
+
+### 2026-02-12 — QR Function Test
+
+**Evidence Status: Confirmed**
+
+- `d55bd9ffb17f76c1fe148185aa0c29fc4e321f0a` — QR function test
+
+이 commit은 2026-02-12 시점에 QR-related functionality가 실제 test 대상이었음을 보여준다.
+
+다만 이 commit 하나가 전체 V1 baseline을 단독으로 정의한다고 보지는 않는다. V1 milestone은 Drive chronology와 broader source evidence를 함께 사용해 판단한다.
+
+### 2026-02-15 — Inventory Adjustment
+
+**Evidence Status: Confirmed**
+
+- `016f817ea1bf51137285ffae1e10682cd02f86dc` — Inventory Adjustment
+
+inventory adjustment capability가 별도 operational increment로 도입된 evidence다.
+
+### 2026-02-20 — Bulk Inbound / Outbound
+
+**Evidence Status: Confirmed**
+
+- `0a809f96c8b3c186a6ec84177a0b00b64bf165c3`
+- `d4a9e84ef5fe0c05d5fd3b6135f98dad82d52213`
+
+bulk inbound / outbound capability가 별도 increments로 추가된 evidence다.
+
+### 2026-03-19 — Inventory Movement Sophistication
+
+**Evidence Status: Confirmed**
+
+- `5af56a596f446895c26d6f6bf279ffce8d0768f8`
+
+확인된 movement logic:
+
+- partial movement
+- full movement
+- merge movement
+- packing-information preservation
+
+이 commit은 inventory movement가 단순 location transfer를 넘어 packing-aware operational rule을 다루도록 고도화되었음을 보여준다.
+
+이 evidence는 시간이 지나며 operational edge case와 business rule이 구현에 축적되었다는 chronology를 강하게 지지한다.
 
 ---
 
-## 7. 2026-02-12 — V1 Operational Baseline
+## 8. Git Cross-Check — Current Source
 
-**Evidence Status: Supported**
+현재 source에서 다음 architecture와 business-rule surface가 확인된 것으로 기록한다.
+
+### Technology / Architecture
+
+**Evidence Status: Confirmed**
+
+- Next.js
+- React
+- TypeScript
+- Supabase
+
+### QR Capability
+
+**Evidence Status: Confirmed**
+
+- QR scanning libraries 존재
+
+이는 QR workflow가 단순 초기 concept에 머물지 않고 current source의 executable capability로 이어졌음을 보여준다.
+
+### Transaction Taxonomy
+
+**Evidence Status: Confirmed**
+
+- `constants/transaction.ts`에 transaction taxonomy 존재
+
+이는 transaction type이 application logic에서 명시적인 taxonomy로 관리되고 있음을 보여준다.
+
+### Role / Feature Permission Model
+
+**Evidence Status: Confirmed**
+
+- `AuthProvider` 기반 role / feature permission model 존재
+
+이는 authentication만이 아니라 feature-level authorization concern이 current architecture에 포함되어 있음을 보여준다.
+
+### Inbound Workflow
+
+**Evidence Status: Confirmed**
+
+current source의 inbound workflow에는 다음 operational concern이 포함된다.
+
+- location
+- LOT
+- packing
+- business rules
+
+내부 실제 location code, item identifier, company-specific rule value는 public MILES에 노출하지 않는다.
+
+### Movement Workflow
+
+**Evidence Status: Confirmed**
+
+current source의 movement workflow에는 packing-aware handling이 포함된다.
+
+- partial handling
+- full handling
+- merge handling
+- packing-information preservation
+
+이는 2026-03-19 commit evidence와 current source가 서로 corroborate하는 지점이다.
+
+---
+
+## 9. 2026-02-12 — V1 Operational Baseline
+
+**Evidence Status: Supported by Drive chronology and partially corroborated by Git history/current source**
 
 2026-02-12는 현재 WMS의 **V1 operational baseline**이 형성된 milestone으로 기록한다.
 
@@ -285,6 +476,8 @@ Generic vibe coding과 완전히 다른 범주라고 과장해서 주장하지 �
 
 현재 해석은 이 시점에 **현장 pilot 가능한 operational baseline**이 확보되었다는 것이다.
 
+Git history는 1월 말부터 inbound/mobile/transaction capability가 단계적으로 구현되고 2월 9일 login, 2월 12일 QR test까지 이어졌음을 보여주므로 operational baseline 형성 chronology를 부분적으로 corroborate한다.
+
 다만 정식 Case 작성 전에는 아래 항목을 추가 검증해야 한다.
 
 ### Needs Further Verification
@@ -298,9 +491,9 @@ Generic vibe coding과 완전히 다른 범주라고 과장해서 주장하지 �
 
 ---
 
-## 8. 2026-02 ~ 2026-03 — V2 Evolution
+## 10. 2026-02 ~ 2026-03 — V2 Evolution
 
-**Evidence Status: Supported**
+**Evidence Status: Supported and increasingly corroborated by Git history**
 
 2026년 2~3월에는 현장 운영에서 발생하는 실제 불편과 예외를 중심으로 WMS가 확장된 것으로 현재 재구성한다.
 
@@ -314,21 +507,26 @@ Generic vibe coding과 완전히 다른 범주라고 과장해서 주장하지 �
 - rack card
 - operational UX improvements
 
-이 단계의 판단 기준은 단순 feature count보다 **operational fit**에 가까워진 것으로 현재 해석한다.
+Git history에서 다음 기능 increment가 직접 확인된다.
 
-즉, “무엇을 더 넣을 것인가?”보다 실제 현장 사용에서 나타나는 friction, exception, 반복 업무를 어떻게 줄일 것인가가 더 중요해졌다는 working interpretation이다.
+- 2026-02-15 inventory adjustment
+- 2026-02-20 bulk inbound / outbound
+- 2026-03-19 packing-aware inventory movement 고도화
+
+이 evidence는 이 단계의 판단 기준이 단순 feature count보다 **operational fit**에 가까워졌다는 working interpretation을 이전보다 강하게 지지한다.
 
 ### Needs Further Verification
 
-- 각 feature의 정확한 도입 시점
-- feature별 originating problem
-- business rule 변화
+- shuttle rack mapping의 exact commit / implementation sequence
+- password reset의 exact commit / implementation sequence
+- rack card의 exact commit / implementation sequence
+- 각 feature별 originating problem
 - 사용자 feedback과 adoption evidence
 - 어떤 기능이 pilot이고 어떤 기능이 안정 운영 상태였는지
 
 ---
 
-## 9. 2026-03 — V2.5 Direction
+## 11. 2026-03 — V2.5 Direction
 
 **Evidence Status: Supported as direction, implementation status needs verification**
 
@@ -345,6 +543,8 @@ Generic vibe coding과 완전히 다른 범주라고 과장해서 주장하지 �
 
 이 항목들이 모두 같은 시점에 같은 완성도로 구현되었다고 단정하지 않는다.
 
+2026-03-19 inventory movement 고도화는 operational rule sophistication의 evidence지만, 이것을 V2.5 management/analysis/control 기능 전체의 구현 evidence로 확대 해석하지 않는다.
+
 ### Needs Further Verification
 
 - 각 항목의 실제 implementation status
@@ -354,7 +554,7 @@ Generic vibe coding과 완전히 다른 범주라고 과장해서 주장하지 �
 
 ---
 
-## 10. Working Chronology Summary
+## 12. Working Chronology Summary
 
 | Period | Working Reconstruction | Evidence Status |
 | --- | --- | --- |
@@ -363,17 +563,21 @@ Generic vibe coding과 완전히 다른 범주라고 과장해서 주장하지 �
 | `2025-11-18` | `LOC_MASTER` / `ITEM_MASTER` / `STOCK_TX`, `LOC_ID`, `ITEM_KEY`, `ITEM_DIFF`/ERP comparison concept 설계 | Supported |
 | `2025-11-18` | M rack location model / rack card concept 존재 | Supported |
 | `2025-12` | 생산 현장 단독 사용을 목표로 V1 방향 구체화, AppSheet rapid implementation 우선 검토 | Supported |
-| `2026-01-14~15` | AppSheet/data-model concept에서 Next.js + Supabase(PostgreSQL) + Git + Vercel custom web architecture로 pivot | Supported |
-| `2026-01~02` | domain understanding → feature → AI implementation → run → human verification → correction 반복 | Supported as working observation |
-| `2026-02-12` | V1 operational baseline | Supported |
-| `2026-02~03` | QR scanner, adjustment, shuttle rack, password reset, bulk I/O, rack card, UX 중심 V2 evolution | Supported |
+| `2026-01-14~15` | AppSheet/data-model concept에서 Next.js + Supabase(PostgreSQL) + Git + Vercel custom web architecture로 pivot | Supported; Git-corroborated |
+| `2026-01-16 KST` | Next.js build config commit으로 custom web codebase 존재 확인 | Confirmed |
+| `2026-01-23~02-12` | History/Inbound/Supabase, inbound tuning, mobile, transaction taxonomy, login, QR test가 순차적으로 나타남 | Confirmed as Git increments |
+| `2026-02-12` | V1 operational baseline | Supported; partially Git-corroborated |
+| `2026-02-15~03-19` | inventory adjustment, bulk I/O, movement sophistication 등 operational capability 증가 | Confirmed as Git increments |
+| `2026-02~03` | operational-fit 중심 V2 evolution | Supported; increasingly Git-corroborated |
 | `2026-03` | dashboard, KPI, traceability, Excel export, alerts, location optimization의 V2.5 direction | Supported as direction |
 
 정식 FORGE Case의 canonical chronology는 source별 cross-check 후 확정한다.
 
+특히 `2026-01-23` commit의 `v2 updated`라는 title 하나만으로 공식 version chronology를 재정의하지 않는다.
+
 ---
 
-## 11. Evidence Classification
+## 13. Evidence Classification
 
 WMS evidence reconstruction에서는 최소 다음 네 종류를 구분한다.
 
@@ -401,21 +605,24 @@ WMS evidence reconstruction에서는 최소 다음 네 종류를 구분한다.
 - feature-by-feature development sequence
 - debugging / correction loop
 - human verification pattern
+- AI involvement의 정확한 범위
 - business rule evolution
 - operational feedback가 구현에 반영된 과정
+
+Git history는 AI involvement의 exact scope를 단독으로 증명하지 못하므로 이 source와의 cross-check가 필수다.
 
 ### 3. Git Repository / Current Source
 
 현재 구현된 system architecture, business rules, current features를 확인하는 source.
 
-주요 검증 대상:
+현재 확인된 evidence:
 
-- current technology stack
-- current data model
-- current business logic
-- implemented features
-- authentication / authorization model
-- 현재 남아 있는 초기 concept의 흔적
+- Next.js / React / TypeScript / Supabase architecture
+- QR scanning libraries
+- transaction taxonomy in `constants/transaction.ts`
+- role / feature permission model in `AuthProvider`
+- inbound workflow with location / LOT / packing / business rules
+- movement workflow with packing-aware partial / full / merge handling
 
 현재 source는 **현재 상태의 evidence**이며, 그 자체만으로 과거 chronology 전체를 증명하지 않는다.
 
@@ -423,37 +630,48 @@ WMS evidence reconstruction에서는 최소 다음 네 종류를 구분한다.
 
 실제 evolution, feature introduction, refactoring, operational change를 시간순으로 확인하는 source.
 
-주요 검증 대상:
+현재 cross-check된 주요 commits:
 
-- architecture pivot 시점과 변경 범위
-- V1 baseline boundary
-- feature introduction chronology
-- refactoring / correction sequence
-- V2 / V2.5 evolution
-- incremental implementation pattern
+- `33dabbef4602bf57abba0c673ad44b7be0a5e029` — 2026-01-16 KST, build config
+- `0d738ddcd95e310585cee75b065a18c7f3bfdb6f` — 2026-01-23, `v2 updated`
+- `91e3391ccbef461d6fa24cd43d0ba3737872cbce` — 2026-01-27, inbound tuning
+- `49789c86d5225f7d09b7d8fab0c7375079ef5167` — 2026-01-30, mobile mode
+- `a0e462029cedc030bf84043daf04aacd01cff352` — 2026-02-03, transaction taxonomy expansion
+- `b146fef06f63d75b3034ea2c86991bd1b3c45ef6` — 2026-02-05, transaction taxonomy expansion
+- `7df0c6c637c126f9ce80895bf9e9c0caa12ae045` — 2026-02-09, login function
+- `d55bd9ffb17f76c1fe148185aa0c29fc4e321f0a` — 2026-02-12, QR function test
+- `016f817ea1bf51137285ffae1e10682cd02f86dc` — 2026-02-15, inventory adjustment
+- `0a809f96c8b3c186a6ec84177a0b00b64bf165c3` — 2026-02-20, bulk inbound/outbound
+- `d4a9e84ef5fe0c05d5fd3b6135f98dad82d52213` — 2026-02-20, bulk inbound/outbound
+- `5af56a596f446895c26d6f6bf279ffce8d0768f8` — 2026-03-19, inventory movement sophistication
 
-commit message만으로 결론내리지 않고 필요하면 diff와 current source를 함께 본다.
+commit message만으로 version milestone이나 business meaning을 확정하지 않고 필요하면 diff와 current source, Drive chronology를 함께 본다.
 
 ---
 
-## 12. Current Evidence Assessment
+## 14. Current Evidence Assessment
 
-현재 Research Note에서 사용할 수 있는 working assessment는 다음과 같다.
+### Confirmed by Git Cross-Check
 
-### Supported
+- 2026-01-16 KST에 Next.js custom web codebase가 실제 존재
+- 2026-01-23 시점에 History / Inbound / Supabase 관련 구현이 진행 중
+- 2026-01-27 inbound tuning
+- 2026-01-30 mobile mode
+- 2026-02-03 / 02-05 transaction taxonomy expansion
+- 2026-02-09 login function
+- 2026-02-12 QR function test
+- 2026-02-15 inventory adjustment
+- 2026-02-20 bulk inbound / outbound
+- 2026-03-19 partial/full/merge movement와 packing-information preservation을 포함한 movement sophistication
+- current source에 Next.js / React / TypeScript / Supabase architecture 존재
+- current source에 QR scanning, transaction taxonomy, role/feature permission, inbound business rules, packing-aware movement logic 존재
 
-- 2025-11의 현장 문제에서 WMS concept가 시작됨
-- Location QR / Item QR / AppSheet / Google Sheets / PC lookup의 초기 solution hypothesis
-- 2025-11-18 3-layer data model 및 주요 identifier 설계
-- M rack / rack card concept의 초기 존재
-- Google Sheets의 초기 Single Source of Truth 역할
-- AppSheet가 첫 executable hypothesis였다는 해석
-- 2026-01-14~15 custom web architecture pivot
-- Next.js + Supabase/PostgreSQL + Git + Vercel 방향
-- incremental implementation + human verification pattern
-- 2026-02-12 V1 operational baseline
-- 2026-02~03 operational-fit 중심 V2 evolution
-- 2026-03 management/analysis/control 방향의 V2.5 expansion
+### Supported by Combined Evidence
+
+- 2026-01-14~15 architecture pivot 직후 실제 custom web implementation이 이어졌음
+- WMS complexity가 하나의 일괄 생성보다 시간에 따른 feature/business-rule increments로 축적되었음
+- `Complexity accumulated through verified increments.`라는 working observation
+- operational fit이 V2 evolution의 중요한 판단 기준이었음
 
 ### Needs Further Verification
 
@@ -466,13 +684,14 @@ commit message만으로 결론내리지 않고 필요하면 diff와 current sour
 - quantitative outcome 중 public하게 공개 가능한 evidence
 - current code와 초기 design 사이에서 유지된 business rule
 - 폐기되거나 변경된 초기 assumptions
-- 각 V1/V2/V2.5 기능의 exact implementation date와 operational status
+- 각 V1/V2/V2.5 기능의 exact operational status
+- AI involvement가 각 increment에서 차지한 정확한 범위
 
 이 항목들의 답을 추정해서 채우지 않는다.
 
 ---
 
-## 13. Development Approach — Working Characterization
+## 15. Development Approach — Working Characterization
 
 현재 가장 적절한 working characterization은 다음 두 표현이다.
 
@@ -499,11 +718,13 @@ Human domain understanding
 
 > **Complexity accumulated through verified increments.**
 
-이 working observation은 향후 Git history와 development log를 통해 검증해야 하며, 충분한 반복 evidence가 쌓이기 전에는 `METHODS`로 일반화하지 않는다.
+Git commit history에서 1월 중순의 custom web codebase, 이후 inbound/mobile/transaction/auth/QR/adjustment/bulk I/O/movement capability가 시간에 따라 별도 increments로 나타나므로, 이 working observation은 이전보다 강하게 supported된다.
+
+그러나 **AI-assisted**라는 부분의 정확한 정도는 Git history alone으로 입증할 수 없다. AI / Development Log와의 cross-check가 필요하며, 충분한 반복 evidence가 쌓이기 전에는 `METHODS`로 일반화하지 않는다.
 
 ---
 
-## 14. Public / Security Boundary
+## 16. Public / Security Boundary
 
 MILES는 public repository다.
 
@@ -512,6 +733,7 @@ MILES는 public repository다.
 - company-specific operational identifiers
 - internal location codes
 - confidential item codes
+- user identity / contact data
 - infrastructure identifiers
 - private URLs
 - credentials
@@ -529,7 +751,7 @@ Redaction의 목적은 프로젝트의 engineering value, problem, architecture,
 
 ---
 
-## 15. Claim Discipline
+## 17. Claim Discipline
 
 현재 WMS에 대해 다음을 주장하지 않는다.
 
@@ -540,6 +762,7 @@ Redaction의 목적은 프로젝트의 engineering value, problem, architecture,
 - Generic vibe coding과 완전히 다른 독립적 범주다.
 - V1/V2/V2.5의 모든 기능과 성과가 이미 정량 검증되었다.
 - current code가 과거 모든 운영 상태를 그대로 반영한다.
+- `2026-01-23`의 `v2 updated` commit title이 공식 WMS Version 2 milestone을 의미한다.
 
 현재 가장 중요한 working position은 다음과 같다.
 
@@ -549,7 +772,7 @@ Redaction의 목적은 프로젝트의 engineering value, problem, architecture,
 
 ---
 
-## 16. Open Questions
+## 18. Open Questions
 
 - 최초 AppSheet prototype이 실제 현장 pilot까지 갔는가?
 - AppSheet → Web 전환의 정확한 trigger sequence는 무엇이었는가?
@@ -562,8 +785,12 @@ Redaction의 목적은 프로젝트의 engineering value, problem, architecture,
 - 어떤 초기 assumptions가 폐기되거나 변경되었는가?
 - V1 baseline에서 실제 UAT는 어떤 범위로 수행되었는가?
 - operational fit을 개선한 feature 중 가장 큰 영향을 준 것은 무엇인가?
+- AI involvement의 정확한 범위를 development log와 Git evolution 사이에서 어디까지 corroborate할 수 있는가?
+- **2026-01-23 `v2 updated` commit의 `v2`가 공식 WMS Version 2를 의미하는가, 아니면 local implementation revision인가?**
 
 답을 추정해서 작성하지 않는다.
+
+특히 마지막 질문이 해결되기 전까지 현재 Drive chronology의 **`2026-02-12 V1 baseline → 이후 V2`** 구조를 Git commit title 하나만으로 변경하지 않는다.
 
 ---
 
