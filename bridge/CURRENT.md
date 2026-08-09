@@ -6,9 +6,20 @@ GitHub `ohsh-harimpetfood/miles`의 `main` 브랜치가 현재 MILES의 Source o
 
 ## Current State
 
-MILES는 현재 **bootstrap / foundation 단계**에 있으며, **FOUNDATION-001 — COMPLETED**, **FOUNDATION-002 — COMPLETED** 상태입니다.
+MILES는 현재 **bootstrap / foundation 단계**를 지나 실제 Case planning으로 이동하고 있습니다.
 
-현재 작업 단계는 **FOUNDATION-003 PLANNING**입니다. FOUNDATION-003의 실제 구현 범위는 아직 확정하지 않았으며, planning 이후 별도의 명시적 범위가 정의되기 전까지 구현 작업을 시작하지 않습니다.
+완료된 Foundation 단계:
+
+- **FOUNDATION-001 — COMPLETED**
+- **FOUNDATION-002 — COMPLETED**
+
+현재 Foundation 상태:
+
+- **FOUNDATION-003 — DEFERRED / evidence pending**
+
+다음 실행 단계:
+
+- **FORGE-001 — WMS case planning**
 
 저장소의 기본 목적, 철학, taxonomy, Source of Truth 원칙, Git Write Gateway 운영 원칙은 루트 `README.md`에 정의되어 있습니다.
 
@@ -61,11 +72,28 @@ FOUNDATION-002에서는 README에 개념으로 존재하던 MILES taxonomy를 �
 
 이 단계는 실제 Case, registry data, template, 정식 Method를 생성하는 단계가 아니라 **콘텐츠가 들어갈 문법과 경계**를 정의하는 데 한정되었습니다.
 
-### Active Research Note
+## Active Research Notes
 
-`bridge/GIT_AS_ACTION_RESEARCH_NOTE.md`는 현재 **Active Research Note**입니다.
+현재 BRIDGE에는 다음 working research note가 활성 상태로 존재합니다.
 
-이 문서는 실제 운영을 통해 검증 중인 working hypothesis이며, 아직 `METHODS`로 승격되지 않았습니다. 기본 승격 원칙은 다음과 같습니다.
+### `bridge/GIT_AS_ACTION_RESEARCH_NOTE.md`
+
+Git as Action은 Conversation을 control plane, Git을 durable memory, policy를 boundary로 보고 execution은 task에 가장 적합한 도구에 위임하는 operating hypothesis를 검증 중입니다.
+
+### `bridge/ABSTRACTION_LIFT_RESEARCH_NOTE.md`
+
+Abstraction Lift는 AI를 통해 사용자의 직접 구현 능력 상한을 넘어서는 시스템을 설계·구현할 수 있지만, **intent, constraints, verification에 대한 통제권은 인간에게 남겨야 한다**는 working hypothesis입니다.
+
+핵심 working positions:
+
+- `Build beyond your implementation ceiling`
+- `Implementation is delegated, intent is retained`
+- `Capability ≠ Competence`
+- capability가 커질수록 verification / evidence / testing 요구도 함께 강화
+
+이 note는 Git as Action과 Feature as Code를 관통하는 working hypothesis로 취급하며, 아직 `METHODS`로 승격하지 않습니다.
+
+Research Note의 기본 승격 원칙은 다음과 같습니다.
 
 ```text
 Research Note
@@ -75,19 +103,36 @@ Research Note
 → METHODS
 ```
 
-## Current Work Stage — FOUNDATION-003 PLANNING
+## FOUNDATION-003 — DEFERRED / Evidence Pending
 
-현재는 FOUNDATION-003의 **planning 단계**입니다.
-
-FOUNDATION-003의 후보 범위는 개념적으로 다음과 같습니다.
+FOUNDATION-003에서 검토하던 후보 범위는 다음과 같았습니다.
 
 - machine-readable registries
 - reusable templates
 - repository metadata conventions
+- retrieval structure
 
-이는 후보 범위일 뿐입니다. 정확한 파일, schema, naming rule, metadata contract는 FOUNDATION-003 planning에서 `main`의 최신 상태를 다시 읽고 별도로 결정합니다.
+현재 이 단계는 **DEFERRED / evidence pending** 상태로 둡니다.
+
+이유는 실제 Case가 충분히 존재하지 않는 상태에서 registry, template, retrieval structure를 먼저 설계하면 실제 workload보다 가정에 맞춘 구조를 만들 가능성이 있기 때문입니다.
+
+따라서 다음 원칙을 적용합니다.
+
+> **Do not design the retrieval and registry structure ahead of the evidence it is meant to organize.**
+
+실제 FORGE Case와 관련 artifact가 축적된 뒤, 반복적으로 필요한 metadata, retrieval path, template shape가 무엇인지 evidence를 확인하고 FOUNDATION-003 범위를 다시 평가합니다.
 
 현재 문서에서는 FOUNDATION-003의 실제 구현을 시작하지 않습니다.
+
+## Next Execution Stage — FORGE-001 — WMS Case Planning
+
+다음 실행 단계는 **FORGE-001 — WMS case planning**입니다.
+
+이 단계의 목적은 실제 WMS 관련 경험을 MILES의 첫 FORGE Case 후보로 다루기 위한 planning을 시작하는 것입니다.
+
+다만 구체적인 파일 구조, Case 내용, 공개 가능한 evidence, sanitization 범위는 FORGE-001 작업을 시작할 때 `main`의 최신 상태와 `security/REDACTION_POLICY.md`를 다시 읽은 뒤 별도로 정의합니다.
+
+현재 문서에서는 WMS Case 자체를 생성하거나 세부 구현 범위를 선행 확정하지 않습니다.
 
 ## Continuity Rule
 
@@ -100,7 +145,7 @@ READ CURRENT MAIN
       ↓
 VERIFY COMPLETED WORK
       ↓
-CONFIRM CURRENT FOUNDATION STAGE
+CONFIRM CURRENT EXECUTION STAGE
       ↓
 EXECUTE ONLY THE DECLARED SCOPE
       ↓
