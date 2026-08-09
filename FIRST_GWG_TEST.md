@@ -1,12 +1,7 @@
 # Git Write Gateway
 
-GWG-001 first write test.
+GWG-002 UTF-8 update test.
 
-Cloudflare Worker successfully wrote this file to GitHub.
+한글 저장 테스트 정상 여부 확인.
 
-Architecture:
-
-ChatGPT
-? Git Write Gateway
-? GitHub
-? MILES
+ChatGPT → Git Write Gateway → GitHub → MILES
