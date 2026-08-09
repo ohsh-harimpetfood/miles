@@ -6,9 +6,9 @@ GitHub `ohsh-harimpetfood/miles`의 `main` 브랜치가 현재 MILES의 Source o
 
 ## Current State
 
-MILES는 현재 **bootstrap / foundation 단계**에 있으며, **FOUNDATION-001 — COMPLETED** 상태입니다.
+MILES는 현재 **bootstrap / foundation 단계**에 있으며, **FOUNDATION-001 — COMPLETED**, **FOUNDATION-002 — COMPLETED** 상태입니다.
 
-현재 작업 단계는 **FOUNDATION-002 PLANNING**입니다. FOUNDATION-002의 실제 구현 범위는 아직 확정하지 않았으며, planning 이후 별도의 명시적 범위가 정의되기 전까지 구현 작업을 시작하지 않습니다.
+현재 작업 단계는 **FOUNDATION-003 PLANNING**입니다. FOUNDATION-003의 실제 구현 범위는 아직 확정하지 않았으며, planning 이후 별도의 명시적 범위가 정의되기 전까지 구현 작업을 시작하지 않습니다.
 
 저장소의 기본 목적, 철학, taxonomy, Source of Truth 원칙, Git Write Gateway 운영 원칙은 루트 `README.md`에 정의되어 있습니다.
 
@@ -43,23 +43,51 @@ FOUNDATION-001에서는 다음 세 Foundation 문서를 생성했습니다.
 
 FOUNDATION-001의 목적은 MILES의 핵심 철학, public publication 안전 기준, 세션 간 continuity 기반을 세우는 것이었으며 이 단계는 완료되었습니다.
 
-## Current Work Stage — FOUNDATION-002 PLANNING
+## FOUNDATION-002 — COMPLETED
 
-현재는 FOUNDATION-002의 **planning 단계**입니다.
+FOUNDATION-002에서는 README에 개념으로 존재하던 MILES taxonomy를 실제 Git directory structure와 각 영역의 Content Contract로 구현했습니다.
 
-이 상태는 FOUNDATION-002가 실제로 시작되었다는 의미가 아닙니다. 구체적인 파일, taxonomy 확장, registry, method 또는 기타 구현 범위는 아직 확정하지 않습니다. 실제 작업은 이후 명시적으로 정의된 범위를 기준으로 별도 수행합니다.
+생성된 9개 taxonomy entry README:
 
-## Next Planned Work
+- `groundtruth/README.md` — `GROUNDTRUTH`
+- `signals/README.md` — `SIGNALS`
+- `forge/README.md` — `FORGE`
+- `workbench/README.md` — `WORKBENCH`
+- `methods/README.md` — `METHODS`
+- `design/README.md` — `DESIGN`
+- `registry/README.md` — `REGISTRY`
+- `security/README.md` — `SECURITY`
+- `bridge/README.md` — `BRIDGE`
 
-### FOUNDATION-002
+이 단계는 실제 Case, registry data, template, 정식 Method를 생성하는 단계가 아니라 **콘텐츠가 들어갈 문법과 경계**를 정의하는 데 한정되었습니다.
 
-다음 Foundation 계층을 구체화하기 위한 예정 단계입니다. 세부 구현 범위는 아직 확정하지 않으며, 실제 FOUNDATION-002 작업을 시작할 때 `main`의 최신 상태를 다시 읽고 명시적으로 정의합니다.
+### Active Research Note
 
-### FOUNDATION-003
+`bridge/GIT_AS_ACTION_RESEARCH_NOTE.md`는 현재 **Active Research Note**입니다.
 
-FOUNDATION-002 이후 이어질 예정인 후속 Foundation 단계입니다. 세부 구현 범위는 아직 확정하지 않으며, 해당 단계 시작 시점의 `main`을 Source of Truth로 다시 확인한 뒤 정의합니다.
+이 문서는 실제 운영을 통해 검증 중인 working hypothesis이며, 아직 `METHODS`로 승격되지 않았습니다. 기본 승격 원칙은 다음과 같습니다.
 
-현재 문서에서는 FOUNDATION-002와 FOUNDATION-003의 세부 구현을 선행하지 않습니다.
+```text
+Research Note
+→ real use
+→ evidence
+→ refinement
+→ METHODS
+```
+
+## Current Work Stage — FOUNDATION-003 PLANNING
+
+현재는 FOUNDATION-003의 **planning 단계**입니다.
+
+FOUNDATION-003의 후보 범위는 개념적으로 다음과 같습니다.
+
+- machine-readable registries
+- reusable templates
+- repository metadata conventions
+
+이는 후보 범위일 뿐입니다. 정확한 파일, schema, naming rule, metadata contract는 FOUNDATION-003 planning에서 `main`의 최신 상태를 다시 읽고 별도로 결정합니다.
+
+현재 문서에서는 FOUNDATION-003의 실제 구현을 시작하지 않습니다.
 
 ## Continuity Rule
 
