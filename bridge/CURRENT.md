@@ -6,7 +6,7 @@ GitHub `ohsh-harimpetfood/miles`의 `main` 브랜치가 현재 MILES의 Source o
 
 ## Current State
 
-MILES는 현재 **bootstrap / foundation 단계**를 지나 실제 Case evidence reconstruction으로 이동하고 있습니다.
+MILES는 현재 **bootstrap / foundation 단계**를 지나 실제 FORGE Case를 구축하고 검증하는 단계로 이동하고 있습니다.
 
 완료된 Foundation 단계:
 
@@ -19,7 +19,7 @@ MILES는 현재 **bootstrap / foundation 단계**를 지나 실제 Case evidence
 
 현재 / 다음 실행 단계:
 
-- **FORGE-001 — WMS evidence reconstruction**
+- **FORGE-001 — WMS canonical case v0.1 review / visual sanitization**
 
 저장소의 기본 목적, 철학, taxonomy, Source of Truth 원칙, Git Write Gateway 운영 원칙은 루트 `README.md`에 정의되어 있습니다.
 
@@ -95,9 +95,13 @@ Abstraction Lift는 AI를 통해 사용자의 직접 구현 능력 상한을 넘
 
 ### `bridge/WMS_CASE_RESEARCH_NOTE.md`
 
-WMS Case Research Note는 독립적인 현업 WMS 프로젝트의 기원, 초기 AppSheet/data-model concept, custom web architecture pivot, incremental AI-assisted implementation, V1/V2/V2.5 진화를 정식 FORGE Case 이전에 evidence-based chronology로 복원하는 working note입니다.
+WMS Case Research Note는 독립적인 현업 WMS 프로젝트의 기원, 초기 AppSheet/data-model concept, custom web architecture pivot, incremental Git evolution, operational evidence를 cross-check한 **BRIDGE evidence note**입니다.
 
-WMS를 Docs as Code, Feature as Code, Git as Action의 직접적인 전신이나 Abstraction Lift의 대표 증거로 해석하지 않으며, 현재 단계에서는 Drive initial design, AI/development log, Git repository/current source, Git commit history를 cross-check하는 evidence reconstruction을 우선합니다.
+이 note는 현재 **FORGE Promotion Gate — PASS**를 지원하며, chronology, evidence provenance, visual/operational evidence registry, unresolved questions와 claim boundary를 유지합니다.
+
+WMS를 Docs as Code, Feature as Code, Git as Action의 직접적인 전신이나 Abstraction Lift의 대표 증거로 해석하지 않습니다.
+
+`Complexity accumulated through verified increments.`는 현재 **Strongly Supported working observation**이지만, `Domain-Grounded Incremental AI Development`는 여전히 working characterization이며 `METHODS`로 승격하지 않습니다.
 
 Research Note의 기본 승격 원칙은 다음과 같습니다.
 
@@ -109,6 +113,17 @@ Research Note
 → METHODS
 ```
 
+## Canonical FORGE Artifact
+
+WMS의 첫 canonical FORGE artifact가 생성되었습니다.
+
+- `forge/WMS-001/README.md`
+- **Status:** `Canonical FORGE Case v0.1 — evidence-backed; public visuals pending sanitization`
+
+이 Case는 manual warehouse/location problem, first executable AppSheet/QR hypothesis, custom web architecture pivot, deployed multi-user operational system, physical-digital location model, operational evolution을 evidence-backed narrative로 정리합니다.
+
+measured business impact는 아직 **Not Yet Established / Not Yet Measured**로 유지합니다.
+
 ## FOUNDATION-003 — DEFERRED / Evidence Pending
 
 FOUNDATION-003에서 검토하던 후보 범위는 다음과 같았습니다.
@@ -118,34 +133,31 @@ FOUNDATION-003에서 검토하던 후보 범위는 다음과 같았습니다.
 - repository metadata conventions
 - retrieval structure
 
-현재 이 단계는 **DEFERRED / evidence pending** 상태로 둡니다.
+현재 이 단계는 **DEFERRED / evidence pending** 상태로 유지합니다.
 
 이유는 실제 Case가 충분히 존재하지 않는 상태에서 registry, template, retrieval structure를 먼저 설계하면 실제 workload보다 가정에 맞춘 구조를 만들 가능성이 있기 때문입니다.
 
-따라서 다음 원칙을 적용합니다.
+따라서 다음 원칙을 계속 적용합니다.
 
 > **Do not design the retrieval and registry structure ahead of the evidence it is meant to organize.**
 
-실제 FORGE Case와 관련 artifact가 축적된 뒤, 반복적으로 필요한 metadata, retrieval path, template shape가 무엇인지 evidence를 확인하고 FOUNDATION-003 범위를 다시 평가합니다.
+이제 실제 canonical FORGE Case가 하나 존재하므로, 향후 Case review와 visual/publication 작업에서 반복적으로 필요한 metadata, template, retrieval need를 관찰합니다. 그러나 **FOUNDATION-003은 아직 재개하지 않습니다.**
 
-현재 문서에서는 FOUNDATION-003의 실제 구현을 시작하지 않습니다.
+## Current / Next Execution — FORGE-001 — WMS Canonical Case v0.1 Review / Visual Sanitization
 
-## Current / Next Execution — FORGE-001 — WMS Evidence Reconstruction
+현재 실행 단계는 **FORGE-001 — WMS canonical case v0.1 review / visual sanitization**입니다.
 
-현재 실행 단계는 **FORGE-001 — WMS evidence reconstruction**입니다.
+다음 단계:
 
-목적은 정식 FORGE Case를 바로 작성하는 것이 아니라 `bridge/WMS_CASE_RESEARCH_NOTE.md`를 기준으로 WMS의 실제 chronology와 evidence를 재구성하는 것입니다.
+- canonical narrative review
+- 6~8 visual assets 선별
+- public sanitization
+- measured impact evidence 탐색
+- 실제 Case를 통해 반복적인 metadata / template need 관찰
 
-우선 확인할 evidence source:
+visual evidence는 현재 PRIVATE ORIGINAL EVIDENCE로 유지하며 public repository에 추가하기 전에 `security/REDACTION_POLICY.md` 기준으로 sanitization합니다.
 
-- Drive initial design
-- AI / development log
-- Git commit history
-- Git repository / current source
-
-각 source를 cross-check하고 public publication을 위한 sanitization 경계를 확인한 뒤에만 canonical FORGE Case 작성 여부를 판단합니다.
-
-현재 문서에서는 `forge/WMS-001/`을 생성하거나 정식 FORGE Case 단계로 전환하지 않습니다.
+현재 단계에서 FOUNDATION-003, registry, reusable template를 선행 설계하거나 생성하지 않습니다.
 
 ## Continuity Rule
 
