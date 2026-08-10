@@ -14,7 +14,7 @@ Core idea:
 
 ## Current Phase
 
-**FORGE-001 — WMS canonical case v0.3 evidence integration / additional visual sanitization**
+**FORGE-001 — WMS canonical case v0.3 visual evidence publication complete / measured-impact validation next**
 
 MILES has completed its initial foundation phase and is now validating the repository structure against real implemented systems and evidence.
 
@@ -23,9 +23,9 @@ Current focus:
 ```text
 FOUNDATION
 → first canonical FORGE case
-→ evidence integration
-→ visual sanitization
-→ claim discipline
+→ evidence-backed publication
+→ visual evidence closure
+→ measured-impact validation
 → reusable pattern discovery
 ```
 
@@ -91,7 +91,7 @@ The following foundation artifacts are currently in place:
 
 ## Git Write Gateway Verification Completed
 
-The current MILES Git write path has been validated for both text operations and one exact-byte binary evidence closed loop.
+The current MILES Git write path has been validated for text operations and repeatedly validated for exact-byte PNG binary publication, including a 5-asset sequential batch with per-asset write/read-back verification.
 
 ### Text Path
 
@@ -146,6 +146,20 @@ Evidence:
 
 This validation proves exact-byte repository transport/read-back for the tested sanitized PNG. It does not by itself establish broader binary-type coverage, business impact, or methodology-level cost claims.
 
+### Repeated Binary / Batch Validation — 2026-08-10
+
+Exact-byte PNG publication was subsequently repeated through WMS-001 visual closure. The repository now contains 8 public visual assets: 6 **Sanitized Evidence** assets and 2 **Public Visual Derivatives**.
+
+The final 5-asset batch completed with sequential per-asset write/read-back verification:
+
+- 04 role / permission — commit `52d73cbb91c24e2371ad84982a650a651a6ad46c`, blob `5e891e1f32d8f343709afedce1581f3f0840652d`
+- 05 Side 2 mirroring derivative — commit `d9494dd43f85db1479bd90d66ad70a533c5c5296`, blob `1777b588a68586ef036fe1bceb342d44b52e6dc3`
+- 06 cold-storage overview — commit `f2dbc50954391fe07bcca0e87fed7dd3933e0db9`, blob `15f69c79f4d103c5e3c920c934623043ac870ad8`
+- 07 cold-storage detail derivative — commit `38eaf5747238249b222accef06f3767d8b6fec15`, blob `cd8ae7f8f4bc99ba80d39c4e5450b215422e2c22`
+- 08 stocktake print — commit `47f78a0d7d0a04189a612937f84ad7175386325a`, blob `9282b15744a60f55e3b2cd9f1f072218dc2510b6`
+
+Two earlier invalid batch preflights correctly failed closed before any binary or README write. The final README closure was commit `05bdd87a39bcae3805048485a1b9a3e88fe1afc0`, resulting in blob `859c71c7f9599e79ca9f9bc468e41d0db5e57379`.
+
 ---
 
 ## Git as Action — Active Research Note
@@ -169,6 +183,8 @@ The first exact recovery attempt was fail-closed `BLOCKED` because the active Ga
 Exact recovery then restored verified baseline `6dd00a555861ca8d2cace422fa3ac8d63050a62b` in commit `c38994604ea71df26839e2d461a638593b3dfba2`.
 Controlled reconstruction applied Minimum Semantic Diff and passed at commit `854616bb0d5a00c57c19b1e0b5dc01cbc4553f33`, resulting in blob `7d23e40c1a4a5d7526c72225d01b3f1e1934e932`.
 The validation is recorded in Research Note commit `d3b891fc77d221b8475a76a25a3c86c87ddd59d7`; `Semantic Diff Budget` remains a working control concept, not a formal `METHODS` artifact.
+
+Batch Binary Publication Control was subsequently operationally validated. Two invalid batch preflights failed closed before repository mutation; final source selection was explicitly separated from the integrity baseline, and filename alone was not treated as integrity proof. Binary writes remained sequential and non-atomic, while an ALL-PASS gate protected the single README integration. The batch also preserved the classification boundary between **Sanitized Evidence** and **Public Visual Derivative**. This validation is recorded in Research Note commit `8620b776f007f19c3772339c1f8a98d9f0933e79`, resulting in blob `38a5c643992ec65e8f0e6cf38adef6f64a923f5e`.
 
 Git as Action remains a **BRIDGE Working Research Note** and has **not** been promoted to `METHODS`.
 
@@ -196,7 +212,7 @@ The first canonical implemented-system case is:
 
 Status:
 
-**Canonical FORGE Case v0.3 — evidence-backed; first sanitized visual asset committed and integrity-verified**
+**Canonical FORGE Case v0.3 — evidence-backed; sanitized visual evidence incrementally committed and integrity-verified**
 
 Current case contents include:
 
@@ -210,6 +226,10 @@ Current case contents include:
 - human-controlled / AI-assisted Operator Role
 - operational evidence and claim boundaries
 - first sanitized transaction-history visual evidence with exact-byte integrity verification
+- 6 public Sanitized Evidence assets
+- 2 Public Visual Derivatives
+- visual evidence publication closure
+- evidence classification / claim boundary
 
 Measured business impact remains:
 
@@ -221,25 +241,27 @@ No unsupported ROI, time-saving percentage or productivity claim should be added
 
 ## Current Visual Evidence State
 
-First public sanitized asset:
+### Public Sanitized Evidence — 6
 
+- `forge/WMS-001/assets/01-warehouse-map.png`
+- `forge/WMS-001/assets/02-rack-card-bulk-print.png`
 - `forge/WMS-001/assets/03-transaction-history.png`
+- `forge/WMS-001/assets/04-role-permission.png`
+- `forge/WMS-001/assets/06-cold-storage-overview.png`
+- `forge/WMS-001/assets/08-stocktake-print.png`
 
-This asset has passed sanitization/publication review and exact-byte repository write/read-back verification.
+### Public Visual Derivatives — 2
 
-Remaining original visuals are still classified as:
+- `forge/WMS-001/assets/05-side2-mirroring-derivative.png`
+- `forge/WMS-001/assets/07-cold-storage-detail-derivative.png`
 
-**PRIVATE ORIGINAL EVIDENCE**
+**Sanitized Evidence** is based on an actual operational screenshot that was sanitized before publication. **Public Visual Derivative** is a reconstructed or regenerated public representation and must not be presented as raw operational evidence.
 
-Additional assets require individual sanitization and publication review before repository inclusion.
+Remaining **PRIVATE ORIGINAL EVIDENCE** includes production deployment, authenticated application, the original Side 2 screenshot, the original cold-storage detail screenshot, and other unpublished operational screenshots.
 
-Likely remaining visual candidates include:
+**Visual Evidence Publication = COMPLETE for current v0.3 scope**
 
-- production deployment view
-- role/permission structure
-- warehouse map
-- rack-card / location view
-- alternate topology or operational screens
+Additional visual publication is not an immediate next step for the current canonical WMS-001 case unless a real evidence gap appears.
 
 Public artifacts must continue to follow:
 
@@ -274,23 +296,25 @@ The next registry structure should be derived from real FORGE cases, evidence pa
 The current recommended sequence is:
 
 ```text
-FORGE-001 WMS v0.3 evidence integration
-→ review/sanitize additional 5–7 visual candidates
-→ preserve evidence provenance
-→ explore defensible measured impact evidence
-→ repeat Git as Action binary evidence validation
-→ measure actual Git as Action workload
-→ keep FOUNDATION-003 deferred until evidence justifies retrieval structure
+FORGE-001 WMS v0.3 visual publication closure
+→ define defensible measured-impact metrics
+→ establish measurement baseline
+→ collect real operational measurements
+→ validate Git as Action workload metrics
+→ consider WMS v0.4 only when measured evidence justifies promotion
+→ keep FOUNDATION-003 deferred until retrieval need is demonstrated
 ```
 
 Immediate work should therefore focus on:
 
-1. additional 5–7 visual candidates review/sanitization
-2. evidence provenance maintenance between private originals and public assets
-3. measured impact evidence exploration without retrospective invention
-4. repeated Git as Action binary evidence validation across additional suitable evidence
-5. actual workload measurement for Git as Action, including token / elapsed time / context-switching where feasible
+1. WMS business-impact measurement framework
+2. baseline definition without retrospective invention
+3. actual measurable evidence collection
+4. Git as Action workload measurement
+5. no additional visual publication unless a real evidence gap appears
 6. keeping FOUNDATION-003 deferred until real evidence retrieval needs justify it
+
+WMS v0.4 is not promoted by this synchronization. It is only a future candidate when at least one measured evidence point is defensibly established.
 
 ---
 
