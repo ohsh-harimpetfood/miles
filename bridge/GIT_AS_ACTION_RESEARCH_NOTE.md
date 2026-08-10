@@ -521,6 +521,188 @@ v0.2.3
 
 ---
 
+## Operational Validation — Semantic Scope Discipline
+
+2026-08-10 `forge/WMS-001/README.md`에서 실제 발생한 scope overrun → fail-closed `BLOCKED` → exact baseline recovery → controlled reconstruction 과정을 Git as Action의 operational validation evidence로 기록한다.
+
+이 사례의 문제는 Git write 실패가 아니었다. Git write 자체와 read-back은 기술적으로 성공했지만, 허용된 evidence-integration 범위를 넘어 기존 canonical WMS narrative 전체가 재작성되었다.
+
+따라서 이 사례는 다음을 보여주는 **first observed scope-control case**로 기록한다.
+
+> **Technical write success ≠ Semantic scope compliance**
+
+| Field | Evidence |
+| --- | --- |
+| Date | `2026-08-10` |
+| Artifact | `forge/WMS-001/README.md` |
+| Validation class | `Operational observation / control refinement` |
+
+### Evidence Sequence
+
+#### 1. Verified canonical baseline
+
+기존 WMS-001 canonical v0.2의 verified baseline은 다음 Git blob이었다.
+
+```text
+6dd00a555861ca8d2cace422fa3ac8d63050a62b
+```
+
+#### 2. Scope overrun
+
+```text
+Commit:
+e566086f56c162261093ab9b174ee3adb80288c9
+
+Resulting blob:
+d86c2f1b6e5c44e0b9482ec90083e928e9dd179d
+```
+
+Observed issue:
+
+- requested task는 binary evidence publication 결과를 README에 반영하는 것이었다.
+- 그러나 title, section structure, language, narrative framing, architecture explanation 등이 광범위하게 재작성되었다.
+- Git write와 read-back은 기술적으로 성공했지만 semantic change scope는 요청 범위를 초과했다.
+
+이 상태는 technical success였지만 scope-compliance `PASS`로는 인정하지 않는다.
+
+#### 3. Scope Discipline added
+
+overrun 확인 후 operating control에 다음 원칙을 추가했다.
+
+> **Full-file write is a transport mechanism, not permission to rewrite the whole artifact.**
+
+> **Prefer minimum semantic diff over opportunistic improvement.**
+
+> **Technical write success does not guarantee semantic scope compliance.**
+
+policy boundary도 다음과 같이 확장했다.
+
+```text
+Policy Boundary
+├─ Repository scope
+├─ Branch scope
+├─ Path scope
+├─ Action scope
+└─ Semantic change scope
+```
+
+`Semantic Diff Budget`은 요청을 충족하기 위해 실제로 변경되어야 하는 의미 범위의 상한이라는 working control concept으로 기록한다. 아직 formal `METHODS` concept으로 승격하지 않는다.
+
+#### 4. First recovery attempt — BLOCKED
+
+Exact baseline restoration을 시도했으나 active MILES Git Write Gateway v0.2.3의 `readRepositoryFile` path에서는 immutable historical blob content를 직접 확보할 수 없었다.
+
+historical commit/blob을 요구했지만 active read operation은 current `main` content를 반환했다.
+
+따라서 exact baseline bytes를 확보하지 못한 상태에서 reconstruction, approximation, merge를 하지 않고 `BLOCKED`로 종료했다. 이 단계에서는 repository write가 발생하지 않았다.
+
+이것은 fail-closed behavior의 추가 operational evidence다.
+
+#### 5. Exact baseline recovery
+
+Historical blob content를 별도 verified recovery source로 확보했다.
+
+```text
+Recovery source size:
+12660 bytes
+
+Recovery source SHA-256:
+16631fee90d347105b529175aa88af015f5446a656c37537c158568277789abf
+
+Git blob SHA:
+6dd00a555861ca8d2cace422fa3ac8d63050a62b
+
+Recovery commit:
+c38994604ea71df26839e2d461a638593b3dfba2
+
+Resulting README blob:
+6dd00a555861ca8d2cace422fa3ac8d63050a62b
+```
+
+즉 scope-overrun 이전 verified baseline과 정확히 동일한 Git blob으로 복원되었다. Recovery commit에서는 `forge/WMS-001/README.md` 한 파일만 변경되었다.
+
+#### 6. Controlled v0.3 reconstruction
+
+복구 후 새 controlled update에서는 허용된 semantic changes를 명시적으로 제한했다.
+
+Allowed:
+
+1. status update
+2. Case-at-a-Glance row 1개
+3. Section 8 binary evidence integration
+4. Section 9 publication-state update
+
+```text
+Controlled reconstruction commit:
+854616bb0d5a00c57c19b1e0b5dc01cbc4553f33
+
+Resulting blob:
+7d23e40c1a4a5d7526c72225d01b3f1e1934e932
+```
+
+Verified compare from recovery commit to controlled v0.3:
+
+- files changed: `1`
+- file: `forge/WMS-001/README.md`
+- additions: `36`
+- deletions: `2`
+- total changes: `38`
+
+Protected title, Sections 1–7 narrative, chronology, architecture, Physical ↔ Digital Warehouse, Side 2 mirroring, Operator Role, AI-assisted implementation characterization, claim boundaries는 유지되었다.
+
+결과:
+
+`PASS — Minimum Semantic Diff satisfied`
+
+### Observed Findings
+
+1. Path-level authorization만으로는 semantic control이 충분하지 않다.
+2. 허용된 파일에 대한 technically valid write도 semantic scope를 초과하면 policy failure가 될 수 있다.
+3. Full-file replacement API는 transport mechanism일 뿐 full-document rewrite authorization이 아니다.
+4. Write → read-back verification은 content existence / blob state를 검증하지만, semantic scope compliance는 별도 검증이 필요하다.
+5. Exact recovery에서는 baseline을 추정하거나 unauthorized rewrite의 일부를 임의 보존해서는 안 된다.
+6. Required baseline을 신뢰성 있게 확보할 수 없으면 `BLOCKED`가 올바른 결과가 될 수 있다.
+7. Git history는 scope overrun → exact recovery → controlled reconstruction 전체 audit trail을 보존한다.
+
+### Control Loop
+
+```text
+Requested Change
+→ Define Semantic Scope
+→ Identify Protected Content
+→ Define Semantic Diff Budget
+→ WRITE
+→ READ BACK
+→ Verify Technical State
+→ Verify Semantic Scope
+→ PASS / FAIL / BLOCKED
+```
+
+### Current Limitation
+
+현재 사용한 Gateway v0.2.3의 active `readRepositoryFile` capability에서는 exact recovery에 필요한 immutable historical blob read가 직접 가능하지 않았다.
+
+따라서 future constrained read capability 후보로 다음을 검토할 가치가 있다.
+
+- historical file read by commit/ref
+- immutable blob read by SHA
+
+단, 이 operational validation은 Gateway upgrade를 제안하거나 실행하는 작업이 아니다.
+
+### Claim Discipline
+
+다음은 주장하지 않는다.
+
+- `Semantic Diff Budget`이 formal `METHODS`다.
+- 한 번의 사례로 모든 semantic overrun을 예방할 수 있다.
+- 모든 full-file write가 위험하다.
+- Gateway가 semantic correctness를 자동 보장한다.
+- Scope Discipline이 정량적으로 검증된 완성 방법론이다.
+
+현재 상태는 `Operational observation / control refinement`이다.
+
+---
+
 ## 11. Measurement Plan
 
 비용 효율을 주장하기 전에 실제 workload에서 비교 가능한 evidence를 수집해야 한다.
