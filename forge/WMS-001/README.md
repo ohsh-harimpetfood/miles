@@ -1,335 +1,617 @@
-# WMS-001 — Operational Warehouse Management System
+# WMS-001 — QR-Based Warehouse Management System
 
-**Status:** Canonical FORGE Case v0.2 — evidence-backed; public visuals pending sanitization
+**Status:** Canonical FORGE Case v0.3 — evidence-backed; first sanitized visual asset committed and integrity-verified  
+**Domain:** Warehouse / Inventory / Manufacturing Operations  
+**Artifact Type:** Implemented Operational System  
+**Primary Role:** Product Owner / System Designer / Business Rule Designer / Implementation Lead  
+**Current System Form:** Custom Web Application  
+**Case Language:** English-first with selected Korean operational labels
 
-## 1. Case at a Glance
+---
 
-WMS-001은 수동 warehouse/location 문제에서 출발해 QR + AppSheet 기반의 첫 executable hypothesis를 거친 뒤, custom web architecture로 전환하고 physical warehouse, inventory, transaction, permission, QR, digital map을 하나의 operating system으로 연결한 deployed multi-user WMS 사례다.
+## Case at a Glance
 
-| Case Status | Evidence |
-| --- | --- |
-| Built | Confirmed |
-| Deployed | Confirmed |
-| Operational Use | Confirmed |
-| Multi-user Operation | Confirmed |
-| Physical-Digital Mapping | Confirmed |
+| Item | Summary |
+|---|---|
+| Initial Trigger | Repeated monthly physical inventory count with manual consolidation |
+| First Hypothesis | Use QR codes to identify racks and items, then collect counts digitally |
+| Early Validation | QR + AppSheet PoC used to validate workflow and data structure |
+| Key Constraint Discovered | Multiple simultaneous users exposed spreadsheet-based backend limits |
+| Architecture Decision | Move from spreadsheet-centered PoC to custom multi-user web application |
+| Core Transaction Model | Location + Item + Lot + Quantity + Transaction Type + Operator + Timestamp |
+| Primary Business Rule | Every stock change is recorded as a transaction |
+| Operational Integration | Existing company QR conventions reused where possible |
+| Current Evidence Level | Operational system with private visual evidence and first public sanitized visual evidence |
+| Public Sanitized Visual Evidence | Confirmed — first asset integrity-verified |
 | Measured Business Impact | Not Yet Established |
 
-이 Case의 핵심은 기능 수가 아니라 **현장 문제를 어떻게 구조화하고, 어떤 architecture decision을 거쳐, 실제 운영 시스템으로 발전시켰는가**에 있다.
+---
 
-<!-- Visual candidate: sanitized warehouse map hero -->
+# 1. Operational Problem
+
+The warehouse required repeated physical inventory counting and reconciliation.
+
+The original process relied on manual counting and spreadsheet-based consolidation. This created recurring operational friction:
+
+- workers had to identify locations and items manually
+- multiple people could count the same or adjacent inventory areas
+- results had to be merged after the count
+- location, item, lot and quantity context could be entered inconsistently
+- traceability depended heavily on spreadsheet discipline
+- the process was difficult to scale when several users worked at the same time
+
+The initial question was simple:
+
+> Can warehouse counting and stock movement be made more structured by identifying physical locations and items through QR codes?
+
+This was not initially framed as a full Warehouse Management System.
+
+It began as a narrower attempt to improve a repeated inventory-counting task.
 
 ---
 
-## 2. The Problem
+# 2. First Hypothesis — QR + AppSheet PoC
 
-출발점은 기술 도입이 아니었다. 현장의 위치·품목·재고 상태를 **더 신뢰 가능하고 빠르게 확인·운영해야 하는 문제**가 있었다.
-
-초기 Ground Truth는 다음과 같이 일반화할 수 있다.
-
-- manual rack-card dependency
-- location / item mismatch
-- inventory search friction
-- physical / system inventory reconciliation burden
-- stock count / closing 시 추가 검증 부담
-
-사람이 창고를 직접 돌아다니거나 다른 사람에게 물어 위치와 재고를 확인하는 방식은 운영 규모가 커질수록 더 많은 확인 비용과 불확실성을 만들었다.
-
-WMS-001은 이 문제를 software feature의 집합이 아니라 **physical warehouse state를 신뢰 가능한 digital operating model로 연결하는 문제**로 다루기 시작했다.
-
----
-
-## 3. From First Hypothesis to Custom WMS
-
-초기 solution은 가능한 한 빠르게 현장 개념을 실행해보는 방향이었다.
+The first implementation hypothesis was intentionally lightweight.
 
 ```text
-Location QR
-+ Item QR
-+ AppSheet
-+ Google Sheets
-+ PC Lookup
+Rack QR
+→ Item QR
+→ Quantity Entry
+→ Spreadsheet
 ```
 
-> **AppSheet was the first executable hypothesis.**
+A QR code was attached to or associated with a warehouse rack/location.
 
-AppSheet는 실패한 기술이 아니었다. QR workflow, data model, mobile interaction, 현장 사용 방식을 빠르게 구체화하고 검증하기 위한 첫 실행 가능한 접근이었다.
+The operator scanned the location, scanned or selected the item, entered quantity, and recorded the result digitally.
 
-초기 data model은 Location / Item / Transaction을 분리하는 구조였다.
+AppSheet was used as an early validation layer because it allowed rapid testing of:
+
+- QR-based identification
+- mobile data entry
+- basic transaction capture
+- location/item relationship
+- workflow feasibility
+
+The PoC was useful because it tested the operational model before a larger custom system was built.
+
+However, the PoC also exposed an architectural limitation.
+
+---
+
+# 3. Constraint Discovery — Multi-User Operation
+
+The important failure point was not QR scanning itself.
+
+The problem emerged when the workflow moved from a single-user or limited-user test toward simultaneous operational use.
+
+A spreadsheet-centered backend introduced concerns around:
+
+- concurrent updates
+- collision risk
+- inconsistent write timing
+- weak transaction control
+- difficult validation
+- limited scalability for multi-user operations
+
+The key architectural lesson was:
+
+> A workflow can be validated with a lightweight tool even when that tool is not suitable as the final operational architecture.
+
+The AppSheet implementation was therefore treated as a **PoC and learning stage**, not as the final production architecture.
+
+This distinction is important.
+
+The value of the PoC was not that it became the permanent system.
+
+The value was that it exposed the real business rules and the real architectural constraints early.
+
+---
+
+# 4. Architecture Evolution
+
+The system evolved through three stages.
+
+## Stage 1 — Manual Inventory Process
+
+```text
+Physical Count
+→ Manual Record
+→ Spreadsheet Consolidation
+```
+
+Primary weakness:
+
+- repeated manual work
+- weak traceability
+- inconsistent structure
+- difficult multi-user coordination
+
+---
+
+## Stage 2 — QR + AppSheet PoC
+
+```text
+Rack QR
+→ Item QR
+→ Quantity
+→ AppSheet
+→ Spreadsheet Backend
+```
+
+What this stage validated:
+
+- QR identification works operationally
+- warehouse workers can interact with location/item identifiers digitally
+- inventory data can be structured as transactions
+- mobile-first interaction is feasible
+
+What this stage exposed:
+
+- spreadsheet backend limitations
+- multi-user concurrency risk
+- need for stronger business-rule enforcement
+- need for a more explicit transaction model
+
+---
+
+## Stage 3 — Custom Multi-User Web Application
+
+The system moved toward a dedicated web application with a structured backend.
+
+Conceptually:
+
+```text
+User
+→ Web UI
+→ Business Rules
+→ API / Application Logic
+→ Transaction Store
+→ Inventory State
+```
+
+The exact production infrastructure is intentionally generalized in this public case.
+
+The important architectural shift was:
+
+> from document-style state storage to transaction-oriented operational logic.
+
+---
+
+# 5. Core Business Rules
+
+The WMS became more reliable when warehouse activity was modeled as explicit business rules rather than as spreadsheet editing.
+
+## 5.1 Transaction-First Inventory Model
+
+The central rule is:
+
+> Every inventory change must be represented as a transaction.
+
+A simplified transaction can be represented as:
+
+```text
+Transaction
+- timestamp
+- operator
+- transaction_type
+- location
+- item
+- lot
+- quantity
+- note
+```
+
+The inventory state is therefore derived from transaction history rather than treated only as a manually editable number.
+
+---
+
+## 5.2 Transaction Types
+
+Operational transaction types include concepts such as:
+
+- receipt
+- production input
+- production output
+- movement
+- adjustment
+- issue / outbound movement
+
+The exact internal naming and codes are generalized here.
+
+The important rule is that different physical events are not treated as the same generic quantity edit.
+
+Each event has operational meaning.
+
+---
+
+## 5.3 Location Identity
+
+A warehouse location is not just free text.
+
+It is treated as an operational entity.
+
+Conceptually:
+
+```text
+Warehouse
+→ Zone
+→ Rack / Location
+→ Item / Lot
+```
+
+A QR code can represent or resolve a location identifier.
+
+This reduces ambiguity when operators work across multiple physical storage positions.
+
+---
+
+## 5.4 Item Identity
+
+The item must be identifiable independently from the location.
+
+This matters because:
+
+- the same item can exist in multiple locations
+- a location can hold different items over time
+- inventory movement changes the relationship between item and location
+
+Therefore:
+
+```text
+Location Identity ≠ Item Identity
+```
+
+The transaction connects them.
+
+---
+
+## 5.5 Lot Tracking
+
+Where lot-level control is required, quantity alone is insufficient.
+
+The operational state becomes closer to:
 
 ```text
 Location
-Item
-Transaction
++ Item
++ Lot
++ Quantity
 ```
 
-당시 engineering concept에는 `LOC_MASTER`, `ITEM_MASTER`, `STOCK_TX`와 같은 구조가 존재했고, 이 모델은 이후 architecture가 바뀐 뒤에도 문제를 구조화하는 출발점 역할을 했다.
+This supports more reliable traceability than item-level totals alone.
 
-요구 범위가 커지면서 더 높은 UX control, performance, deployment flexibility, extensibility가 필요해졌고 custom web architecture로 전환했다.
+---
+
+## 5.6 Movement as Paired State Change
+
+A location movement should not be represented as a simple overwrite.
+
+Conceptually:
 
 ```text
-AppSheet
-→ Next.js
-→ Supabase / PostgreSQL
-→ Git
-→ Vercel
+Source Location
+→ quantity decreases
+
+Destination Location
+→ quantity increases
 ```
 
-이 pivot은 WMS의 시작점이 아니다. 이미 존재하던 field problem, data model, executable hypothesis를 **더 확장 가능한 operational architecture로 옮긴 시점**이다.
+Both changes belong to the same operational movement.
 
-현재 source에서 확인되는 주요 기술 구성은 다음과 같다.
+This rule improves auditability and makes transaction history meaningful.
 
-- Next.js
-- React
-- TypeScript
-- Supabase / PostgreSQL
-- authentication / authorization
+---
+
+## 5.7 Adjustment Is Not Normal Movement
+
+Inventory adjustment represents a reconciliation event rather than an ordinary physical flow.
+
+For example:
+
+```text
+System Quantity ≠ Physical Quantity
+→ Adjustment Transaction
+→ Reconciled State
+```
+
+Separating adjustment from ordinary receipt, movement or issue makes later analysis more trustworthy.
+
+---
+
+# 6. QR Integration Strategy
+
+One important design choice was to avoid creating an unnecessary parallel identification system.
+
+Where practical, the WMS reused QR conventions already present in the company environment.
+
+This reduced:
+
+- duplicate labels
+- operator confusion
+- rollout friction
+- unnecessary master-data maintenance
+
+The principle was:
+
+> Integrate with existing operational identifiers before inventing new ones.
+
+This is a small design decision with large practical consequences in manufacturing environments.
+
+A technically elegant system can still fail if it creates unnecessary work for operators.
+
+---
+
+# 7. Why the Architecture Changed
+
+The architecture change was not driven by a desire to use more advanced technology.
+
+It was driven by operational constraints.
+
+The reasoning chain was:
+
+```text
+Manual process is repetitive
+→ QR can reduce identification friction
+→ AppSheet can validate the workflow quickly
+→ multi-user use exposes backend weakness
+→ spreadsheet state is insufficient
+→ transaction rules become explicit
+→ dedicated application architecture becomes justified
+```
+
+This sequence is important because it shows the difference between **technology-first development** and **constraint-driven architecture**.
+
+The final system was not designed first and justified later.
+
+It emerged from progressively better understanding of the operational problem.
+
+---
+
+# 8. Operational Evidence & Impact
+
+The strongest current evidence for this case is the implemented operational system and its associated artifacts.
+
+Confirmed evidence includes:
+
+- a functioning WMS application
+- QR-based location and item interaction
 - transaction history
-- QR interaction
-- responsive / mobile operation
+- location/rack structures
+- operator-facing screens
+- role-based or permission-oriented UI concepts
+- inventory movement and adjustment workflows
+- warehouse/rack visual structures
+- first sanitized transaction-history visual evidence committed with exact-byte read-back verification
 
-production URL, project identifier, private endpoint와 같은 실제 운영환경 식별자는 공개하지 않는다.
+## First Public Sanitized Visual Evidence
 
-<!-- Visual candidate: sanitized initial QR/AppSheet concept -->
+![Sanitized WMS transaction history evidence](assets/03-transaction-history.png)
 
----
+This image is based on an actual operational transaction-history screenshot. Sensitive values were removed before publication, so it is classified as **Sanitized Evidence** rather than a reconstructed public visual derivative.
 
-## 4. The Operating System
+Repository transport preserved the supplied sanitized asset bytes. The transport process did **not** regenerate, resize, recompress, convert format, or edit metadata.
 
-현재 WMS는 warehouse operation을 다음 흐름으로 연결한다.
+### Integrity Evidence
 
-```text
-Inbound
-→ Inventory
-→ Movement
-→ Outbound
-→ Transaction History
-```
+| Field | Verified value |
+| --- | --- |
+| Source size | `128360` bytes |
+| Source SHA-256 | `1eafaeea9f7c57873060e93529786a4da8072e1518b26978869e8af8943026cf` |
+| Expected Git blob SHA | `72d42e479ea5af9c82a3c6578c7a45f569dca549` |
+| Resulting Git blob SHA | `72d42e479ea5af9c82a3c6578c7a45f569dca549` |
+| Read-back size | `128360` bytes |
+| Read-back SHA-256 | `1eafaeea9f7c57873060e93529786a4da8072e1518b26978869e8af8943026cf` |
+| Integrity verified | `true` |
+| Evidence commit | `a6ce0bd1bafbdd26a2d478feab94b7473446553a` |
 
-이 core flow 주변에서 master data, inventory adjustment, stocktake / reconciliation, authentication, role / feature permission, QR interaction이 운영 통제 역할을 한다.
+This integrity validation proves a narrow technical fact: the sanitized asset was recorded in Git and read back with bytes matching the verified source. It does **not** newly prove the screenshot's operational meaning, system effectiveness, or business impact.
 
-중요한 점은 transaction이 단순 CRUD에 머물지 않는다는 것이다. current source에서 inbound workflow는 location, LOT, packing, business rules를 다루고, inventory movement는 partial / full / merge handling과 packing-information preservation을 포함한다.
+The first sanitized transaction-history asset now exists in the public repository. Remaining original production deployment, role permission, warehouse map, rack-card, alternate topology and other operational visuals remain **PRIVATE ORIGINAL EVIDENCE**. Only assets that pass sanitization and publication review should be added to the public repository.
 
-즉, 시스템은 “재고를 옮긴다”는 단순 동작보다 **현장의 실제 물류 상태와 packaging constraint를 보존하면서 이동을 기록하는 것**에 가까워졌다.
+### Evidence Interpretation
 
-role / feature permission 역시 별도의 control layer다. 사용자 역할에 따라 inventory, inbound, outbound, master, adjustment, user-control 등 접근 가능한 기능을 분리하며, operational history는 transaction record로 축적된다.
+The system clearly demonstrates implementation capability and operational modeling.
 
----
+What is not yet established is a measured business impact baseline.
 
-## 5. Physical ↔ Digital Warehouse
+For example, the current repository does not yet contain validated before/after measurements for:
 
-WMS-001의 핵심 engineering idea 중 하나는 physical warehouse와 digital inventory model을 직접 연결하는 것이다.
-
-```text
-Physical Location
-→ Managed Location Identity
-→ QR / Rack Card
-→ Transaction
-→ Inventory
-→ Digital Map
-```
-
-location은 단순 문자열이 아니라 managed master data로 다뤄진다. zone, rack, level, side와 같은 구조적 속성을 기반으로 physical storage를 digital identity로 표현하고, 그 identity를 QR / rack card와 연결한다.
-
-이 모델은 다음 operational capability로 확장되었다.
-
-- location master / builder
-- QR / rack-card physical interface
-- warehouse map / occupancy visualization
-- mixed-stock location view
-- standard rack뿐 아니라 deep-lane / freezer-container 등 heterogeneous storage topology 지원
-
-특히 Side 2는 database coordinate를 그대로 화면에 그리는 대신 작업자의 실제 관찰 방향을 반영해 좌우 배열을 뒤집는 UI decision이 존재한다.
-
-```text
-Database Coordinate
-→ Physical Rack Geometry
-→ Operator Viewpoint
-→ Mirrored UI
-```
-
-이것은 시각적 장식이 아니라 **digital representation을 physical operator viewpoint에 맞추는 domain-specific decision**이다.
-
-정확한 location code, rack coding scheme, QR payload는 public MILES에 포함하지 않는다.
-
-<!-- Visual candidates: sanitized rack card, warehouse map, Side-2 mirroring -->
-
----
-
-## 6. How It Evolved
-
-현재 chronology는 다음 수준으로 정리한다.
-
-```text
-2025-11
-Initial field problem / data model
-→
-2026-01
-Architecture pivot
-→
-2026-02
-V1 operational baseline
-→
-2026-02~03
-Operational-fit evolution
-→
-2026-03
-Management / control expansion direction
-```
-
-2025-11에는 field problem, QR/AppSheet hypothesis, Location / Item / Transaction data model이 형성되었다.
-
-2026-01에는 AppSheet-era concept이 custom web architecture로 이동했다.
-
-2026-02에는 inbound, inventory movement, outbound, master data, transaction history, authentication / authorization, permission control, UAT 등을 포함하는 operational baseline이 형성된 것으로 현재 chronology가 지지한다.
-
-이후 inventory adjustment, QR, mobile operation, bulk inbound / outbound, movement sophistication 같은 기능이 실제 운영 적합성을 높이는 방향으로 누적되었다. 2026-03에는 dashboard, KPI, traceability, alert, location optimization 등 management / control capability로의 확장 방향도 나타났다.
-
-> **Complexity accumulated through verified increments.**
-
-이 문장은 Git history와 current source에 의해 **Strongly Supported working observation**이다. 다만 이를 formal methodology로 선언하지 않는다.
-
-V1 / V2 / V2.5의 모든 공식 boundary가 완전히 확정된 것으로 표현하지도 않는다. 상세 chronology와 unresolved version questions는 `bridge/WMS_CASE_RESEARCH_NOTE.md`가 관리한다.
-
----
-
-## 7. Operator Role
-
-이 프로젝트에서 human operator의 역할은 모든 코드를 직접 작성하는 것이 아니라 **문제, 규칙, architecture, operational verification에 대한 통제권을 유지하는 것**에 가까웠다.
-
-현재 evidence가 지지하는 범위에서 다음 역할을 기록할 수 있다.
-
-- framed the warehouse problem from field operations
-- defined the initial Location / Item / Transaction model
-- formed the first QR / AppSheet solution hypothesis
-- evaluated limitations and drove the architecture pivot
-- directed feature-by-feature implementation
-- exercised and verified operational behavior
-- expanded the system as new field constraints emerged
-
-역할을 단순화하면 다음과 같다.
-
-```text
-Human-controlled
-Problem framing
-Business rules
-Architecture decisions
-Operational verification
-
-AI-assisted
-Implementation
-```
-
-이는 “모든 feature가 동일한 AI workflow로 생성되었다”거나 “인간이 모든 코드를 직접 작성했다”는 의미가 아니다.
-
-현재 `Domain-Grounded Incremental AI Development`라는 표현을 working characterization으로 사용할 수 있지만, 이는 아직 MILES `METHODS`로 승격된 formal method가 아니다.
-
----
-
-## 8. Operational Evidence & Impact
-
-현재 WMS-001에서 확인된 operational evidence는 다음과 같다.
-
-- implemented system
-- production deployment
-- authenticated application
-- operational transaction history
-- multi-user / role operation
-- role / feature permission
-- physical-digital mapping
-- rack-card / QR output
-- heterogeneous storage-model expansion
-
-### Observed
-
-현재 evidence로 관찰 가능한 변화:
-
-- manual lookup 중심에서 system-based location lookup으로 이동
-- physical warehouse가 managed digital location model로 전환
-- transaction / history가 system record로 축적
-- inventory / location / permission이 하나의 operating system 안에 연결
-
-### Measured
-
-현재 public하게 사용할 수 있는 validated quantitative metric은 없다.
-
-### Not Yet Measured
-
-- ROI
-- time saving
+- inventory counting time reduction
+- transaction processing time
 - inventory accuracy improvement
-- search-time reduction
-- labor reduction
+- error-rate reduction
+- labor-hour savings
+- financial ROI
 
-숫자를 새로 만들거나 추정하지 않는다.
+These values should not be invented retrospectively.
 
-현재 private original visual evidence에는 production deployment, authenticated application, transaction history, role / permission, warehouse map, rack-card / QR output, alternate storage topology 등이 포함된다. public MILES에는 향후 6~8장만 선별해 sanitization 후 추가할 계획이다.
+### Current Impact Classification
 
-<!-- Visual candidates: transaction history, role/permission, freezer-container, production deployment -->
+**Measured Business Impact:** Not Yet Established
+
+The next evidence step should focus on reconstructing or measuring defensible operational outcomes where possible.
 
 ---
 
-## 9. Evidence & Publication Boundary
+# 9. Failure, Constraint and Learning
 
-WMS-001은 evidence-backed engineering case다. 상세 chronology, Git cross-check, visual evidence registry, unresolved questions와 provenance는 [`bridge/WMS_CASE_RESEARCH_NOTE.md`](../../bridge/WMS_CASE_RESEARCH_NOTE.md)가 관리한다.
+This case is not presented as a linear success story.
 
-FORGE README에서는 narrative readability를 위해 필요한 evidence boundary만 유지한다.
+Several constraints materially shaped the system.
 
-### Confirmed
+## Spreadsheet Backend Limitation
 
-- implemented and deployed operational system
-- authenticated application
-- operational transaction history
-- multi-user / role operation
-- role / feature permission
-- physical-digital location model
-- rack-card / QR output capability in current system
-- heterogeneous storage topology support in current system
-- current Next.js / React / TypeScript / Supabase architecture
-- incremental Git evolution
+The early AppSheet architecture was useful for validation but weak for simultaneous operational use.
 
-### Strongly Supported
+Lesson:
 
-- AppSheet/data-model concept에서 custom web architecture로의 pivot
-- `Complexity accumulated through verified increments.`
-- operational fit이 later evolution의 중요한 driver였다는 해석
+> A low-code PoC can validate business rules without being suitable as the final transactional backend.
 
-### Needs Further Verification
+---
 
-- first AppSheet field-pilot extent
-- exact AppSheet → Web trigger sequence
-- official version boundaries
-- exact rack-card lineage from initial concept to current implementation
-- AI involvement의 exact scope
-- quantitative impact evidence suitable for public release
+## Multi-User Concurrency
 
-이 Case는 다음을 주장하지 않는다.
+A process that works for one operator can behave differently when several operators interact with the same state.
 
-- Docs as Code / Feature as Code / Git as Action의 직접 전신
-- Abstraction Lift의 대표 사례
-- AppSheet 실패 사례
-- 모든 코드를 인간이 직접 작성했다
-- 모든 feature가 동일한 AI workflow로 생성되었다
-- generic vibe coding과 완전히 별개의 formal methodology다
-- V1 / V2 / V2.5 전체가 이미 정량 검증되었다
-- current screenshots가 과거 특정 milestone 상태까지 증명한다
-- measured ROI / time-saving이 이미 입증되었다
-- 모든 version boundary가 확정되었다
+Lesson:
 
-public publication은 `security/REDACTION_POLICY.md`를 따른다. 다음 정보는 Generalize 또는 Exclude한다.
+> Multi-user behavior is an architectural requirement, not a UI feature.
 
-- names
-- emails
-- account IDs
-- private URLs
-- production endpoints
-- infrastructure identifiers
-- exact facilities / locations
-- rack coding schemes
-- QR payloads
-- item / LOT identifiers
-- operator identity
-- exact quantities / sensitive inventory figures
-- credentials
+---
 
-현재 visual evidence는 PRIVATE ORIGINAL EVIDENCE로 유지하며, public repository에 추가하기 전에 별도의 sanitization review를 수행한다.
+## Transaction Semantics
+
+Inventory systems become fragile when all changes are represented as direct quantity edits.
+
+Lesson:
+
+> Operational meaning should be captured in transaction types and business rules.
+
+---
+
+## Physical-Digital Alignment
+
+Warehouse systems interact with physical labels, racks, lots and operator habits.
+
+Lesson:
+
+> A warehouse application is only as reliable as the mapping between digital state and physical reality.
+
+---
+
+# 10. Reusable Engineering Lessons
+
+Several lessons from this system are reusable beyond warehouse software.
+
+## Validate the Workflow Before Scaling the Architecture
+
+The AppSheet stage was valuable because it made the workflow testable quickly.
+
+The PoC did not need to be the final system to be successful.
+
+---
+
+## Let Constraints Trigger Architecture Changes
+
+The move to a custom web application was justified by multi-user and transaction-control requirements.
+
+Architecture changed because the problem demanded it.
+
+---
+
+## Encode Business Meaning Explicitly
+
+Receipt, movement, adjustment and production events should not collapse into generic quantity edits.
+
+Business semantics belong in the system model.
+
+---
+
+## Reuse Existing Operational Infrastructure
+
+Existing QR conventions were reused where practical.
+
+This reduced deployment friction and unnecessary duplication.
+
+---
+
+## Preserve Transaction History
+
+A trustworthy operational system should make it possible to answer:
+
+- what changed?
+- when?
+- where?
+- by whom?
+- for which item or lot?
+- through what transaction type?
+
+This is more valuable than simply showing the current number.
+
+---
+
+# 11. Public Evidence Plan
+
+The public evidence strategy is now incremental rather than all-or-nothing.
+
+The first sanitized transaction-history asset has passed publication review and exact-byte repository integrity verification:
+
+- `assets/03-transaction-history.png`
+
+Remaining original evidence is still private and includes candidates such as:
+
+- production deployment view
+- role/permission structure
+- warehouse map
+- rack-card / location view
+- alternate topology or operational screens
+
+These should remain **PRIVATE ORIGINAL EVIDENCE** until individually reviewed and sanitized. Additional public assets should be added only after sanitization and publication review, preserving provenance between private source evidence and any public sanitized evidence or derivative.
+
+---
+
+# 12. Relationship to MILES
+
+This case belongs in `FORGE` because it is an implemented operational system.
+
+It also provides evidence for several broader MILES themes:
+
+- field problem → structured system
+- PoC → constraint discovery → architecture evolution
+- business rules as engineering artifacts
+- operational data as a decision layer
+- execution systems in manufacturing environments
+
+However, this case should not be retroactively described as the direct predecessor of later MILES ideas such as:
+
+- Docs as Code
+- Feature as Code
+- Git as Action
+
+Those concepts emerged later.
+
+The WMS is better understood as an early example of a recurring engineering pattern:
+
+> Observe a repeated operational problem, structure the data and rules, validate quickly, then evolve the architecture when constraints become visible.
+
+---
+
+# 13. Next Evidence Steps
+
+Priority follow-up work:
+
+1. review and sanitize an additional 5–7 visual candidates
+2. preserve evidence provenance between private originals and public assets
+3. document transaction rules more formally if they become reusable
+4. reconstruct measurable before/after operational evidence where defensible
+5. avoid unsupported ROI or time-saving claims
+6. connect later MILES methods only where historical evidence supports the relationship
+
+---
+
+# Summary
+
+WMS-001 began as an attempt to improve repeated warehouse inventory counting through QR-based identification.
+
+A lightweight AppSheet PoC validated the workflow but exposed multi-user and backend constraints.
+
+The system then evolved into a custom multi-user web application built around explicit inventory transactions, location identity, item identity, lot tracking and operational business rules.
+
+The case is now evidence-backed with its first public sanitized transaction-history screenshot committed and exact-byte integrity-verified. The remaining visual evidence is still private pending sanitization and publication review, and measured business impact remains **Not Yet Established**.
+
+The strongest lesson is not the specific technology stack.
+
+It is the architecture evolution:
+
+```text
+Manual Work
+→ Lightweight Validation
+→ Constraint Discovery
+→ Explicit Business Rules
+→ Dedicated Operational System
+→ Sanitized Evidence Publication
+→ Verified Repository Memory
+```
+
+This makes WMS-001 a useful MILES FORGE case because it shows how a field problem can evolve into a structured execution system while preserving evidence and claim discipline.
