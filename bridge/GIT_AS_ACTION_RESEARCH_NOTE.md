@@ -3,7 +3,7 @@
 **Status:** Working Research Note  
 **Working Name:** Git as Action  
 **Artifact Class:** BRIDGE / research note, not yet a formal `METHODS` artifact  
-**Validation State:** Text Git action path operational; first exact-byte binary evidence closed loop PASS on 2026-08-10; broader methodology / cost / context-efficiency claims remain under validation
+**Validation State:** Text Git action path operational; exact-byte PNG publication repeatedly validated; WMS-001 now has 8 public visual assets (6 Sanitized Evidence, 2 Public Visual Derivatives); 5-asset sequential batch publication completed with ALL-PASS; broader methodology / cost / context-efficiency claims remain under validation
 
 이 문서는 MILES에서 실제 운영을 통해 검증 중인 작업 가설을 기록한다. 정식 방법론으로 확정된 문서가 아니며, 관찰과 측정을 통해 수정·반박·정제될 수 있다.
 
@@ -703,6 +703,134 @@ Requested Change
 
 ---
 
+## Operational Validation — Batch Binary Publication Control
+
+2026-08-10 WMS-001 visual publication에서 기존 3개의 visual asset을 개별 exact-byte closed loop로 검증한 뒤, 남은 5개를 하나의 controlled batch operation으로 publication했다.
+
+### Background
+
+사용한 control structure는 다음과 같다.
+
+```text
+multiple attachments
+→ source preflight
+→ sequential binary writes
+→ per-asset read-back verification
+→ ALL-PASS gate
+→ one controlled README integration
+```
+
+### First Batch Attempt — Fail-Closed BLOCKED
+
+첫 batch에서는 04 / 06 / 08 source는 manifest와 일치했지만 05 / 07 source는 declared manifest와 일치하지 않았다.
+
+결과:
+
+- binary write = `NONE`
+- README write = `NONE`
+- repository state unchanged
+
+write 이전 source preflight에서 fail-closed `BLOCKED`로 종료했다.
+
+### Second Hash-Locked Retry — Fail-Closed BLOCKED
+
+두 번째 retry에서도 05 / 07이 기존 hash baseline과 달랐다. 이후 확인된 원인은 사용자가 05 / 07을 더 나은 품질의 source로 의도적으로 교체한 것이었다.
+
+이 단계에서도:
+
+- binary write = `NONE`
+- README write = `NONE`
+
+이었다.
+
+### Final Filename-Bound Source Selection
+
+최종 execution에서는 사용자가 명시적으로 선택한 attachment filename으로 source를 확정한 뒤, 그 실제 bytes에서 새 publication baseline을 생성했다.
+
+```text
+Explicit User Source Selection
+→ Select Attachment
+→ Calculate Source Size
+→ Calculate SHA-256
+→ Calculate Expected Git Blob
+→ Freeze Publication Baseline
+→ WRITE
+→ READ BACK
+→ VERIFY
+```
+
+`filename` 자체가 integrity proof라는 의미는 아니다. filename은 최종 source selection을 위한 context-specific identifier로 사용되었고, integrity는 이후 생성한 source size, SHA-256, expected Git blob과 repository read-back 비교로 검증했다.
+
+### Final 5-Asset Batch Result
+
+| Asset | Classification | Git Blob | Commit | Result |
+| --- | --- | --- | --- | --- |
+| `04-role-permission.png` | Sanitized Evidence | `5e891e1f32d8f343709afedce1581f3f0840652d` | `52d73cbb91c24e2371ad84982a650a651a6ad46c` | PASS |
+| `05-side2-mirroring-derivative.png` | Public Visual Derivative | `1777b588a68586ef036fe1bceb342d44b52e6dc3` | `d9494dd43f85db1479bd90d66ad70a533c5c5296` | PASS |
+| `06-cold-storage-overview.png` | Sanitized Evidence | `15f69c79f4d103c5e3c920c934623043ac870ad8` | `f2dbc50954391fe07bcca0e87fed7dd3933e0db9` | PASS |
+| `07-cold-storage-detail-derivative.png` | Public Visual Derivative | `cd8ae7f8f4bc99ba80d39c4e5450b215422e2c22` | `38eaf5747238249b222accef06f3767d8b6fec15` | PASS |
+| `08-stocktake-print.png` | Sanitized Evidence | `9282b15744a60f55e3b2cd9f1f072218dc2510b6` | `47f78a0d7d0a04189a612937f84ad7175386325a` | PASS |
+
+README integration:
+
+```text
+Commit:
+05bdd87a39bcae3805048485a1b9a3e88fe1afc0
+
+Resulting blob:
+859c71c7f9599e79ca9f9bc468e41d0db5e57379
+```
+
+Final public state:
+
+- Sanitized Evidence = `6`
+- Public Visual Derivatives = `2`
+- Total public visual assets = `8`
+
+### Observed Findings
+
+1. 여러 binary source를 하나의 conversational task로 batch화해도 per-asset exact-byte verification을 유지할 수 있었다.
+2. batch preflight가 source mismatch를 write 이전에 차단해 두 번의 invalid batch에서 repository mutation을 방지했다.
+3. batch processing은 binary writes를 atomic transaction으로 만들지 않는다. 실제 writes는 sequential commits다.
+4. 따라서 mid-batch failure가 발생하면 partial repository state가 남을 수 있으며, README publication은 별도 ALL-PASS gate로 보호해야 한다.
+5. explicit user source selection과 integrity baseline은 구분해야 한다.
+6. 사용자가 source를 의도적으로 변경했다면 stale predeclared hash가 새 source 선택보다 우선할 수 없다. 대신 선택된 source bytes에서 새 baseline을 생성하고 write/read-back으로 검증할 수 있다.
+7. filename alone은 integrity evidence가 아니다.
+8. binary integrity와 evidence classification도 구분해야 한다. exact-byte PASS라고 해서 Public Visual Derivative가 Sanitized Evidence가 되는 것은 아니다.
+9. batch publication은 human approval / README update 횟수를 줄일 가능성을 보여줬지만, 실제 시간 / token / context-switching 절감은 아직 정량 측정되지 않았다.
+
+### Batch Control Loop
+
+```text
+User Selects Final Sources
+→ Identify Attachments
+→ Establish Per-Asset Integrity Baseline
+→ Batch Preflight
+→ Sequential Binary WRITE
+→ Per-Asset READ BACK
+→ Per-Asset Integrity Verification
+→ ALL-PASS Gate
+→ Minimum Semantic Diff README Integration
+→ README READ BACK
+→ Semantic Scope Verification
+```
+
+### Claim Discipline
+
+다음은 주장하지 않는다.
+
+- filename-bound selection이 universal best practice다.
+- filename 자체가 integrity를 보장한다.
+- batch writes가 atomic하다.
+- 이번 사례가 모든 multi-file publication을 검증한다.
+- batch processing이 항상 더 빠르거나 싸다.
+- Git as Action이 `METHODS`로 승격되었다.
+- 8개 visual asset publication이 business impact를 증명한다.
+
+Classification: `Operational observation / control refinement`
+
+---
+
 ## 11. Measurement Plan
 
 비용 효율을 주장하기 전에 실제 workload에서 비교 가능한 evidence를 수집해야 한다.
@@ -748,6 +876,9 @@ Requested Change
 - multi-file binary/text promotion에서 atomicity 부재를 어떻게 관리할 것인가?
 - agent-visible tool surface와 backend capability의 lifecycle을 어떻게 일관되게 관리할 것인가?
 - actual token / elapsed time / context-switching을 어떤 workload 단위로 측정할 것인가?
+- predeclared hash manifest와 explicit user source replacement 사이의 가장 안전한 source-selection contract는 무엇인가?
+- sequential batch write에서 partial state를 더 명확하게 관리하기 위한 transaction / checkpoint model이 필요한가?
+- 어떤 batch size부터 conversational Git action의 human-friction 감소 효과가 의미 있게 나타나는가?
 
 ---
 
