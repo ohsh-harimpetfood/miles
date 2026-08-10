@@ -1,6 +1,6 @@
 # WMS-001 — Operational Warehouse Management System
 
-**Status:** Canonical FORGE Case v0.2 — evidence-backed; public visuals pending sanitization
+**Status:** Canonical FORGE Case v0.3 — evidence-backed; first sanitized visual asset committed and integrity-verified
 
 ## 1. Case at a Glance
 
@@ -13,6 +13,7 @@ WMS-001은 수동 warehouse/location 문제에서 출발해 QR + AppSheet 기반
 | Operational Use | Confirmed |
 | Multi-user Operation | Confirmed |
 | Physical-Digital Mapping | Confirmed |
+| Public Sanitized Visual Evidence | Confirmed — first asset integrity-verified |
 | Measured Business Impact | Not Yet Established |
 
 이 Case의 핵심은 기능 수가 아니라 **현장 문제를 어떻게 구조화하고, 어떤 architecture decision을 거쳐, 실제 운영 시스템으로 발전시켰는가**에 있다.
@@ -239,6 +240,7 @@ Implementation
 - physical-digital mapping
 - rack-card / QR output
 - heterogeneous storage-model expansion
+- first sanitized transaction-history visual evidence committed with exact-byte read-back verification
 
 ### Observed
 
@@ -265,6 +267,35 @@ Implementation
 
 현재 private original visual evidence에는 production deployment, authenticated application, transaction history, role / permission, warehouse map, rack-card / QR output, alternate storage topology 등이 포함된다. public MILES에는 향후 6~8장만 선별해 sanitization 후 추가할 계획이다.
 
+### First Public Sanitized Visual Evidence
+
+![Sanitized WMS transaction history evidence](assets/03-transaction-history.png)
+
+이 visual evidence는 실제 operational transaction-history screenshot을 기반으로 하며, sensitive values는 repository publication 이전에 sanitization되었다. 따라서 Public Visual Derivative가 아니라 **Sanitized Evidence**로 분류한다.
+
+repository transport에서는 regenerate, resize, recompress, format conversion, metadata editing을 수행하지 않았다.
+
+| Field | Verified Value |
+| --- | --- |
+| Source size | `128360` bytes |
+| Source SHA-256 | `1eafaeea9f7c57873060e93529786a4da8072e1518b26978869e8af8943026cf` |
+| Expected Git blob SHA | `72d42e479ea5af9c82a3c6578c7a45f569dca549` |
+| Resulting Git blob SHA | `72d42e479ea5af9c82a3c6578c7a45f569dca549` |
+| Read-back size | `128360` bytes |
+| Read-back SHA-256 | `1eafaeea9f7c57873060e93529786a4da8072e1518b26978869e8af8943026cf` |
+| Integrity verified | `true` |
+| Evidence commit | `a6ce0bd1bafbdd26a2d478feab94b7473446553a` |
+
+이 integrity validation은 sanitized asset의 source bytes와 repository read-back bytes가 동일함을 검증한 것이다.
+
+이 검증 자체가 다음을 새롭게 증명하는 것은 아니다.
+
+- business impact
+- operational effectiveness
+- ROI
+- time saving
+- inventory accuracy improvement
+
 <!-- Visual candidates: transaction history, role/permission, freezer-container, production deployment -->
 
 ---
@@ -287,6 +318,7 @@ FORGE README에서는 narrative readability를 위해 필요한 evidence boundar
 - heterogeneous storage topology support in current system
 - current Next.js / React / TypeScript / Supabase architecture
 - incremental Git evolution
+- first sanitized transaction-history visual evidence committed with exact-byte read-back verification
 
 ### Strongly Supported
 
@@ -332,4 +364,6 @@ public publication은 `security/REDACTION_POLICY.md`를 따른다. 다음 정보
 - exact quantities / sensitive inventory figures
 - credentials
 
-현재 visual evidence는 PRIVATE ORIGINAL EVIDENCE로 유지하며, public repository에 추가하기 전에 별도의 sanitization review를 수행한다.
+`forge/WMS-001/assets/03-transaction-history.png`는 첫 public **Sanitized Evidence**로 repository에 존재하며, exact-byte write/read-back 검증을 완료했다.
+
+production deployment, authenticated application, role / permission, warehouse map, rack-card / QR, alternate storage topology 등 나머지 original visual evidence는 계속 **PRIVATE ORIGINAL EVIDENCE** 상태로 유지한다. 각 asset은 개별 sanitization / publication review 후에만 공개한다.
