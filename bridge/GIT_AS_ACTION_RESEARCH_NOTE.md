@@ -3,7 +3,7 @@
 **Status:** Working Research Note  
 **Working Name:** Git as Action  
 **Artifact Class:** BRIDGE / research note, not yet a formal `METHODS` artifact  
-**Validation State:** Under operational observation and hypothesis testing
+**Validation State:** Text Git action path operational; first exact-byte binary evidence closed loop PASS on 2026-08-10; broader methodology / cost / context-efficiency claims remain under validation
 
 이 문서는 MILES에서 실제 운영을 통해 검증 중인 작업 가설을 기록한다. 정식 방법론으로 확정된 문서가 아니며, 관찰과 측정을 통해 수정·반박·정제될 수 있다.
 
@@ -439,6 +439,88 @@ Conversation
 
 ---
 
+## Operational Validation — Binary Evidence Closed Loop
+
+2026-08-10 MILES는 text Git action path에 이어 첫 exact-byte binary evidence closed loop를 실제 repository operation으로 검증했다.
+
+| Field | Verified result |
+| --- | --- |
+| Test | `MILES Binary Asset Write Test — WMS-001` |
+| Date | `2026-08-10` |
+| Gateway | `MILES Git Write Gateway v0.2.3` |
+| Attachment transport | `openaiFileIdRefs` |
+| Write operation | `writeRepositoryAssetFromAttachment` |
+| Repository read-back | `readRepositoryAsset` |
+| Path | `forge/WMS-001/assets/03-transaction-history.png` |
+| Source size | `128360` bytes |
+| Read-back size | `128360` bytes |
+| Source SHA-256 | `1eafaeea9f7c57873060e93529786a4da8072e1518b26978869e8af8943026cf` |
+| Read-back SHA-256 | `1eafaeea9f7c57873060e93529786a4da8072e1518b26978869e8af8943026cf` |
+| Expected Git blob SHA | `72d42e479ea5af9c82a3c6578c7a45f569dca549` |
+| Resulting Git blob SHA | `72d42e479ea5af9c82a3c6578c7a45f569dca549` |
+| Commit SHA | `a6ce0bd1bafbdd26a2d478feab94b7473446553a` |
+| Integrity verified | `true` |
+
+해당 binary commit에는 target PNG 외 다른 repository file change가 없었다.
+
+검증된 closed loop는 다음과 같다.
+
+```text
+Conversation Attachment
+→ openaiFileIdRefs
+→ policy-gated Gateway
+→ source integrity verification
+→ GitHub write
+→ resulting Git blob
+→ repository read-back
+→ size / SHA-256 verification
+→ PASS
+```
+
+### Observed Findings
+
+이번 검증에서 관찰된 결과는 다음 범위로 제한한다.
+
+1. Git as Action은 text artifact뿐 아니라 binary evidence까지 controlled Git action으로 처리할 수 있음을 **1개 PNG 사례에서 실제 검증**했다.
+2. Backend capability와 agent-visible tool surface는 동일하지 않다. Gateway에 기능이 있어도 Action schema/tool contract에 노출되지 않으면 agent는 capability를 사용할 수 없다.
+3. Attachment transport 역시 execution boundary의 일부다.
+4. Gateway의 역할은 `transport + policy + verification`이며 image editor/sanitizer가 아니다.
+5. Evidence sanitization과 repository transport를 분리한다.
+6. 실패 단계에서 우회하지 않고 `BLOCKED` 처리한 fail-closed behavior가 evidence integrity 유지에 중요한 역할을 했다.
+
+### Binary Capability Evolution
+
+```text
+v0.1
+→ binary operation 없음
+→ BLOCKED
+
+v0.2
+→ binary backend 구현
+→ agent tool surface 미노출
+→ BLOCKED
+
+v0.2.1
+→ binary operation 노출
+→ attachment transport 미충족
+→ BLOCKED
+
+v0.2.2
+→ openaiFileIdRefs 방향 도입
+→ active tool contract ambiguity
+→ BLOCKED
+
+v0.2.3
+→ explicit writeRepositoryAssetFromAttachment
+→ attachment contract 확인
+→ exact-byte write/read-back
+→ PASS
+```
+
+이 결과는 모든 binary type이 검증되었다는 뜻이 아니다. 모든 GPT Action 환경이 frictionless하다는 뜻도 아니며, 비용 효율이 정량 검증되었다는 의미도 아니다. 또한 Git as Action은 이 검증으로 `METHODS`에 승격되지 않는다.
+
+---
+
 ## 11. Measurement Plan
 
 비용 효율을 주장하기 전에 실제 workload에서 비교 가능한 evidence를 수집해야 한다.
@@ -479,6 +561,11 @@ Conversation
 - 동일 policy layer를 ChatGPT, Claude, Codex에서 공유할 수 있는가?
 - Context-Minimized Execution이 output quality를 저하시키는 경계는 어디인가?
 - selective retrieval에 필요한 최소 registry 구조는 무엇인가?
+- additional PNG / PDF evidence에서도 exact-byte write/read-back이 반복 검증되는가?
+- binary asset 규모가 커질 때 practical / gateway boundary는 어디인가?
+- multi-file binary/text promotion에서 atomicity 부재를 어떻게 관리할 것인가?
+- agent-visible tool surface와 backend capability의 lifecycle을 어떻게 일관되게 관리할 것인가?
+- actual token / elapsed time / context-switching을 어떤 workload 단위로 측정할 것인가?
 
 ---
 
@@ -492,8 +579,9 @@ Conversation
 
 - Claude Code / Codex 사용 시 체감 사용량 소진이 빠르게 느껴질 수 있었다.
 - coding-agent workflow에서는 실제 변경 외에 repository exploration, execution output, 반복 context가 상당한 비중을 차지하는 경험이 있었다.
+- 2026-08-10 한 개의 sanitized PNG에 대해 attachment transport → exact-byte Git write → repository read-back → size/SHA-256/blob verification closed loop가 PASS했다.
 
-이 경험은 특정 사용자, 특정 task, 특정 plan, 특정 시점의 조건에 영향을 받을 수 있으므로 일반화하지 않는다.
+이 경험은 특정 사용자, 특정 task, 특정 plan, 특정 시점의 조건에 영향을 받을 수 있으므로 일반화하지 않는다. Binary 검증 역시 현재는 한 개 PNG 사례의 operational observation으로 제한한다.
 
 ### Hypothesis
 
