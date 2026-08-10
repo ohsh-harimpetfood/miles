@@ -1,6 +1,6 @@
 # WMS-001 — Operational Warehouse Management System
 
-**Status:** Canonical FORGE Case v0.3 — evidence-backed; first sanitized visual asset committed and integrity-verified
+**Status:** Canonical FORGE Case v0.3 — evidence-backed; sanitized visual evidence incrementally committed and integrity-verified
 
 ## 1. Case at a Glance
 
@@ -13,7 +13,7 @@ WMS-001은 수동 warehouse/location 문제에서 출발해 QR + AppSheet 기반
 | Operational Use | Confirmed |
 | Multi-user Operation | Confirmed |
 | Physical-Digital Mapping | Confirmed |
-| Public Sanitized Visual Evidence | Confirmed — first asset integrity-verified |
+| Public Sanitized Visual Evidence | Confirmed — 2 assets integrity-verified |
 | Measured Business Impact | Not Yet Established |
 
 이 Case의 핵심은 기능 수가 아니라 **현장 문제를 어떻게 구조화하고, 어떤 architecture decision을 거쳐, 실제 운영 시스템으로 발전시켰는가**에 있다.
@@ -241,6 +241,7 @@ Implementation
 - rack-card / QR output
 - heterogeneous storage-model expansion
 - first sanitized transaction-history visual evidence committed with exact-byte read-back verification
+- sanitized warehouse-map visual evidence committed with exact-byte read-back verification
 
 ### Observed
 
@@ -296,6 +297,39 @@ repository transport에서는 regenerate, resize, recompress, format conversion,
 - time saving
 - inventory accuracy improvement
 
+### Second Public Sanitized Visual Evidence — Warehouse Map
+
+![Sanitized WMS warehouse map evidence](assets/01-warehouse-map.png)
+
+이 visual evidence는 실제 operational warehouse-map screenshot을 기반으로 하며, publication 이전에 minimal sanitization을 수행했다. personal identity / exact team identity와 internal system codename만 generalize했고, rack identifiers, rack utilization percentages, warehouse topology, map geometry, occupancy-state colors, functional UI는 보존했다. 따라서 regenerated derivative가 아니라 **Sanitized Evidence**로 분류한다.
+
+repository transport에서는 regenerate, resize, crop, recompress, format conversion, metadata editing을 수행하지 않았다.
+
+| Field | Verified Value |
+| --- | --- |
+| Source size | `84411` bytes |
+| Source SHA-256 | `9436d0ead8260d125f7196b699c4537306b078320444574b9bb2baf91509f123` |
+| Expected Git blob SHA | `3f50d3742a60faad6d51ffdb847db3fe73603ff7` |
+| Resulting Git blob SHA | `3f50d3742a60faad6d51ffdb847db3fe73603ff7` |
+| Read-back size | `84411` bytes |
+| Read-back SHA-256 | `9436d0ead8260d125f7196b699c4537306b078320444574b9bb2baf91509f123` |
+| Integrity verified | `true` |
+| Evidence commit | `af825eda43ad04b5ced988334287c162797b5ba1` |
+
+이 evidence가 직접 지지하는 것은 다음 범위다.
+
+- physical-digital warehouse mapping
+- rack-level occupancy visualization
+- heterogeneous warehouse topology representation
+
+이 evidence와 exact-byte integrity verification 자체가 다음을 새롭게 증명하는 것은 아니다.
+
+- business impact
+- ROI
+- time saving
+- inventory accuracy improvement
+- productivity improvement
+
 <!-- Visual candidates: transaction history, role/permission, freezer-container, production deployment -->
 
 ---
@@ -319,6 +353,7 @@ FORGE README에서는 narrative readability를 위해 필요한 evidence boundar
 - current Next.js / React / TypeScript / Supabase architecture
 - incremental Git evolution
 - first sanitized transaction-history visual evidence committed with exact-byte read-back verification
+- sanitized warehouse-map visual evidence committed with exact-byte read-back verification
 
 ### Strongly Supported
 
@@ -366,4 +401,6 @@ public publication은 `security/REDACTION_POLICY.md`를 따른다. 다음 정보
 
 `forge/WMS-001/assets/03-transaction-history.png`는 첫 public **Sanitized Evidence**로 repository에 존재하며, exact-byte write/read-back 검증을 완료했다.
 
-production deployment, authenticated application, role / permission, warehouse map, rack-card / QR, alternate storage topology 등 나머지 original visual evidence는 계속 **PRIVATE ORIGINAL EVIDENCE** 상태로 유지한다. 각 asset은 개별 sanitization / publication review 후에만 공개한다.
+`forge/WMS-001/assets/01-warehouse-map.png`도 public **Sanitized Evidence**로 repository에 존재하며, exact-byte write/read-back 검증을 완료했다.
+
+production deployment, authenticated application, role / permission, rack-card / QR, alternate storage topology 등 나머지 original visual evidence는 계속 **PRIVATE ORIGINAL EVIDENCE** 상태로 유지한다. 각 asset은 개별 sanitization / publication review 후에만 공개한다.
