@@ -13,7 +13,7 @@ WMS-001은 수동 warehouse/location 문제에서 출발해 QR + AppSheet 기반
 | Operational Use | Confirmed |
 | Multi-user Operation | Confirmed |
 | Physical-Digital Mapping | Confirmed |
-| Public Sanitized Visual Evidence | Confirmed — 2 assets integrity-verified |
+| Public Sanitized Visual Evidence | Confirmed — 3 assets integrity-verified |
 | Measured Business Impact | Not Yet Established |
 
 이 Case의 핵심은 기능 수가 아니라 **현장 문제를 어떻게 구조화하고, 어떤 architecture decision을 거쳐, 실제 운영 시스템으로 발전시켰는가**에 있다.
@@ -242,6 +242,7 @@ Implementation
 - heterogeneous storage-model expansion
 - first sanitized transaction-history visual evidence committed with exact-byte read-back verification
 - sanitized warehouse-map visual evidence committed with exact-byte read-back verification
+- sanitized rack-card bulk-print visual evidence committed with exact-byte read-back verification
 
 ### Observed
 
@@ -266,7 +267,7 @@ Implementation
 
 숫자를 새로 만들거나 추정하지 않는다.
 
-현재 private original visual evidence에는 production deployment, authenticated application, transaction history, role / permission, warehouse map, rack-card / QR output, alternate storage topology 등이 포함된다. public MILES에는 향후 6~8장만 선별해 sanitization 후 추가할 계획이다.
+transaction history, warehouse map, rack-card bulk print은 이미 public **Sanitized Evidence**로 repository에 존재한다. remaining private original visual evidence에는 production deployment, authenticated application, role / permission, alternate storage topology 등이 포함되며, public MILES에는 향후 선별된 visual evidence만 개별 sanitization review 후 추가할 계획이다.
 
 ### First Public Sanitized Visual Evidence
 
@@ -330,6 +331,41 @@ repository transport에서는 regenerate, resize, crop, recompress, format conve
 - inventory accuracy improvement
 - productivity improvement
 
+### Third Public Sanitized Visual Evidence — Rack Card Bulk Print
+
+![Sanitized WMS rack-card bulk print evidence](assets/02-rack-card-bulk-print.png)
+
+이 visual evidence는 실제 operational rack-card bulk-print screenshot을 기반으로 하며, repository publication 이전에 minimal sanitization을 수행했다. detailed rack / row coding과 exact internal location identifiers는 generalize했고, original QR payloads는 deterministic public-safe QR payloads로 replace했다. bulk-print workflow, page / print controls, warehouse-area selection, Side 1 / Side 2 physical placement structure, rack-level indicator, QR-based physical-digital interface concept는 보존했다. 따라서 regenerated UI derivative가 아니라 **Sanitized Evidence**로 분류한다.
+
+QR replacement는 sanitization 단계에서 이미 완료되었으며, repository transport에서는 regenerate, resize, crop, recompress, format conversion, metadata editing, QR regeneration을 수행하지 않았다.
+
+| Field | Verified Value |
+| --- | --- |
+| Source size | `69082` bytes |
+| Source SHA-256 | `27fcc21c3c9d5277334ad6554f3807d9d0f552d186e8a946421bd218d24bd5e2` |
+| Expected Git blob SHA | `804ceca7da9e6c01702c1fa47e860e1a86e39973` |
+| Resulting Git blob SHA | `804ceca7da9e6c01702c1fa47e860e1a86e39973` |
+| Read-back size | `69082` bytes |
+| Read-back SHA-256 | `27fcc21c3c9d5277334ad6554f3807d9d0f552d186e8a946421bd218d24bd5e2` |
+| Integrity verified | `true` |
+| Evidence commit | `9d6d74d43d9c327fa5e3bcf6427685e9d2543c00` |
+
+이 evidence가 직접 지지하는 것은 다음 범위다.
+
+- managed location identity를 physical rack-card로 연결하는 capability
+- QR-based physical-digital interface
+- bulk rack-card generation / print workflow
+- Side 1 / Side 2 physical placement structure
+
+이 evidence와 exact-byte integrity verification 자체가 다음을 새롭게 증명하는 것은 아니다.
+
+- business impact
+- ROI
+- time saving
+- inventory accuracy improvement
+- labor reduction
+- productivity improvement
+
 <!-- Visual candidates: transaction history, role/permission, freezer-container, production deployment -->
 
 ---
@@ -354,6 +390,7 @@ FORGE README에서는 narrative readability를 위해 필요한 evidence boundar
 - incremental Git evolution
 - first sanitized transaction-history visual evidence committed with exact-byte read-back verification
 - sanitized warehouse-map visual evidence committed with exact-byte read-back verification
+- sanitized rack-card bulk-print visual evidence committed with exact-byte read-back verification
 
 ### Strongly Supported
 
@@ -403,4 +440,6 @@ public publication은 `security/REDACTION_POLICY.md`를 따른다. 다음 정보
 
 `forge/WMS-001/assets/01-warehouse-map.png`도 public **Sanitized Evidence**로 repository에 존재하며, exact-byte write/read-back 검증을 완료했다.
 
-production deployment, authenticated application, role / permission, rack-card / QR, alternate storage topology 등 나머지 original visual evidence는 계속 **PRIVATE ORIGINAL EVIDENCE** 상태로 유지한다. 각 asset은 개별 sanitization / publication review 후에만 공개한다.
+`forge/WMS-001/assets/02-rack-card-bulk-print.png`도 public **Sanitized Evidence**로 repository에 존재하며, exact-byte write/read-back 검증을 완료했다.
+
+production deployment, authenticated application, role / permission, alternate storage topology 등 나머지 original visual evidence는 계속 **PRIVATE ORIGINAL EVIDENCE** 상태로 유지한다. 각 asset은 개별 sanitization / publication review 후에만 공개한다.
