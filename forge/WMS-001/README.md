@@ -13,7 +13,8 @@ WMS-001은 수동 warehouse/location 문제에서 출발해 QR + AppSheet 기반
 | Operational Use | Confirmed |
 | Multi-user Operation | Confirmed |
 | Physical-Digital Mapping | Confirmed |
-| Public Sanitized Visual Evidence | Confirmed — 3 assets integrity-verified |
+| Public Sanitized Visual Evidence | Confirmed — 6 assets integrity-verified |
+| Public Visual Derivatives | Confirmed — 2 assets integrity-verified |
 | Measured Business Impact | Not Yet Established |
 
 이 Case의 핵심은 기능 수가 아니라 **현장 문제를 어떻게 구조화하고, 어떤 architecture decision을 거쳐, 실제 운영 시스템으로 발전시켰는가**에 있다.
@@ -243,6 +244,9 @@ Implementation
 - first sanitized transaction-history visual evidence committed with exact-byte read-back verification
 - sanitized warehouse-map visual evidence committed with exact-byte read-back verification
 - sanitized rack-card bulk-print visual evidence committed with exact-byte read-back verification
+- sanitized role / permission visual evidence committed with exact-byte read-back verification
+- sanitized cold-storage overview visual evidence committed with exact-byte read-back verification
+- sanitized stocktake-print visual evidence committed with exact-byte read-back verification
 
 ### Observed
 
@@ -267,7 +271,7 @@ Implementation
 
 숫자를 새로 만들거나 추정하지 않는다.
 
-transaction history, warehouse map, rack-card bulk print은 이미 public **Sanitized Evidence**로 repository에 존재한다. remaining private original visual evidence에는 production deployment, authenticated application, role / permission, alternate storage topology 등이 포함되며, public MILES에는 향후 선별된 visual evidence만 개별 sanitization review 후 추가할 계획이다.
+transaction history, warehouse map, rack-card bulk print, role / permission, cold-storage overview, stocktake print은 public **Sanitized Evidence**로 repository에 존재한다. remaining private original visual evidence에는 production deployment, authenticated application, original Side 2 mirroring screenshot, original cold-storage detail screenshot, other unpublished operational screenshots 등이 포함되며, public MILES에는 향후 선별된 visual evidence만 개별 sanitization / publication review 후 추가할 계획이다.
 
 ### First Public Sanitized Visual Evidence
 
@@ -366,6 +370,79 @@ QR replacement는 sanitization 단계에서 이미 완료되었으며, repositor
 - labor reduction
 - productivity improvement
 
+### Additional Public Visual Evidence — Batch Publication
+
+#### Role / Permission — Sanitized Evidence
+
+![Sanitized WMS role and permission evidence](assets/04-role-permission.png)
+
+Classification: **Sanitized Evidence**
+
+직접 지지하는 범위:
+
+- multi-user role structure
+- feature-level permission control
+- operational governance
+
+#### Side 2 Mirroring — Public Visual Derivative
+
+![WMS Side 2 mirroring public visual derivative](assets/05-side2-mirroring-derivative.png)
+
+Classification: **Public Visual Derivative**
+
+operator viewpoint에 따른 mirrored layout engineering decision을 설명하기 위한 public visual representation이며, raw operational evidence가 아니다.
+
+#### Cold Storage Overview — Sanitized Evidence
+
+![Sanitized WMS cold-storage overview evidence](assets/06-cold-storage-overview.png)
+
+Classification: **Sanitized Evidence**
+
+직접 지지하는 범위:
+
+- heterogeneous storage topology
+- container-based storage representation
+- utilization visualization
+
+#### Cold Storage Detail — Public Visual Derivative
+
+![WMS cold-storage detail public visual derivative](assets/07-cold-storage-detail-derivative.png)
+
+Classification: **Public Visual Derivative**
+
+container internal loading model을 설명하기 위한 public visual representation이며, actual stock state 또는 exact operational quantity의 evidence가 아니다.
+
+#### Stocktake Print — Sanitized Evidence
+
+![Sanitized WMS stocktake print evidence](assets/08-stocktake-print.png)
+
+Classification: **Sanitized Evidence**
+
+직접 지지하는 범위:
+
+- stocktake / reconciliation
+- printable physical verification
+- system-to-physical verification workflow
+
+| Asset | Classification | Size | SHA-256 | Git Blob | Commit | Integrity |
+| --- | --- | --- | --- | --- | --- | --- |
+| `04-role-permission.png` | Sanitized Evidence | `84008` | `0fdb76cf94d5bd5f08a895db502980ab3f0badaf15152c5629a19cee6ddffd74` | `5e891e1f32d8f343709afedce1581f3f0840652d` | `52d73cbb91c24e2371ad84982a650a651a6ad46c` | `true` |
+| `05-side2-mirroring-derivative.png` | Public Visual Derivative | `2160712` | `44aa02bb26db709b36d17beb6303f432cb76bbf9770892523a61524fe2e793a1` | `1777b588a68586ef036fe1bceb342d44b52e6dc3` | `d9494dd43f85db1479bd90d66ad70a533c5c5296` | `true` |
+| `06-cold-storage-overview.png` | Sanitized Evidence | `55961` | `45f5f0c481258ab79e162ff062672aa72cf6b21d352b6959c9930784faa3c6ab` | `15f69c79f4d103c5e3c920c934623043ac870ad8` | `f2dbc50954391fe07bcca0e87fed7dd3933e0db9` | `true` |
+| `07-cold-storage-detail-derivative.png` | Public Visual Derivative | `1922854` | `89f648c19b3112619871dea40334f580bf6efabfada2304cef73c0687ad1c0b2` | `cd8ae7f8f4bc99ba80d39c4e5450b215422e2c22` | `38eaf5747238249b222accef06f3767d8b6fec15` | `true` |
+| `08-stocktake-print.png` | Sanitized Evidence | `93092` | `dbbb90ebcf6ef7918876158e1b946cc64068c75d11412a98b36b6258e83cbb98` | `9282b15744a60f55e3b2cd9f1f072218dc2510b6` | `47f78a0d7d0a04189a612937f84ad7175386325a` | `true` |
+
+Sanitized Evidence 3개는 각 screenshot에 존재하는 operational capability만 직접 지지한다. Public Visual Derivative 2개는 engineering concept을 illustrate하는 public representation이며 raw operational evidence 또는 Sanitized Evidence가 아니다.
+
+이번 batch와 exact-byte integrity verification 자체가 다음을 새롭게 증명하는 것은 아니다.
+
+- ROI
+- time saving
+- labor reduction
+- productivity improvement
+- inventory accuracy improvement
+- measured business impact
+
 <!-- Visual candidates: transaction history, role/permission, freezer-container, production deployment -->
 
 ---
@@ -391,6 +468,16 @@ FORGE README에서는 narrative readability를 위해 필요한 evidence boundar
 - first sanitized transaction-history visual evidence committed with exact-byte read-back verification
 - sanitized warehouse-map visual evidence committed with exact-byte read-back verification
 - sanitized rack-card bulk-print visual evidence committed with exact-byte read-back verification
+- sanitized role / permission visual evidence committed with exact-byte read-back verification
+- sanitized cold-storage overview visual evidence committed with exact-byte read-back verification
+- sanitized stocktake-print visual evidence committed with exact-byte read-back verification
+
+### Public Visual Derivatives
+
+- `assets/05-side2-mirroring-derivative.png`
+- `assets/07-cold-storage-detail-derivative.png`
+
+이 두 asset은 engineering concept을 설명하기 위한 public visual representation이며, raw operational evidence가 아니고 **Sanitized Evidence가 아니다**.
 
 ### Strongly Supported
 
@@ -442,4 +529,8 @@ public publication은 `security/REDACTION_POLICY.md`를 따른다. 다음 정보
 
 `forge/WMS-001/assets/02-rack-card-bulk-print.png`도 public **Sanitized Evidence**로 repository에 존재하며, exact-byte write/read-back 검증을 완료했다.
 
-production deployment, authenticated application, role / permission, alternate storage topology 등 나머지 original visual evidence는 계속 **PRIVATE ORIGINAL EVIDENCE** 상태로 유지한다. 각 asset은 개별 sanitization / publication review 후에만 공개한다.
+`forge/WMS-001/assets/04-role-permission.png`, `forge/WMS-001/assets/06-cold-storage-overview.png`, `forge/WMS-001/assets/08-stocktake-print.png`도 public **Sanitized Evidence**로 repository에 존재하며, 각각 exact-byte write/read-back 검증을 완료했다.
+
+`forge/WMS-001/assets/05-side2-mirroring-derivative.png`와 `forge/WMS-001/assets/07-cold-storage-detail-derivative.png`는 public **Public Visual Derivative**로 repository에 존재한다. 둘은 raw operational evidence 또는 Sanitized Evidence로 분류하지 않는다.
+
+production deployment, authenticated application, original Side 2 mirroring screenshot, original cold-storage detail screenshot, other unpublished operational screenshots 등은 계속 **PRIVATE ORIGINAL EVIDENCE** 상태로 유지한다. 각 asset은 개별 sanitization / publication review 후에만 공개한다.
