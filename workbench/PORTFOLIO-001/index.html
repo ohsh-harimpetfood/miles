@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko" data-theme="miles-core" data-lens="default">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MILES — Narrative Portfolio Prototype</title>
+  <meta name="description" content="MILES narrative-driven portfolio frontend prototype.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <a href="#who" class="brand-mark">MILES</a>
+        <span class="brand-subtitle">Manufacturing Intelligence Lab for Execution Systems</span>
+      </div>
+      <div class="header-controls" aria-label="Portfolio presentation controls">
+        <label>
+          <span>View as</span>
+          <select id="lens-select" aria-label="View as">
+            <option value="default">Default</option>
+            <option value="executive">Executive</option>
+            <option value="engineer">Engineer</option>
+            <option value="manufacturer">Manufacturer</option>
+            <option value="ai-builder">AI Builder</option>
+          </select>
+        </label>
+        <label>
+          <span>Theme</span>
+          <select id="theme-select" aria-label="Theme">
+            <option value="miles-core">MILES Core</option>
+            <option value="enterprise">Enterprise</option>
+            <option value="industrial">Industrial</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="who" class="section hero-section" aria-labelledby="who-title">
+      <div class="section-inner hero-grid">
+        <div>
+          <p class="section-index">01 / WHO</p>
+          <h1 id="who-title">현실의 운영 문제를 시스템으로 바꾸는 사람.</h1>
+          <p class="hero-copy">제조 현장에서 문제를 발견하고, 프로세스·데이터·소프트웨어를 연결해 실제 운영 가능한 시스템으로 구현한다.</p>
+          <p class="hero-domain-line">Manufacturing · MES · WMS · ERP · Data · AI · Automation</p>
+        </div>
+        <aside class="hero-note" aria-label="Narrative principle">
+          <span class="eyebrow">Narrative Interface</span>
+          <p>Project-first가 아니라 WHO-first. Project는 identity의 출발점이 아니라 PROOF다.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="what" class="section" aria-labelledby="what-title">
+      <div class="section-inner">
+        <p class="section-index">02 / WHAT</p>
+        <div class="section-heading-row">
+          <h2 id="what-title">어떤 문제를 다뤄왔는가</h2>
+          <p>도메인은 기술 목록이 아니라 실제 운영 문제를 다뤄온 범위다.</p>
+        </div>
+        <div id="domain-grid" class="domain-grid">
+          <article class="domain-block" data-original-order="1" data-priority-executive="1" data-priority-engineer="4" data-priority-manufacturer="1" data-priority-ai-builder="4">
+            <h3>Manufacturing Operations</h3>
+            <p>생산 현장의 흐름, 품질, 재고와 작업 실행을 시스템 관점으로 다룬다.</p>
+            <span>production · yield · inventory · shop-floor operation</span>
+          </article>
+          <article class="domain-block" data-original-order="2" data-priority-executive="3" data-priority-engineer="1" data-priority-manufacturer="2" data-priority-ai-builder="3">
+            <h3>Execution Systems</h3>
+            <p>현장 실행을 지속 가능한 operational application으로 연결한다.</p>
+            <span>MES · WMS · operational applications</span>
+          </article>
+          <article class="domain-block" data-original-order="3" data-priority-executive="2" data-priority-engineer="5" data-priority-manufacturer="5" data-priority-ai-builder="5">
+            <h3>Enterprise Process</h3>
+            <p>현장과 기업 시스템 사이의 프로세스, 기준정보, 통합 구조를 설계한다.</p>
+            <span>ERP · SAP PI · master data · process design</span>
+          </article>
+          <article class="domain-block" data-original-order="4" data-priority-executive="4" data-priority-engineer="2" data-priority-manufacturer="4" data-priority-ai-builder="2">
+            <h3>Data &amp; Intelligence</h3>
+            <p>운영 데이터를 판단 가능한 signal과 decision support로 바꾼다.</p>
+            <span>ETL · analytics · dashboards · decision support</span>
+          </article>
+          <article class="domain-block" data-original-order="5" data-priority-executive="5" data-priority-engineer="6" data-priority-manufacturer="3" data-priority-ai-builder="6">
+            <h3>Automation</h3>
+            <p>반복 업무와 정보 전달 흐름을 자동화 가능한 execution path로 만든다.</p>
+            <span>RPA · automated reporting · workflow</span>
+          </article>
+          <article class="domain-block" data-original-order="6" data-priority-executive="6" data-priority-engineer="3" data-priority-manufacturer="6" data-priority-ai-builder="1">
+            <h3>AI-native Work</h3>
+            <p>AI를 도메인 지식과 Git-backed execution discipline 안에서 활용한다.</p>
+            <span>Docs as Code · Feature as Code · Git as Action</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section" aria-labelledby="how-title">
+      <div class="section-inner">
+        <p class="section-index">03 / HOW</p>
+        <div class="section-heading-row">
+          <h2 id="how-title">어떻게 문제를 시스템으로 바꾸는가</h2>
+          <p>현실을 관찰하고, 실행 가능한 최소 구조를 만들고, evidence로 검증한다.</p>
+        </div>
+        <ol class="process-flow" aria-label="Problem to system flow">
+          <li>Observe Reality</li>
+          <li>Structure the Problem</li>
+          <li>Define Business Rules</li>
+          <li>Build the Smallest Executable System</li>
+          <li>Operate</li>
+          <li>Verify with Evidence</li>
+          <li>Improve</li>
+          <li>Preserve Learning</li>
+        </ol>
+
+        <div class="principle-grid">
+          <article class="principle-block lens-emphasis" data-lens-target="ai-builder engineer">
+            <span class="eyebrow">Working Characterization</span>
+            <h3>Domain-Grounded Incremental AI Development</h3>
+            <div class="split-list">
+              <div>
+                <strong>Human-controlled</strong>
+                <ul>
+                  <li>problem framing</li>
+                  <li>business rules</li>
+                  <li>architecture decisions</li>
+                  <li>operational verification</li>
+                </ul>
+              </div>
+              <div>
+                <strong>AI-assisted</strong>
+                <ul><li>implementation</li></ul>
+              </div>
+            </div>
+            <blockquote>Complexity accumulated through verified increments.</blockquote>
+            <p class="boundary-note">Working characterization이며 formal METHODS가 아니다.</p>
+          </article>
+
+          <article class="principle-block lens-emphasis" data-lens-target="executive manufacturer">
+            <span class="eyebrow">Evidence Before Claims</span>
+            <h3>강한 narrative 아래에 더 강한 evidence path를 둔다.</h3>
+            <pre>Narrative
+→ Claim
+→ Evidence
+→ Source / Commit / Measurement</pre>
+          </article>
+
+          <article class="principle-block lens-emphasis" data-lens-target="ai-builder engineer">
+            <span class="eyebrow">Working Research Model</span>
+            <h3>Git as Durable Memory</h3>
+            <blockquote>Conversation is the control plane.<br>Git is the memory.<br>Policy is the boundary.<br>Execution uses the best tool for the task.</blockquote>
+            <p class="boundary-note">BRIDGE Working Research Model · not METHODS</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof" class="section proof-section" aria-labelledby="proof-title">
+      <div class="section-inner">
+        <p class="section-index">04 / PROOF</p>
+        <div class="section-heading-row">
+          <div>
+            <h2 id="proof-title">말이 아니라, 작동하는 시스템으로.</h2>
+            <p class="flagship-label">WMS-001 — Operational Warehouse Management System</p>
+          </div>
+          <p class="proof-opening">It did not begin with software.<br>It began with a location problem.</p>
+        </div>
+
+        <div class="wms-sequence" aria-label="WMS evolution sequence">
+          <span>Manual Rack Card</span><span>Location / Item Mismatch</span><span>Inventory Search Friction</span><span>AppSheet — First Executable Hypothesis</span><span>Operational Limits</span><span>Architecture Pivot</span><span>Next.js + Supabase / PostgreSQL</span><span>Physical ↔ Digital Warehouse</span><span>Multi-user Operational System</span>
+        </div>
+
+        <div class="truth-strip" aria-label="WMS truth strip">
+          <div><span>Built</span><strong>Confirmed</strong></div>
+          <div><span>Deployed</span><strong>Confirmed</strong></div>
+          <div><span>Operational Use</span><strong>Confirmed</strong></div>
+          <div><span>Multi-user Operation</span><strong>Confirmed</strong></div>
+          <div><span>Public Sanitized Evidence</span><strong>6</strong></div>
+          <div><span>Public Visual Derivatives</span><strong>2</strong></div>
+          <div class="impact-boundary"><span>Measured Business Impact</span><strong>Not Yet Established</strong></div>
+        </div>
+
+        <div class="evidence-heading">
+          <div>
+            <span class="eyebrow">Evidence Gallery</span>
+            <h3>Operational evidence, not decoration.</h3>
+          </div>
+          <p>v0.1에서는 narrative density를 위해 3개만 전면에 배치한다.</p>
+        </div>
+
+        <div class="evidence-grid">
+          <figure>
+            <a href="../../forge/WMS-001/assets/01-warehouse-map.png" target="_blank" rel="noreferrer">
+              <img src="../../forge/WMS-001/assets/01-warehouse-map.png" alt="Sanitized WMS warehouse map evidence">
+            </a>
+            <figcaption>
+              <span>01 Warehouse Map</span>
+              <strong>Sanitized Evidence</strong>
+              <p>Physical warehouse → Digital representation</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <a href="../../forge/WMS-001/assets/02-rack-card-bulk-print.png" target="_blank" rel="noreferrer">
+              <img src="../../forge/WMS-001/assets/02-rack-card-bulk-print.png" alt="Sanitized WMS rack-card bulk print evidence">
+            </a>
+            <figcaption>
+              <span>02 Rack Card Bulk Print</span>
+              <strong>Sanitized Evidence</strong>
+              <p>Digital location → QR / Physical interface</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <a href="../../forge/WMS-001/assets/03-transaction-history.png" target="_blank" rel="noreferrer">
+              <img src="../../forge/WMS-001/assets/03-transaction-history.png" alt="Sanitized WMS transaction history evidence">
+            </a>
+            <figcaption>
+              <span>03 Transaction History</span>
+              <strong>Sanitized Evidence</strong>
+              <p>Physical operation → Digital transaction record</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <aside class="evidence-boundary">
+          <strong>Evidence ≠ Impact</strong>
+          <p>Visual evidence proves implemented and operational characteristics represented by the screenshots. It does not by itself establish ROI, time saving, labor reduction or inventory accuracy improvement.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="evolution" class="section" aria-labelledby="evolution-title">
+      <div class="section-inner">
+        <p class="section-index">05 / EVOLUTION</p>
+        <div class="section-heading-row">
+          <h2 id="evolution-title">기능을 늘려온 것이 아니라, 문제를 다루는 범위를 넓혀왔다.</h2>
+          <span class="career-label">Career Evolution Narrative</span>
+        </div>
+        <ol class="evolution-flow">
+          <li>Manufacturing Operator</li>
+          <li>Process / Quality Problem Solver</li>
+          <li>MES Project Leader</li>
+          <li>Operational System Builder</li>
+          <li>Data / Automation Builder</li>
+          <li>Enterprise Process Architect</li>
+          <li>AI-native Execution Designer</li>
+        </ol>
+        <div class="closing-lines">
+          <blockquote>From Data to Decision. From Decision to Execution.</blockquote>
+          <blockquote>Intelligence without execution is just information.</blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-inner footer-inner">
+      <span>MILES</span>
+      <span>Portfolio Prototype v0.1</span>
+      <span>WORKBENCH</span>
+      <span>Evidence Before Claims</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
