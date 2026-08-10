@@ -16,6 +16,20 @@ DESIGN은 MILES와 구현 시스템에서 반복적으로 사용하는 visual la
 - packaging / presentation rules
 - identity system
 
+## Current Design Contracts
+
+- `NARRATIVE_INTERFACE.md`
+  - WHO → WHAT → HOW → PROOF → EVOLUTION
+  - AI as Narrative Compiler
+  - Narrative Before Navigation
+  - Evidence Beneath Narrative
+  - Adaptive Presentation, Stable Truth
+- `THEME_SYSTEM.md`
+  - Theme = Narrative Lens + Visual Profile
+  - One truth, multiple narratives
+  - semantic design tokens
+  - v0.1 themes: MILES Core / Enterprise / Industrial
+
 ## Does Not Belong Here
 
 - 특정 시스템의 전체 구현 설명 → `FORGE`
