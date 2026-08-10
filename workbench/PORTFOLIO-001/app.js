@@ -69,11 +69,217 @@
     if (shouldPersist) persist(LENS_KEY, nextLens);
   }
 
+  function element(tagName, className, text) {
+    const node = document.createElement(tagName);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function addTextCard(container, eyebrow, headline, body, conceptLine, boundary) {
+    const card = element('article', 'principle-block');
+    card.appendChild(element('span', 'eyebrow', eyebrow));
+    card.appendChild(element('h3', '', headline));
+    card.appendChild(element('p', '', body));
+
+    if (conceptLine) {
+      card.appendChild(element('blockquote', '', conceptLine));
+    }
+
+    if (boundary) {
+      card.appendChild(element('p', 'boundary-note', boundary));
+    }
+
+    container.appendChild(card);
+  }
+
+  function addPortfolioNarrativeArc() {
+    if (document.getElementById('portfolio-narrative-arc')) return;
+
+    const closing = document.querySelector('#who .who-closing');
+    if (!closing) return;
+
+    const nav = element('nav');
+    nav.id = 'portfolio-narrative-arc';
+    nav.setAttribute('aria-label', 'Portfolio narrative arc');
+    nav.appendChild(element('span', 'eyebrow', 'PORTFOLIO ARC'));
+
+    const flow = element('ol', 'process-flow');
+    const destinations = [
+      ['WHO', '#who'],
+      ['WHAT', '#what'],
+      ['HOW', '#how'],
+      ['PROOF', '#proof'],
+      ['EVOLUTION', '#evolution'],
+      ['IMPACT', '#impact'],
+      ['METHOD', '#method']
+    ];
+
+    destinations.forEach(([label, href]) => {
+      const item = element('li');
+      const link = element('a', '', label);
+      link.href = href;
+      item.appendChild(link);
+      flow.appendChild(item);
+    });
+
+    nav.appendChild(flow);
+    closing.appendChild(nav);
+  }
+
+  function addRealProblemSeeds() {
+    if (document.getElementById('problem-cases')) return;
+
+    const whatInner = document.querySelector('#what .section-inner');
+    if (!whatInner || !domainGrid) return;
+
+    const wrapper = element('div', 'who-block');
+    wrapper.id = 'problem-cases';
+    wrapper.appendChild(element('span', 'eyebrow', 'REAL PROBLEMS'));
+
+    const grid = element('div', 'principle-grid');
+
+    addTextCard(
+      grid,
+      'INVENTORY VISIBILITY',
+      '재고는 있는데, 운영 판단에 사용할 수 없다.',
+      '흩어진 재고 데이터를 연결하고 Google Sheets → Colab → Dashboard 흐름으로 재구성하여 단순히 재고를 보여주는 화면에서 운영 판단에 사용할 수 있는 정보구조로 발전시켰다.',
+      'Make inventory visible enough to decide.',
+      '현재 verified evidence 없이 ROI, 시간 절감, 정확도 개선 수치를 주장하지 않는다.'
+    );
+
+    addTextCard(
+      grid,
+      'COLD CHAIN',
+      '온도는 기록되는데, 운영위험은 보이지 않는다.',
+      '냉동 컨테이너 데이터를 자동 분석하고 온도 유지능력을 비교할 수 있는 구조를 만들어 품질 모니터링 문제를 시설 운영 리스크 → engineering 판단 → 투자 대안 검토 문제로 확장했다.',
+      'Turn measurements into an engineering decision.',
+      '분석 및 투자 대안 검토까지가 verified scope이며 냉동창고 투자가 확정되었다고 주장하지 않는다.'
+    );
+
+    addTextCard(
+      grid,
+      'WAREHOUSE LOCATION',
+      '자재는 있는데, 어디 있는지 찾기 어렵다.',
+      '수기 위치관리, 위치·품목 mismatch, 탐색 문제에서 출발하여 위치·품목·transaction을 연결하고 실제 창고의 물리 흐름을 digital execution system으로 전환했다.',
+      'From physical friction to executable structure.',
+      '기존 WMS PROOF truth boundary를 따르며 ROI, labor saving, inventory accuracy improvement를 새롭게 주장하지 않는다.'
+    );
+
+    wrapper.appendChild(grid);
+    domainGrid.insertAdjacentElement('afterend', wrapper);
+  }
+
+  function addImpactSeed() {
+    if (document.getElementById('impact')) return;
+
+    const evolution = document.getElementById('evolution');
+    if (!evolution || !evolution.parentNode) return;
+
+    const section = element('section', 'section');
+    section.id = 'impact';
+    section.setAttribute('aria-labelledby', 'impact-title');
+
+    const inner = element('div', 'section-inner');
+    inner.appendChild(element('p', 'section-index', '06 / IMPACT'));
+
+    const headingRow = element('div', 'section-heading-row');
+    headingRow.appendChild(element('h2', '', '내가 만든 방식이 다른 사람과 조직의 능력으로 확장되는가.'));
+    headingRow.querySelector('h2').id = 'impact-title';
+    headingRow.appendChild(element('p', '', '개인의 문제 해결에서 끝나지 않고, 사례를 공유하고 교육하고 재사용할 수 있게 만드는 방향으로 범위를 넓힌다.'));
+    inner.appendChild(headingRow);
+
+    const grid = element('div', 'principle-grid');
+    addTextCard(
+      grid,
+      'TEACH',
+      '실제 구축 경험을 교육 가능한 사례로 바꾼다.',
+      '재고 대시보드, 냉동 CT, MES, WMS와 같은 실제 현업 사례를 활용하여 기술 자체보다 문제 정의와 실행 과정을 설명한다.'
+    );
+    addTextCard(
+      grid,
+      'ENABLE',
+      '다른 사람이 AI와 데이터를 자기 업무에 연결하도록 돕는다.',
+      '도구 사용법만 가르치는 것이 아니라 현업 문제를 데이터·자동화·AI의 언어로 전환하는 방식을 전달한다.'
+    );
+    addTextCard(
+      grid,
+      'DIFFUSE',
+      '개인 활용을 조직의 실행 방식으로 확산한다.',
+      '교육, 업무 활용사례 공유, 자동화 후보 발굴과 재사용 가능한 산출물을 통해 조직의 AI / DX 활용 범위를 넓혀간다.'
+    );
+    inner.appendChild(grid);
+
+    const boundary = element('aside', 'evidence-boundary');
+    boundary.appendChild(element('strong', '', 'Impact Boundary'));
+    boundary.appendChild(element('p', '', 'Impact는 교육 횟수나 기술 홍보가 아니라, 다른 사람이 더 나은 실행을 할 수 있게 되는 변화로 정의한다. 조직 전체 AI transformation을 이미 달성했다고 주장하지 않으며 기여, 확산, enablement 수준으로 표현한다.'));
+    inner.appendChild(boundary);
+
+    section.appendChild(inner);
+    evolution.parentNode.insertBefore(section, evolution.nextSibling);
+  }
+
+  function addMethodSeed() {
+    if (document.getElementById('method')) return;
+
+    const impact = document.getElementById('impact');
+    if (!impact || !impact.parentNode) return;
+
+    const section = element('section', 'section');
+    section.id = 'method';
+    section.setAttribute('aria-labelledby', 'method-title');
+
+    const inner = element('div', 'section-inner');
+    inner.appendChild(element('p', 'section-index', '07 / METHOD'));
+
+    const headingRow = element('div', 'section-heading-row');
+    headingRow.appendChild(element('h2', '', '반복된 실행 패턴을 재사용 가능한 방법으로 정의하기 시작했다.'));
+    headingRow.querySelector('h2').id = 'method-title';
+    headingRow.appendChild(element('p', '', '방법론을 먼저 선언한 것이 아니라, 여러 현실 문제를 해결하면서 반복적으로 나타난 작업 구조를 정리하고 있는 단계다.'));
+    inner.appendChild(headingRow);
+
+    const grid = element('div', 'principle-grid');
+    addTextCard(
+      grid,
+      'DOCS AS CODE',
+      '문서를 일회성 결과물이 아니라 갱신 가능한 실행 자산으로.',
+      '분석, 판단, 설명과 배포 가능한 결과물을 구조화하고 다시 사용할 수 있는 형태로 남긴다.'
+    );
+    addTextCard(
+      grid,
+      'FEATURE AS CODE',
+      '업무 규칙과 분석 로직을 반복 실행 가능한 기능으로.',
+      '데이터 가공과 판단 규칙을 코드와 테스트 가능한 단위로 분리하고 운영 UI와 연결한다.'
+    );
+    addTextCard(
+      grid,
+      'GIT AS ACTION',
+      '대화에서 끝나는 지시를 검증 가능한 변경과 기억으로.',
+      'AI-assisted execution의 변경 이력, evidence와 durable memory를 Git에 남기는 방향을 탐색한다.',
+      '',
+      'Git as Action은 exploratory / working direction이며 formal methodology로 승격하지 않는다.'
+    );
+    inner.appendChild(grid);
+
+    const closing = element('div', 'closing-lines');
+    closing.appendChild(element('blockquote', '', 'MILES is becoming a system for making the way of working reusable.'));
+    closing.appendChild(element('p', 'boundary-note', 'Docs as Code, Feature as Code, Git as Action과 MILES의 상위 연결은 현재 evolving working model이다. formal methodology status를 주장하지 않는다.'));
+    inner.appendChild(closing);
+
+    section.appendChild(inner);
+    impact.parentNode.insertBefore(section, impact.nextSibling);
+  }
+
   const storedTheme = safeStoredValue(THEME_KEY);
   const storedLens = safeStoredValue(LENS_KEY);
 
   applyTheme(validThemes.has(storedTheme) ? storedTheme : 'miles-core', false);
   applyLens(validLenses.has(storedLens) ? storedLens : 'default', false);
+
+  addImpactSeed();
+  addMethodSeed();
+  addPortfolioNarrativeArc();
+  addRealProblemSeeds();
 
   themeSelect?.addEventListener('change', (event) => {
     applyTheme(event.target.value);
