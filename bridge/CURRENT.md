@@ -163,6 +163,13 @@ Current working definition:
 
 The first exact-byte binary evidence closed loop is now operationally validated. This is an observed extension of the Git as Action evidence scope from text artifacts to binary evidence, demonstrated with one sanitized PNG.
 
+WMS-001 evidence promotion produced a technically successful Git write/read-back but exceeded semantic scope at commit `e566086f56c162261093ab9b174ee3adb80288c9`, resulting in blob `d86c2f1b6e5c44e0b9482ec90083e928e9dd179d`.
+This operationally observed that **Technical write success does not guarantee semantic scope compliance**, and the policy boundary now includes `Repository scope → Branch scope → Path scope → Action scope → Semantic change scope`.
+The first exact recovery attempt was fail-closed `BLOCKED` because the active Gateway could not directly read the required immutable historical blob.
+Exact recovery then restored verified baseline `6dd00a555861ca8d2cace422fa3ac8d63050a62b` in commit `c38994604ea71df26839e2d461a638593b3dfba2`.
+Controlled reconstruction applied Minimum Semantic Diff and passed at commit `854616bb0d5a00c57c19b1e0b5dc01cbc4553f33`, resulting in blob `7d23e40c1a4a5d7526c72225d01b3f1e1934e932`.
+The validation is recorded in Research Note commit `d3b891fc77d221b8475a76a25a3c86c87ddd59d7`; `Semantic Diff Budget` remains a working control concept, not a formal `METHODS` artifact.
+
 Git as Action remains a **BRIDGE Working Research Note** and has **not** been promoted to `METHODS`.
 
 Current research questions include:
@@ -175,6 +182,7 @@ Current research questions include:
 - whether exact-byte binary evidence validation repeats across additional PNG/PDF evidence and larger assets
 - how agent-visible tool-surface lifecycle and multi-file non-atomicity should be managed
 - how actual token / elapsed time / context-switching measurements should be collected
+- whether constrained historical file / immutable blob reads should be added for exact recovery workflows
 
 These remain hypotheses or open questions until supported by measurement.
 
@@ -192,18 +200,15 @@ Status:
 
 Current case contents include:
 
-- operational problem
-- AppSheet / QR PoC stage
-- multi-user constraint discovery
-- architecture evolution
-- custom web application transition
-- transaction-first inventory model
-- location / item / lot rules
-- movement and adjustment semantics
-- QR integration strategy
-- failure and constraint analysis
-- reusable engineering lessons
-- public evidence plan
+- field-grounded warehouse problem
+- QR + AppSheet first executable hypothesis
+- custom web architecture transition
+- operational system flow and permission control
+- Physical ↔ Digital Warehouse model
+- heterogeneous storage topology and Side 2 mirroring
+- verified incremental evolution chronology
+- human-controlled / AI-assisted Operator Role
+- operational evidence and claim boundaries
 - first sanitized transaction-history visual evidence with exact-byte integrity verification
 
 Measured business impact remains:
