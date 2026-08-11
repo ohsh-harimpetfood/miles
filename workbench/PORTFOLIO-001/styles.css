@@ -194,6 +194,90 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.7rem); }
   font-family: var(--font-mono);
   font-size: .78rem;
 }
+.manufacturing-core-visualization {
+  width: min(100%, 720px);
+  margin: clamp(2.5rem, 5vw, 4.5rem) auto 0;
+}
+.manufacturing-core-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.core-map-ring,
+.core-map-connector,
+.core-map-core {
+  vector-effect: non-scaling-stroke;
+}
+.core-map-ring {
+  fill: none;
+  stroke: var(--color-border);
+}
+.core-map-ring--outer {
+  stroke-width: 1.2;
+  stroke-dasharray: 3 6;
+}
+.core-map-ring--inner {
+  stroke: var(--color-accent);
+  stroke-width: 1.4;
+}
+.core-map-connector {
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+.core-map-core {
+  fill: var(--color-surface);
+  stroke: var(--color-accent);
+  stroke-width: 2;
+}
+.core-map-layer-label,
+.core-map-node text,
+.core-map-core-label,
+.core-map-core-micro {
+  font-family: var(--font-mono);
+  dominant-baseline: middle;
+}
+.core-map-layer-label {
+  fill: var(--color-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+.core-map-layer-label--inner { fill: var(--color-accent); }
+.core-map-node circle { fill: var(--color-bg); stroke: var(--color-border); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.core-map-node text { fill: var(--color-muted); font-size: 10px; font-weight: 700; letter-spacing: .7px; }
+.core-map-node--inner circle { stroke: var(--color-accent); }
+.core-map-node--inner text { fill: var(--color-text); }
+.core-map-core-label {
+  fill: var(--color-text);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .8px;
+}
+.core-map-core-label--secondary {
+  fill: var(--color-accent);
+  font-size: 12px;
+}
+.core-map-core-micro {
+  fill: var(--color-muted);
+  font-size: 8px;
+  letter-spacing: 1.2px;
+}
+.core-map-signal {
+  transform-box: view-box;
+  transform-origin: 250px 250px;
+  animation: core-map-signal-flow 36s linear infinite;
+}
+.core-map-signal circle {
+  fill: var(--color-accent);
+  stroke: var(--color-bg);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.core-map-signal--outer { animation-duration: 48s; animation-direction: reverse; }
+@keyframes core-map-signal-flow {
+  to { transform: rotate(360deg); }
+}
 .overview-layers {
   margin-top: clamp(2.5rem, 5vw, 4.5rem);
   border-top: var(--section-rule);
@@ -468,6 +552,7 @@ html[data-theme="industrial"] .evidence-grid img { aspect-ratio: 16 / 10; }
   .overview-intro { grid-template-columns: 1fr; }
   .overview-section { min-height: auto; }
   .overview-path { max-width: 620px; }
+  .manufacturing-core-visualization { width: min(100%, 620px); }
   .overview-layer {
     grid-template-columns: minmax(150px, .35fr) minmax(0, 1fr);
   }
@@ -498,6 +583,15 @@ html[data-theme="industrial"] .evidence-grid img { aspect-ratio: 16 / 10; }
   h2 { font-size: clamp(2rem, 10vw, 3.2rem); }
   .overview-section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   .overview-title { font-size: clamp(2.45rem, 11.5vw, 4rem); }
+  .manufacturing-core-visualization {
+    width: 100%;
+    margin-top: 2.25rem;
+  }
+  .core-map-layer-label { font-size: 9px; letter-spacing: .7px; }
+  .core-map-node text { font-size: 9px; letter-spacing: .3px; }
+  .core-map-core-label { font-size: 14px; }
+  .core-map-core-label--secondary { font-size: 11px; }
+  .core-map-core-micro { font-size: 7px; }
   .overview-layer { grid-template-columns: 1fr; gap: .3rem; }
   .overview-layer p { grid-column: auto; }
   .overview-chapters { grid-template-columns: 1fr 1fr; }
@@ -529,5 +623,8 @@ html[data-theme="industrial"] .evidence-grid img { aspect-ratio: 16 / 10; }
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .core-map-signal {
+    animation: none !important;
   }
 }
