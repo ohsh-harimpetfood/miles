@@ -1,6 +1,6 @@
 # COLD-001 — Operational Intelligence Evidence Ledger
 
-**Status:** Operational Evidence Promotion v0.3.0.1 — Gmail-backed operating workflow evidence; public email visual not yet promoted
+**Status:** Operational Evidence Promotion v0.3.1 — Gmail-backed operating workflow evidence + integrity-verified public operational visual
 
 ## Purpose & Privacy Boundary
 
@@ -350,8 +350,17 @@ Future visual publication must sanitize these values before repository transport
 
 ## Public Visual Evidence Status
 
-**Public Operational Intelligence Visual Evidence:** Not Yet Promoted
+**Public Operational Intelligence Visual Evidence:** Promoted
 
-No email screenshot, Gmail UI image, report screenshot, chart, or other private source bytes are committed by this pass.
+Asset:
 
-A future operational-intelligence visual must be reviewed against the canonical claim boundary before any binary asset is created or transported.
+`assets/03-operational-intelligence.png`
+
+**Classification:** Sanitized Evidence — HTML-source-preserving render  
+**Integrity:** Verified  
+**Git blob:** `8151fddbfe685c92b2a6e759488b35e1b9ee7466`  
+**Evidence commit:** `f36c87f3b97d735791f4a1a36ed194abe2b39dac`
+
+The promoted asset is not a Gmail UI screenshot. It preserves the representative operational briefing structure needed to support the maintenance-history-aware LLM recommendation workflow while excluding Gmail headers, sender / recipient identities, email addresses, and message / thread identifiers.
+
+The visual does **not** establish AI diagnostic accuracy, autonomous maintenance, recipient action completion, or measured business impact. Final field verification / action remains human.
