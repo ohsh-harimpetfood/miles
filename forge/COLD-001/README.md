@@ -1,6 +1,6 @@
 # COLD-001 — Cold Container Operational Risk & Storage Strategy
 
-**Status:** Canonical FORGE Case Seed v0.1 — external-source-grounded; public visual evidence not yet promoted
+**Status:** Canonical FORGE Case v0.2 — documentary evidence lineage promoted; public visual evidence not yet promoted
 
 COLD-001은 냉동 컨테이너 온도 측정값을 자동 분석하는 데서 끝나지 않고, 여러 CT의 운영 안정성과 반복적인 성능저하를 비교해 보이지 않던 시설 운영 리스크를 engineering / investment decision 문제로 전환한 사례다.
 
@@ -26,12 +26,24 @@ Measurement
 
 ### External Source Boundary
 
-현재 canonical seed는 private operational source에서 확인된 다음 두 종류의 자료를 기반으로 한다.
+현재 canonical case는 2024-06 → 2026-08 기간의 dated private operational documents를 logical source family 단위로 검토해 구성한다. Source set에는 enabling infrastructure context, Cold Container temperature-management review, logger demonstration, analysis-system implementation material, monitoring expansion material, user manual, operational stability diagnosis가 포함된다.
 
-- Streamlit 기반 냉동 컨테이너 온도 자동분석 시스템 구축 자료 — 2025-07-27
-- 냉동 컨테이너 운영 안정성 진단 및 개선 대책 — 2026-08-07
+같은 내용을 담은 PPT / PDF derivative는 독립 evidence 여러 건으로 세지 않는다. Public repository에는 source date, sanitized title / family, evidence class, supported claim, boundary 수준만 남기며 Private Drive URL, file ID, internal sharing path, approval identifier, private infrastructure identifier, exact internal inventory value, vendor pricing 또는 personal identifiers는 기록하지 않는다.
 
-Private Drive URL, file ID, internal sharing path는 public repository에 기록하지 않는다.
+## Documentary Evidence Lineage
+
+COLD-001의 field execution은 현재 repository history보다 앞선다. 현재 chronology는 당시의 dated private operational documents를 2026-08-11에 sanitized repository memory로 사후 승격한 것이다.
+
+**Document date ≠ Git commit date.**  
+**Documentary lineage ≠ repository-native execution history.**
+
+Repository promotion occurred after the field work. 아래 chronology의 날짜는 source-document dates이며 과거 Git commit dates가 아니다.
+
+- **2024** — enabling infrastructure reliability issues identified; Cold Container monitoring appears as a planned infrastructure use case
+- **2025** — operational weakness formalized; logger demonstration, analysis automation, monitoring / infrastructure expansion documented
+- **2026** — user-operable analysis workflow documented; multi-CT operational diagnosis strengthened engineering / investment framing
+
+[Detailed documentary evidence ledger](./EVIDENCE.md)
 
 ## 2. The Measurement Problem
 
