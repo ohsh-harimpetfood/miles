@@ -708,3 +708,24 @@ html[data-theme="industrial"] .evidence-grid img { aspect-ratio: 16 / 10; }
     animation: none !important;
   }
 }
+
+.narrative-context {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+body.portfolio-focus-mode .narrative-context { display: none; }
+
+@media (max-width: 640px) {
+  .narrative-context {
+    order: 2;
+    margin-left: 0;
+    font-size: .66rem;
+  }
+  .header-controls { order: 3; }
+}
