@@ -1086,3 +1086,93 @@ body.portfolio-focus-mode .narrative-context { display: none; }
   }
   .wms-proof-lines > div:last-child { border-bottom: 0; }
 }
+
+/* WMS evidence visual composition */
+.wms-case-stage[aria-labelledby="wms-evidence-title"] {
+  padding-top: clamp(3.5rem, 7vw, 6rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+.proof-section .wms-case-stage .evidence-grid {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(1rem, 2vw, 1.6rem);
+  align-items: start;
+}
+.proof-section .wms-case-stage .evidence-grid figure {
+  align-self: start;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+.proof-section .wms-case-stage .evidence-grid figure:nth-child(3) {
+  grid-column: 1 / -1;
+}
+.proof-section .wms-case-stage .evidence-grid figure a {
+  display: block;
+  overflow: visible;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  outline-offset: 4px;
+}
+.proof-section .wms-case-stage .evidence-grid figure a:focus-visible {
+  outline: 2px solid var(--color-accent);
+}
+.proof-section .wms-case-stage .evidence-grid img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: var(--color-surface);
+  transform: none;
+  transition: filter var(--motion-normal) ease;
+}
+.proof-section .wms-case-stage .evidence-grid figure:hover img {
+  transform: none;
+}
+.proof-section .wms-case-stage .evidence-grid figcaption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .25rem 1rem;
+  align-items: baseline;
+  padding: .85rem 1rem 1rem;
+}
+.proof-section .wms-case-stage .evidence-grid figcaption span {
+  margin: 0;
+  color: var(--color-text);
+  font-size: .78rem;
+  font-weight: 800;
+}
+.proof-section .wms-case-stage .evidence-grid figcaption strong {
+  justify-self: end;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+.proof-section .wms-case-stage .evidence-grid figcaption p {
+  grid-column: 1 / -1;
+  margin: .35rem 0 0;
+  color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+  .proof-section .wms-case-stage .evidence-grid {
+    grid-template-columns: 1fr;
+  }
+  .proof-section .wms-case-stage .evidence-grid figure:nth-child(3) {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .proof-section .wms-case-stage .evidence-grid {
+    gap: 1rem;
+  }
+  .proof-section .wms-case-stage .evidence-grid figcaption {
+    grid-template-columns: 1fr;
+  }
+  .proof-section .wms-case-stage .evidence-grid figcaption strong {
+    justify-self: start;
+  }
+}
