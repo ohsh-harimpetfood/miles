@@ -340,15 +340,21 @@ body.portfolio-focus-mode main > .section.is-focused-chapter {
 }
 body.portfolio-focus-mode .site-footer { display: none; }
 .chapter-focus-bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
   margin-bottom: clamp(2rem, 4vw, 3.5rem);
   padding: 0 0 .75rem;
   border-bottom: var(--section-rule);
 }
+.chapter-focus-slot { min-width: 0; }
+.chapter-focus-slot--prev { justify-self: start; }
+.chapter-focus-slot--next { justify-self: end; }
+.chapter-focus-current { justify-self: center; white-space: nowrap; }
+.chapter-focus-return { justify-self: end; }
 .chapter-focus-label,
+.chapter-focus-nav,
 .chapter-focus-return {
   font-family: var(--font-mono);
   font-size: .7rem;
@@ -356,18 +362,23 @@ body.portfolio-focus-mode .site-footer { display: none; }
   letter-spacing: .08em;
 }
 .chapter-focus-label { color: var(--color-accent); }
+.chapter-focus-nav,
 .chapter-focus-return {
   appearance: none;
   border: 0;
   border-radius: 0;
   background: transparent;
   color: var(--color-text);
-  padding: .25rem 0;
+  padding: .35rem 0;
   cursor: pointer;
   text-transform: uppercase;
+  white-space: nowrap;
 }
+.chapter-focus-nav:hover,
+.chapter-focus-nav:focus-visible,
 .chapter-focus-return:hover,
 .chapter-focus-return:focus-visible { color: var(--color-accent); }
+.chapter-focus-nav:focus-visible,
 .chapter-focus-return:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
@@ -652,7 +663,25 @@ html[data-theme="industrial"] .evidence-grid img { aspect-ratio: 16 / 10; }
   .overview-chapters li:first-child,
   .overview-chapters li:nth-child(2) { border-top: 0; }
   .overview-chapters a { min-height: 76px; padding: .45rem .55rem; }
-  .chapter-focus-bar { margin-bottom: 1.75rem; }
+  .chapter-focus-bar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "current return"
+      "prev next";
+    gap: .35rem 1rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: .5rem;
+  }
+  .chapter-focus-slot--prev { grid-area: prev; justify-self: start; }
+  .chapter-focus-current { grid-area: current; justify-self: start; }
+  .chapter-focus-slot--next { grid-area: next; justify-self: end; }
+  .chapter-focus-return { grid-area: return; justify-self: end; }
+  .chapter-focus-nav,
+  .chapter-focus-return {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
   .who-section { padding-top: 3.5rem; }
   .scope-progression li { grid-template-columns: 1fr; gap: .3rem; }
   .domain-grid,
