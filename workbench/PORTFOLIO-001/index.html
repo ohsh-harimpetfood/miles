@@ -385,65 +385,174 @@
           <p class="proof-opening">It did not begin with software.<br>It began with a location problem.</p>
         </div>
 
-        <div class="wms-sequence" aria-label="WMS evolution sequence">
-          <span>Manual Rack Card</span><span>Location / Item Mismatch</span><span>Inventory Search Friction</span><span>AppSheet — First Executable Hypothesis</span><span>Operational Limits</span><span>Architecture Pivot</span><span>Next.js + Supabase / PostgreSQL</span><span>Physical ↔ Digital Warehouse</span><span>Multi-user Operational System</span>
-        </div>
+        <div class="wms-case-narrative">
+          <article class="wms-case-stage" aria-labelledby="wms-reality-title">
+            <header class="wms-stage-meta">
+              <span class="wms-stage-index">01 / REALITY</span>
+              <span class="eyebrow">THE FIELD PROBLEM</span>
+            </header>
+            <div class="wms-stage-body">
+              <h3 id="wms-reality-title">자재는 있는데, 어디 있는지 찾기 어렵다.</h3>
+              <p>출발점은 기술 도입이 아니라 physical warehouse의 위치·품목·재고 상태를 더 신뢰 가능하게 확인하고 운영해야 하는 문제였다.</p>
+              <ul class="wms-signal-list" aria-label="WMS field problem signals">
+                <li>MANUAL RACK CARD</li>
+                <li>LOCATION / ITEM MISMATCH</li>
+                <li>SEARCH FRICTION</li>
+                <li>RECONCILIATION BURDEN</li>
+              </ul>
+              <p class="wms-stage-note">현실의 운영 상태를 먼저 구조화하고, 그 다음에 실행 가능한 system을 선택했다.</p>
+            </div>
+          </article>
 
-        <div class="truth-strip" aria-label="WMS truth strip">
-          <div><span>Built</span><strong>Confirmed</strong></div>
-          <div><span>Deployed</span><strong>Confirmed</strong></div>
-          <div><span>Operational Use</span><strong>Confirmed</strong></div>
-          <div><span>Multi-user Operation</span><strong>Confirmed</strong></div>
-          <div><span>Public Sanitized Evidence</span><strong>6</strong></div>
-          <div><span>Public Visual Derivatives</span><strong>2</strong></div>
-          <div class="impact-boundary"><span>Measured Business Impact</span><strong>Not Yet Established</strong></div>
-        </div>
+          <article class="wms-case-stage" aria-labelledby="wms-structure-title">
+            <header class="wms-stage-meta">
+              <span class="wms-stage-index">02 / STRUCTURE</span>
+              <span class="eyebrow">PHYSICAL → DIGITAL MODEL</span>
+            </header>
+            <div class="wms-stage-body">
+              <h3 id="wms-structure-title">물리적인 창고를 운영 가능한 데이터 구조로 바꾼다.</h3>
+              <p>초기 data model은 Location / Item / Transaction을 분리하는 구조였다. 이후 operational workflow가 확장되면서 LOT와 packing constraint까지 다루는 구조로 발전했다.</p>
+              <ol class="wms-technical-flow wms-technical-flow--six" aria-label="Physical to digital warehouse model">
+                <li>Physical Location</li>
+                <li>Managed Location Identity</li>
+                <li>QR / Rack Card</li>
+                <li>Transaction</li>
+                <li>Inventory</li>
+                <li>Digital Map</li>
+              </ol>
+              <p class="wms-stage-note">핵심은 physical warehouse state를 location identity와 transaction record로 연결해 관리 가능한 operating model로 만드는 것이었다.</p>
+            </div>
+          </article>
 
-        <div class="evidence-heading">
-          <div>
-            <span class="eyebrow">Evidence Gallery</span>
-            <h3>Operational evidence, not decoration.</h3>
-          </div>
-          <p>v0.1에서는 narrative density를 위해 3개만 전면에 배치한다.</p>
-        </div>
+          <article class="wms-case-stage" aria-labelledby="wms-system-title">
+            <header class="wms-stage-meta">
+              <span class="wms-stage-index">03 / SYSTEM</span>
+              <span class="eyebrow">EXECUTABLE OPERATING SYSTEM</span>
+            </header>
+            <div class="wms-stage-body">
+              <h3 id="wms-system-title">구조를 실제로 운영할 수 있는 시스템으로 만든다.</h3>
+              <p class="wms-system-thesis"><strong>AppSheet was the first executable hypothesis.</strong> QR workflow, data model과 현장 interaction을 빠르게 실행해보기 위한 첫 접근이었다.</p>
 
-        <div class="evidence-grid">
-          <figure>
-            <a href="../../forge/WMS-001/assets/01-warehouse-map.png" target="_blank" rel="noreferrer">
-              <img src="../../forge/WMS-001/assets/01-warehouse-map.png" alt="Sanitized WMS warehouse map evidence">
-            </a>
-            <figcaption>
-              <span>01 Warehouse Map</span>
-              <strong>Sanitized Evidence</strong>
-              <p>Physical warehouse → Digital representation</p>
-            </figcaption>
-          </figure>
-          <figure>
-            <a href="../../forge/WMS-001/assets/02-rack-card-bulk-print.png" target="_blank" rel="noreferrer">
-              <img src="../../forge/WMS-001/assets/02-rack-card-bulk-print.png" alt="Sanitized WMS rack-card bulk print evidence">
-            </a>
-            <figcaption>
-              <span>02 Rack Card Bulk Print</span>
-              <strong>Sanitized Evidence</strong>
-              <p>Digital location → QR / Physical interface</p>
-            </figcaption>
-          </figure>
-          <figure>
-            <a href="../../forge/WMS-001/assets/03-transaction-history.png" target="_blank" rel="noreferrer">
-              <img src="../../forge/WMS-001/assets/03-transaction-history.png" alt="Sanitized WMS transaction history evidence">
-            </a>
-            <figcaption>
-              <span>03 Transaction History</span>
-              <strong>Sanitized Evidence</strong>
-              <p>Physical operation → Digital transaction record</p>
-            </figcaption>
-          </figure>
-        </div>
+              <ol class="wms-technical-flow wms-technical-flow--four" aria-label="First executable hypothesis">
+                <li>Location QR</li>
+                <li>Item QR</li>
+                <li>AppSheet</li>
+                <li>Google Sheets</li>
+              </ol>
 
-        <aside class="evidence-boundary">
-          <strong>Evidence ≠ Impact</strong>
-          <p>Visual evidence proves implemented and operational characteristics represented by the screenshots. It does not by itself establish ROI, time saving, labor reduction or inventory accuracy improvement.</p>
-        </aside>
+              <p>요구 범위가 커지면서 더 높은 UX control, performance, deployment flexibility, extensibility가 필요해졌고, 이미 검증하던 field problem과 data model을 custom web architecture로 옮겼다.</p>
+              <ol class="wms-technical-flow wms-technical-flow--five" aria-label="WMS architecture pivot">
+                <li>AppSheet</li>
+                <li>Next.js</li>
+                <li>Supabase / PostgreSQL</li>
+                <li>Git</li>
+                <li>Vercel</li>
+              </ol>
+
+              <p class="wms-flow-label">CURRENT OPERATING FLOW</p>
+              <ol class="wms-technical-flow wms-technical-flow--five" aria-label="Current WMS operating flow">
+                <li>Inbound</li>
+                <li>Inventory</li>
+                <li>Movement</li>
+                <li>Outbound</li>
+                <li>Transaction History</li>
+              </ol>
+              <p class="wms-stage-note">master data, adjustment / reconciliation, authentication, role / feature permission, QR와 physical-digital mapping이 이 core flow의 운영 통제를 보완한다.</p>
+
+              <div class="truth-strip" aria-label="WMS truth strip">
+                <div><span>Built</span><strong>Confirmed</strong></div>
+                <div><span>Deployed</span><strong>Confirmed</strong></div>
+                <div><span>Operational Use</span><strong>Confirmed</strong></div>
+                <div><span>Multi-user Operation</span><strong>Confirmed</strong></div>
+                <div><span>Public Sanitized Evidence</span><strong>6</strong></div>
+                <div><span>Public Visual Derivatives</span><strong>2</strong></div>
+                <div class="impact-boundary"><span>Measured Business Impact</span><strong>Not Yet Established</strong></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="wms-case-stage" aria-labelledby="wms-evidence-title">
+            <header class="wms-stage-meta">
+              <span class="wms-stage-index">04 / EVIDENCE</span>
+              <span class="eyebrow">VERIFIED PUBLIC EVIDENCE</span>
+            </header>
+            <div class="wms-stage-body">
+              <div class="evidence-heading">
+                <div>
+                  <span class="eyebrow">Evidence Gallery</span>
+                  <h3 id="wms-evidence-title">Operational evidence, not decoration.</h3>
+                </div>
+                <p>Verified public evidence 중 이 case의 transformation을 가장 직접적으로 보여주는 세 장면을 제시한다.</p>
+              </div>
+
+              <div class="evidence-grid">
+                <figure>
+                  <a href="../../forge/WMS-001/assets/01-warehouse-map.png" target="_blank" rel="noreferrer">
+                    <img src="../../forge/WMS-001/assets/01-warehouse-map.png" alt="Sanitized WMS warehouse map evidence">
+                  </a>
+                  <figcaption>
+                    <span>01 Warehouse Map</span>
+                    <strong>Sanitized Evidence</strong>
+                    <p>Physical warehouse → Digital representation</p>
+                  </figcaption>
+                </figure>
+                <figure>
+                  <a href="../../forge/WMS-001/assets/02-rack-card-bulk-print.png" target="_blank" rel="noreferrer">
+                    <img src="../../forge/WMS-001/assets/02-rack-card-bulk-print.png" alt="Sanitized WMS rack-card bulk print evidence">
+                  </a>
+                  <figcaption>
+                    <span>02 Rack Card Bulk Print</span>
+                    <strong>Sanitized Evidence</strong>
+                    <p>Digital location → QR / Physical interface</p>
+                  </figcaption>
+                </figure>
+                <figure>
+                  <a href="../../forge/WMS-001/assets/03-transaction-history.png" target="_blank" rel="noreferrer">
+                    <img src="../../forge/WMS-001/assets/03-transaction-history.png" alt="Sanitized WMS transaction history evidence">
+                  </a>
+                  <figcaption>
+                    <span>03 Transaction History</span>
+                    <strong>Sanitized Evidence</strong>
+                    <p>Physical operation → Digital transaction record</p>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="wms-case-stage" aria-labelledby="wms-proof-capability-title">
+            <header class="wms-stage-meta">
+              <span class="wms-stage-index">05 / WHAT THIS PROVES</span>
+              <span class="eyebrow">CAPABILITY PROOF</span>
+            </header>
+            <div class="wms-stage-body">
+              <h3 id="wms-proof-capability-title">하나의 현장 문제를 운영 가능한 시스템까지 연결할 수 있는가.</h3>
+              <dl class="wms-proof-lines">
+                <div>
+                  <dt>MANUFACTURING / OPERATIONAL PROBLEM FRAMING</dt>
+                  <dd>현장의 위치·재고·작업 흐름에서 실제 운영 문제를 정의했다.</dd>
+                </div>
+                <div>
+                  <dt>OPERATIONAL SYSTEM DESIGN</dt>
+                  <dd>물리적인 Location과 Item, Transaction을 관리 가능한 operating model로 구조화했다.</dd>
+                </div>
+                <div>
+                  <dt>DIRECT IMPLEMENTATION</dt>
+                  <dd>실행 가설을 검증하고 custom web WMS로 확장해 실제 운영 가능한 시스템까지 연결했다.</dd>
+                </div>
+                <div>
+                  <dt>EVIDENCE DISCIPLINE</dt>
+                  <dd>작동 여부와 visual evidence를 분리해 확인하고, 검증되지 않은 business impact는 주장하지 않는다.</dd>
+                </div>
+              </dl>
+
+              <aside class="evidence-boundary">
+                <strong>Evidence ≠ Impact</strong>
+                <p>Visual evidence proves implemented and operational characteristics represented by the screenshots. It does not by itself establish ROI, time saving, labor reduction or inventory accuracy improvement.</p>
+              </aside>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
