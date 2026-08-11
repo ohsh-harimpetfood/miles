@@ -2,7 +2,7 @@
 
 **Repository evidence promotion date:** 2026-08-11  
 **Historical source window:** 2024-06 → 2026-08  
-**Public visual evidence:** Not Yet Promoted
+**Public visual evidence:** 5 integrity-verified Sanitized Evidence assets
 
 ## Purpose & History Boundary
 
@@ -419,7 +419,7 @@ Measurement
 | Quantified productivity claims from 2025 are canonical | 2025-07 | HISTORICAL CLAIM | **NOT PROMOTED** | Definitions / baselines / protocols conflict or are insufficient |
 | Legacy `44 → 116` efficiency is comparable to 2026 retention | 2025-09 | HISTORICAL CLAIM | **NOT PROMOTED** | Legacy metric requires reconciliation; not directly comparable |
 | Current automatic-report blank copy proves reporting history | 2026-06 | EXCLUDED | **EXCLUDED** | Current copy has no usable operating record; Gmail SENT evidence evaluated separately |
-| Repository-hosted sanitized visual evidence is promoted | Current | Public evidence status | **NOT YET PROMOTED** | Textual documentary + operational lineage only |
+| Repository-hosted sanitized visual evidence is promoted | Current | Public evidence status | **PROMOTED — 5 Sanitized Evidence assets** | Public Visual Derivatives = 0; detailed visual ledger in `PUBLIC_EVIDENCE.md` |
 
 ## Metric Lineage & Comparability
 
@@ -533,8 +533,21 @@ Only sanitized source labels, dates, evidence classification, supported claims a
 
 ## Public Evidence Status
 
-**Public Sanitized Visual Evidence:** Not Yet Promoted
+**Public Sanitized Visual Evidence:** 5  
+**Public Visual Derivatives:** 0
 
-No PDF, PPT, DOCX, source report, email screenshot, Gmail UI image, chart, image derivative or other private source bytes are committed by this promotion pass.
+Canonical public evidence roles:
 
-Possible future visual evidence candidates remain subject to a separate privacy / confidentiality / sanitization / claim-support review before any asset publication.
+```text
+01 DETECT — Failure Visibility
+02 ANALYZE — Analytical Visibility
+03 OPERATE — Operational Intelligence
+04 DIAGNOSE — Risk Diagnosis
+05 DECIDE — Decision Support
+```
+
+All five public assets completed exact-byte repository write / read-back verification.
+
+[Detailed public evidence ledger](./PUBLIC_EVIDENCE.md)
+
+The public visual promotion does not change the existing documentary, analytical, operational, metric-comparability, AI, investment, or business-impact boundaries recorded above.
