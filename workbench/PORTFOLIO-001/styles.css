@@ -179,6 +179,25 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.7rem); }
   align-items: center;
 }
 .overview-copy { grid-area: copy; align-self: end; }
+.overview-lens-cue {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  max-width: 100%;
+  margin: 0 0 .8rem;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+.overview-lens-cue::before {
+  content: "";
+  flex: 0 0 1.6rem;
+  border-top: 1px solid var(--color-accent);
+}
 .overview-title {
   max-width: 760px;
   margin-bottom: 1rem;
@@ -766,6 +785,11 @@ html[data-theme="industrial"] .evidence-grid img { aspect-ratio: 16 / 10; }
   .overview-section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
   .overview-title { font-size: clamp(2.25rem, 10.5vw, 3.7rem); }
   .overview-main { gap: 1.2rem; }
+  .overview-lens-cue {
+    align-items: flex-start;
+    font-size: .66rem;
+  }
+  .overview-lens-cue::before { margin-top: .68em; }
   .manufacturing-core-visualization { width: min(100%, 430px); }
   .core-map-layer-label { font-size: 9px; letter-spacing: .7px; }
   .core-map-node text { font-size: 9px; letter-spacing: .3px; }
