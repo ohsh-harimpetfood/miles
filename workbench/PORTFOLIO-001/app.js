@@ -6,11 +6,24 @@
 
   const validThemes = new Set(['miles-core', 'enterprise', 'industrial']);
   const validLenses = new Set(['default', 'executive', 'engineer', 'manufacturer', 'ai-builder']);
+  const focusChapterLabels = new Map([
+    ['who', '01 / WHO'],
+    ['what', '02 / WHAT'],
+    ['how', '03 / HOW'],
+    ['proof', '04 / PROOF'],
+    ['evolution', '05 / EVOLUTION'],
+    ['impact', '06 / IMPACT'],
+    ['method', '07 / METHOD']
+  ]);
+  const supportedFocusChapters = new Set(focusChapterLabels.keys());
 
   const root = document.documentElement;
   const themeSelect = document.getElementById('theme-select');
   const lensSelect = document.getElementById('lens-select');
   const domainGrid = document.getElementById('domain-grid');
+
+  let focusReturnLink = null;
+  let temporaryFocusedHeading = null;
 
   function safeStoredValue(key) {
     try {
@@ -270,6 +283,215 @@
     impact.parentNode.insertBefore(section, impact.nextSibling);
   }
 
+  function chapterIdFromLink(link) {
+    const href = link?.getAttribute('href') || '';
+    if (!href.startsWith('#')) return null;
+
+    const chapterId = href.slice(1);
+    return supportedFocusChapters.has(chapterId) ? chapterId : null;
+  }
+
+  function updateFocusHistory(chapterId, mode) {
+    const hash = chapterId ? `#${chapterId}` : '';
+    const state = supportedFocusChapters.has(chapterId)
+      ? { portfolioFocus: chapterId }
+      : { portfolioFocus: null };
+
+    if (mode === 'replace') {
+      window.history.replaceState(state, '', hash);
+      return;
+    }
+
+    window.history.pushState(state, '', hash);
+  }
+
+  function clearTemporaryHeading() {
+    if (!temporaryFocusedHeading) return;
+
+    if (temporaryFocusedHeading.dataset.focusModeTemporaryTabindex === 'true') {
+      temporaryFocusedHeading.removeAttribute('tabindex');
+      delete temporaryFocusedHeading.dataset.focusModeTemporaryTabindex;
+    }
+
+    temporaryFocusedHeading = null;
+  }
+
+  function focusChapterHeading(section) {
+    clearTemporaryHeading();
+
+    const labelledBy = section.getAttribute('aria-labelledby');
+    const labelledId = labelledBy?.split(/\s+/)[0];
+    const heading = (labelledId && document.getElementById(labelledId))
+      || section.querySelector('h1, h2, h3');
+
+    if (!heading) return;
+
+    if (!heading.hasAttribute('tabindex')) {
+      heading.setAttribute('tabindex', '-1');
+      heading.dataset.focusModeTemporaryTabindex = 'true';
+    }
+
+    temporaryFocusedHeading = heading;
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
+    window.requestAnimationFrame(() => {
+      heading.focus({ preventScroll: true });
+    });
+  }
+
+  function removeFocusBar() {
+    document.getElementById('chapter-focus-bar')?.remove();
+  }
+
+  function clearFocusedChapters() {
+    document.querySelectorAll('main > .section.is-focused-chapter')
+      .forEach((section) => section.classList.remove('is-focused-chapter'));
+  }
+
+  function createFocusBar(chapterId, section) {
+    removeFocusBar();
+
+    const inner = section.querySelector('.section-inner');
+    if (!inner) return;
+
+    const bar = element('div', 'chapter-focus-bar');
+    bar.id = 'chapter-focus-bar';
+
+    const label = element('span', 'chapter-focus-label', focusChapterLabels.get(chapterId) || chapterId.toUpperCase());
+    const button = element('button', 'chapter-focus-return', '← OVERVIEW');
+    button.type = 'button';
+    button.setAttribute('aria-label', 'Return to portfolio overview');
+    button.addEventListener('click', () => {
+      exitFocusMode({ historyMode: 'replace', restoreFocus: true, scrollTargetId: 'overview' });
+    });
+
+    bar.appendChild(label);
+    bar.appendChild(button);
+    inner.prepend(bar);
+  }
+
+  function switchFocusChapter(chapterId, triggerLink, options = {}) {
+    if (!supportedFocusChapters.has(chapterId)) return false;
+
+    const section = document.getElementById(chapterId);
+    if (!section || !section.matches('main > .section')) return false;
+
+    const historyMode = options.historyMode || 'replace';
+
+    if (triggerLink?.closest('.overview-chapters')) {
+      focusReturnLink = triggerLink;
+    }
+
+    document.body.classList.add('portfolio-focus-mode');
+    clearFocusedChapters();
+    section.classList.add('is-focused-chapter');
+    createFocusBar(chapterId, section);
+
+    if (historyMode !== 'none') {
+      updateFocusHistory(chapterId, historyMode);
+    }
+
+    focusChapterHeading(section);
+    return true;
+  }
+
+  function enterFocusMode(chapterId, triggerLink) {
+    return switchFocusChapter(chapterId, triggerLink, { historyMode: 'push' });
+  }
+
+  function exitFocusMode(options = {}) {
+    if (!document.body.classList.contains('portfolio-focus-mode')) return;
+
+    const historyMode = options.historyMode || 'replace';
+    const restoreFocus = options.restoreFocus !== false;
+    const scrollTargetId = options.scrollTargetId || 'overview';
+    const returnTarget = focusReturnLink?.isConnected
+      ? focusReturnLink
+      : document.querySelector('.overview-chapters a');
+
+    document.body.classList.remove('portfolio-focus-mode');
+    clearFocusedChapters();
+    removeFocusBar();
+    clearTemporaryHeading();
+
+    if (historyMode !== 'none') {
+      updateFocusHistory(scrollTargetId === 'overview' ? 'overview' : scrollTargetId, historyMode);
+    }
+
+    const scrollTarget = document.getElementById(scrollTargetId) || document.getElementById('overview');
+    scrollTarget?.scrollIntoView({ block: 'start', behavior: 'auto' });
+
+    focusReturnLink = null;
+
+    if (restoreFocus && returnTarget) {
+      window.requestAnimationFrame(() => {
+        returnTarget.focus({ preventScroll: true });
+      });
+    }
+  }
+
+  function initFocusMode() {
+    if (document.body.dataset.focusModeReady === 'true') return;
+
+    const overviewLinks = Array.from(document.querySelectorAll('.overview-chapters a'));
+    const narrativeArcLinks = Array.from(document.querySelectorAll('#portfolio-narrative-arc a'));
+    const brandLink = document.querySelector('.brand-mark[href="#overview"]');
+
+    document.body.dataset.focusModeReady = 'true';
+
+    overviewLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const chapterId = chapterIdFromLink(link);
+        if (!chapterId || !document.getElementById(chapterId)) return;
+
+        event.preventDefault();
+        enterFocusMode(chapterId, link);
+      });
+    });
+
+    narrativeArcLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (!document.body.classList.contains('portfolio-focus-mode')) return;
+
+        const chapterId = chapterIdFromLink(link);
+        if (!chapterId || !document.getElementById(chapterId)) return;
+
+        event.preventDefault();
+        switchFocusChapter(chapterId, null, { historyMode: 'replace' });
+      });
+    });
+
+    brandLink?.addEventListener('click', (event) => {
+      if (!document.body.classList.contains('portfolio-focus-mode')) return;
+
+      event.preventDefault();
+      exitFocusMode({ historyMode: 'replace', restoreFocus: true, scrollTargetId: 'overview' });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !document.body.classList.contains('portfolio-focus-mode')) return;
+
+      event.preventDefault();
+      exitFocusMode({ historyMode: 'replace', restoreFocus: true, scrollTargetId: 'overview' });
+    });
+
+    window.addEventListener('popstate', () => {
+      if (!document.body.classList.contains('portfolio-focus-mode')) return;
+
+      const hashId = window.location.hash.replace(/^#/, '');
+      if (supportedFocusChapters.has(hashId) && window.history.state?.portfolioFocus === hashId) {
+        switchFocusChapter(hashId, null, { historyMode: 'none' });
+        return;
+      }
+
+      exitFocusMode({
+        historyMode: 'none',
+        restoreFocus: false,
+        scrollTargetId: hashId || 'overview'
+      });
+    });
+  }
+
   const storedTheme = safeStoredValue(THEME_KEY);
   const storedLens = safeStoredValue(LENS_KEY);
 
@@ -280,6 +502,7 @@
   addMethodSeed();
   addPortfolioNarrativeArc();
   addRealProblemSeeds();
+  initFocusMode();
 
   themeSelect?.addEventListener('change', (event) => {
     applyTheme(event.target.value);
