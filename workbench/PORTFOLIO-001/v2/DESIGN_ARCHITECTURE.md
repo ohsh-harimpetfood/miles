@@ -1,6 +1,6 @@
 # PORTFOLIO-001 v2 — Design Architecture
 
-**Status:** Design Architecture Seed
+**Status:** Design Architecture Revision v0.1.1 — Visual Intensity / Theme / Experimental Language Promotion
 
 This document defines the visual, interaction, motion, depth-awareness, responsive, performance, and accessibility contract for PORTFOLIO-001 v2 before frontend implementation begins.
 
@@ -38,6 +38,68 @@ Primary goals:
 The visual surface may become expressive, spatial, luminous, or cinematic. It must not change source truth, claim strength, evidence classification, or canonical case boundaries.
 
 Working principle:
+
+> The surface may be spectacular.  
+> The truth remains fixed.
+
+## Visual Freedom / Truth Constraint
+
+PORTFOLIO-001 v2 permits aggressive visual interpretation.
+
+The presentation layer may amplify:
+
+- scale
+- tension
+- contrast
+- transformation
+- atmosphere
+- sequence
+- spatial relationship
+- narrative emphasis
+- visual energy
+- perceived depth
+
+But it may never amplify factual certainty.
+
+**Visual intensity may increase. Claim strength may not.**
+
+MILES / FORGE canonical state controls:
+
+- facts
+- chronology
+- evidence classification
+- supported claims
+- unsupported claims
+- measurements
+- operational state
+- impact boundary
+- source lineage
+- integrity
+
+Portfolio controls:
+
+- composition
+- typography
+- motion
+- color
+- gradient
+- spatial depth
+- narrative pacing
+- visual emphasis
+- atmosphere
+- transition
+
+Core rule:
+
+> Presentation may dramatize meaning.  
+> It may not dramatize truth.
+
+Supporting principle:
+
+> Portfolio controls the experience.  
+> MILES controls the truth.
+
+And the existing V2 contract remains:
 
 > The surface may be spectacular.  
 > The truth remains fixed.
