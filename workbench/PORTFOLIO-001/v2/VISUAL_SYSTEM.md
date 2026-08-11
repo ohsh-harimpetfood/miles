@@ -1,15 +1,17 @@
 # PORTFOLIO-001 v2 — Visual System
 
-**Status:** Design Architecture Seed
+**Status:** Design Architecture Revision v0.1.1 — Global Theme / Gradient / Experimental Language Promotion
 
-This document defines the conceptual visual system for PORTFOLIO-001 v2 before frontend implementation. It establishes project-atmosphere tokens, typography depth, spatial/grid behavior, surface treatment, and responsive visual adaptation without freezing CSS values, font dependencies, or framework choices.
+This document defines the conceptual visual system for PORTFOLIO-001 v2 before frontend implementation. It establishes global theme families, project-atmosphere tokens, typography depth, spatial/grid behavior, surface treatment, experimental visual language, and responsive visual adaptation without freezing CSS values, font dependencies, or framework choices.
 
 ## 1. Visual Identity Principle
 
-PORTFOLIO-001 v2 uses one global identity with multiple project atmospheres.
+PORTFOLIO-001 v2 uses one global identity with multiple global theme families and project atmospheres.
 
 ```text
 GLOBAL IDENTITY
++
+GLOBAL THEME FAMILY
 +
 PROJECT ATMOSPHERE
 +
@@ -18,11 +20,206 @@ DEPTH-SPECIFIC DENSITY
 
 The design system must allow WMS, COLD, Inventory/Data, Process & Facility Engineering, Enterprise Systems, and AI-native work to feel distinct without becoming unrelated microsites.
 
-The surface may become cinematic, luminous, spatial, editorial, or technical according to case and depth.
+The surface may become cinematic, luminous, spatial, editorial, or technical according to theme, case, and depth.
 
 The truth boundary does not change with visual treatment.
 
-## 2. Project Atmosphere Tokens
+## 2. Global Theme Family System
+
+A **Global Theme Family** defines the top-level visual mood, color universe, and lighting identity for PORTFOLIO-001 v2.
+
+A **Project Atmosphere** defines local visual variation according to each case's material, operating context, and meaning.
+
+Relationship:
+
+```text
+GLOBAL THEME FAMILY
++
+PROJECT ATMOSPHERE
++
+DEPTH-SPECIFIC DENSITY
+```
+
+A global theme may change:
+
+- base color universe
+- lighting character
+- gradient family
+- global glow behavior
+- structural line emphasis
+- interaction energy
+- surface translucency character
+
+A global theme must **not** erase case identity.
+
+Theme may change presentation, but it must not change:
+
+- truth
+- narrative meaning
+- claim strength
+- evidence classification
+- source interpretation
+
+V2 must support at least two working global theme families.
+
+### Theme A — ACID SIGNAL
+
+**Palette direction:**
+
+- Deep Green
+- Bright Green
+- Black
+- Hot Pink
+- Restrained Deep Red
+
+**Character:**
+
+- intense
+- industrial
+- energetic
+- aggressive
+- signal-driven
+- digital
+- operational
+- experimental
+- high contrast
+
+Primary impression:
+
+```text
+Industrial control room
+×
+Digital signal
+×
+Future manufacturing
+×
+High-energy operations
+```
+
+Base:
+
+- Black
+- Near-black
+- Deep Green
+
+Bright Green may represent:
+
+- active state
+- execution
+- location
+- grid
+- path
+- data activation
+- system signal
+
+Hot Pink may represent:
+
+- CTA
+- selected state
+- interaction energy
+- transition flare
+- highlight
+- edge energy
+- luminous accent
+
+Deep Red may represent:
+
+- warning
+- critical state
+- operational risk
+- boundary
+
+Deep Red remains restrained.
+
+Hot Pink may be visually strong, but should not become a continuous dominant page fill by default.
+
+Working gradient directions:
+
+```text
+Black → Deep Green
+Deep Green → Bright Green
+Black → Deep Green → Hot Pink
+Black → Bright Green radial signal
+Deep Green → Black → Deep Red risk zone
+```
+
+### Theme B — MIDNIGHT GOLD
+
+**Palette direction:**
+
+- Black
+- Deep Blue / Midnight Navy
+- Gold
+- Restrained Lemon
+
+**Character:**
+
+- cinematic
+- premium
+- strategic
+- technical
+- precise
+- sophisticated
+- monumental
+- deep-system
+
+Primary impression:
+
+```text
+Night operations
+×
+Engineering precision
+×
+Strategic intelligence
+```
+
+Base:
+
+- Black
+- Near-black
+- Midnight Navy
+- Deep Blue
+
+Gold may represent:
+
+- architecture
+- hierarchy
+- important connection
+- primary emphasis
+- selected state
+- structural illumination
+
+Gold should communicate:
+
+- precision
+- importance
+- structure
+- intelligence
+- system value
+
+It should not default to ornamental luxury.
+
+Lemon may represent:
+
+- micro signal
+- activation
+- data point
+- interaction
+- local highlight
+
+Lemon remains secondary.
+
+Working gradient directions:
+
+```text
+Black → Midnight Blue
+Midnight Blue → Near Black
+Deep Blue → Gold radial illumination
+Black → Deep Blue → muted Gold haze
+Midnight Blue → Gold → restrained Lemon
+```
+
+## 3. Project Atmosphere Tokens
 
 Every case may define a project-atmosphere profile with these conceptual tokens:
 
@@ -41,18 +238,21 @@ A project atmosphere must remain compatible with:
 
 - global navigation
 - global typography hierarchy
+- active Global Theme Family
 - depth awareness
 - evidence classification
 - accessibility / contrast expectations
 - mobile adaptation
 
-## 3. Working Atmosphere Examples
+Project Atmosphere adapts **inside** a Global Theme Family rather than replacing it.
+
+## 4. Working Atmosphere Examples
 
 The following are working examples only. They are not fixed brand palettes.
 
 ### WMS
 
-Working character:
+Base working character:
 
 - dark warehouse / graphite
 - operational green
@@ -73,9 +273,22 @@ Boundary:
 - atmosphere must not turn explanatory visuals into evidence
 - digital-twin language must remain bounded by actual system state
 
+#### WMS + ACID SIGNAL
+
+- black / deep green base
+- bright-green location grid
+- hot-pink interaction / selected state
+- deep-red abnormal state
+
+#### WMS + MIDNIGHT GOLD
+
+- black / midnight-blue base
+- gold warehouse grid / structural emphasis
+- restrained lemon transaction signal
+
 ### COLD
 
-Working character:
+Base working character:
 
 - deep navy / near-black
 - cold blue
@@ -96,9 +309,23 @@ Boundary:
 - warning color does not imply statutory failure unless canonical evidence says so
 - futuristic AI treatment must not imply autonomous diagnosis or control
 
+#### COLD + ACID SIGNAL
+
+- dark neutral / deep-green base
+- bright-green system state
+- hot-pink diagnostic energy
+- deep-red abnormal state
+
+#### COLD + MIDNIGHT GOLD
+
+- deep navy
+- cold-blue local functional accent
+- gold structural emphasis
+- restrained lemon diagnostic signal
+
 ### Inventory / Data
 
-Working character:
+Base working character:
 
 - graphite → luminous light surface
 - data blue / analytical accent
@@ -115,6 +342,18 @@ Potential visual language:
 Boundary:
 
 - visual polish must not promote recognition or presentation into measured business impact
+
+#### Inventory + ACID SIGNAL
+
+- black / green data field
+- bright-green data activity
+- hot-pink forecast / selected state
+
+#### Inventory + MIDNIGHT GOLD
+
+- deep blue / black
+- gold hierarchy
+- restrained lemon forecast signal
 
 ### Process & Facility Engineering
 
@@ -160,7 +399,7 @@ Boundary:
 Working character:
 
 - higher permission for futuristic effects
-- violet / spectral accent permitted
+- violet / spectral accent permitted when compatible with active theme
 - luminous / generative transition language allowed
 
 Boundary:
@@ -168,7 +407,13 @@ Boundary:
 - futuristic styling must never imply autonomous capability not supported by evidence
 - `AI-assisted` / `LLM-assisted` remains distinct from autonomous execution
 
-## 4. Atmosphere Transition Contract
+### Functional color override
+
+Functional source colors may override theme accents where the source or system meaning requires them.
+
+Theme never recolors evidence in a misleading way.
+
+## 5. Atmosphere Transition Contract
 
 Project atmosphere may change between selected cases or case depths.
 
@@ -192,7 +437,49 @@ Transitions must preserve:
 
 A case transition should feel intentional rather than like loading an unrelated website.
 
-## 5. Typography Architecture
+## 6. Theme Morph
+
+**Theme Morph** is an optional V2 capability.
+
+Theme switching may become an atmospheric transition rather than only an instantaneous variable swap.
+
+Working example:
+
+```text
+ACID SIGNAL
+→ green field darkens
+→ hot-pink energy withdraws
+→ navy enters
+→ grid illumination becomes gold
+→ signal temperature changes
+→ MIDNIGHT GOLD
+```
+
+Theme Morph may affect:
+
+- gradients
+- background
+- glow
+- line color
+- lighting
+- surface transparency
+- accent energy
+
+It must preserve:
+
+- usable navigation
+- stable content
+- readable text
+- current case / depth
+- evidence semantics
+
+Motion is optional.
+
+Reduced-motion presentation receives an immediate or static theme change.
+
+**Theme Morph is enhancement, not meaning.**
+
+## 7. Typography Architecture
 
 Typography depth should progress as:
 
@@ -288,7 +575,7 @@ Characteristics:
 - monospace-compatible information where appropriate
 - hashes / source IDs / statuses readable without becoming decorative texture
 
-## 6. Korean Readability Contract
+## 8. Korean Readability Contract
 
 Future implementation should treat Korean prose as primary content.
 
@@ -308,7 +595,7 @@ Additional expectations:
 
 Exact CSS is not defined in this pass.
 
-## 7. Conceptual 12-Column Grid
+## 9. Conceptual 12-Column Grid
 
 V2 uses a conceptual 12-column grid as a spatial reference.
 
@@ -363,7 +650,7 @@ Dossier behavior:
 
 L3 may be denser than other depths, but it must remain inspectable and responsive.
 
-## 8. Spatial Density Rhythm
+## 10. Spatial Density Rhythm
 
 V2 should intentionally vary spatial density.
 
@@ -387,7 +674,7 @@ Avoid:
 
 Visual rhythm depends on changing scale, whitespace, overlap, and information density.
 
-## 9. Surface & Glass Rule
+## 11. Surface & Glass Rule
 
 Glass, blur, and translucent surfaces are valid V2 materials.
 
@@ -424,19 +711,92 @@ Do not:
 
 Atmospheric treatment may surround evidence. It must not falsify evidence.
 
-## 10. Gradient & Glow Contract
+## 12. Gradient & Glow Contract
 
-Gradients and glow are permitted broadly, especially in L0 and L2.
+V2 actively uses gradients.
 
-Appropriate uses:
+**Gradients are first-class structural materials.**
 
-- atmosphere transition
-- spatial depth
+They may define:
+
+- depth
+- atmosphere
 - hierarchy
-- state emphasis
-- system scale
-- luminous data
+- focus
+- transition
+- system state
+- spatial separation
 - physical → digital transformation
+- project-to-project transition
+- narrative energy
+
+Allowed gradient vocabulary:
+
+- linear gradient
+- radial gradient
+- conic gradient
+- layered mesh-style gradient
+- masked gradient
+- gradient typography
+- gradient border / line
+- moving gradient field
+- gradient light source
+- scroll-reactive gradient
+- multi-layer gradient composition
+
+Multiple gradients may coexist in one composition.
+
+Working principle:
+
+> Gradients are structural, not secondary decoration.
+
+### Gradient depth behavior — L0 / Portfolio
+
+Maximum expressive permission:
+
+- atmospheric mesh fields
+- multiple radial lights
+- large directional gradients
+- moving color fields
+- gradient typography
+- background transformation
+
+### Gradient depth behavior — L1 / Case Story
+
+Gradient supports narrative direction:
+
+- chronology
+- transition
+- before / after
+- problem / response
+- physical / digital
+- decision point
+
+### Gradient depth behavior — L2 / Showcase
+
+Maximum gradient freedom:
+
+- luminous backgrounds
+- layered gradient fog
+- spotlight
+- glow fields
+- state transition
+- animated signal paths
+
+### Gradient depth behavior — L3 / Dossier
+
+Gradient intensity drops substantially.
+
+Use only for:
+
+- hierarchy
+- selected evidence
+- technical emphasis
+- subtle status distinction
+
+Precision remains dominant.
+
+### Glow boundary
 
 Avoid:
 
@@ -445,7 +805,255 @@ Avoid:
 - warning glow that implies severity beyond canonical classification
 - animated glow required to understand status
 
-## 11. Image Treatment Contract
+## 13. Experimental Visual Language
+
+These are optional visual capabilities, not mandatory features for every page.
+
+Goal:
+
+> Make the portfolio feel like a living industrial / digital system rather than a static website.
+
+### Chromatic Edge Separation
+
+Restrained color-channel separation may support:
+
+- transition
+- digital activation
+- selected typography
+- AI / digital emergence
+
+Do not use continuously on body text.
+
+### Depth Fog / Atmospheric Perspective
+
+Different Z layers may vary:
+
+- blur
+- opacity
+- contrast
+- luminosity
+
+Working relationship:
+
+```text
+Foreground → sharp
+Background → atmospheric
+```
+
+### Refractive / Lens Surfaces
+
+Localized optical behavior may include:
+
+- magnification
+- refraction
+- light bending
+- moving highlight
+
+Never distort evidence interpretation.
+
+### Signal Trace
+
+Animated causal / system paths may represent supported relationships.
+
+Examples:
+
+```text
+Location
+→ QR
+→ Transaction
+→ Inventory
+```
+
+```text
+Sensor
+→ Analysis
+→ Briefing
+→ Diagnosis
+→ Decision
+```
+
+### Data Bloom
+
+Visual metaphor:
+
+```text
+point
+→ structure
+→ system
+```
+
+Examples:
+
+```text
+logger point
+→ graph
+→ multi-CT view
+→ operation
+→ decision
+```
+
+```text
+location
+→ rack
+→ map
+→ transaction
+→ inventory system
+```
+
+### Semantic Parallax
+
+Parallax depth should correspond to meaning rather than arbitrary decoration.
+
+Conceptual depth:
+
+```text
+Physical reality → background
+Digital system → middle
+Data / intelligence → foreground
+Annotation → top
+```
+
+### Kinetic Typography
+
+Allowed behaviors include:
+
+- mask reveal
+- scale
+- tracking
+- weight change
+- line collision
+- spatial overlap
+- text / media layering
+
+Typography may behave as motion graphics in L0 and L2.
+
+### Visual Portal Transition
+
+A selected teaser may visually expand into the next depth.
+
+Working example:
+
+```text
+Portfolio WMS visual
+→ fills viewport
+→ becomes WMS Case Hero
+```
+
+Routing remains URL-addressable.
+
+Animation is not a routing dependency.
+
+### Scan / Diagnostic Layer
+
+A moving inspection interface may reveal:
+
+- metadata
+- system status
+- labels
+- relationships
+- evidence context
+
+### Grid Deformation
+
+Grid may:
+
+- expand
+- compress
+- shift
+- change perspective
+- reorganize around active content
+
+Use only for meaningful transition.
+
+### Light as Data
+
+Light may represent system activity.
+
+Examples:
+
+- transaction movement
+- location activation
+- temperature abnormality
+- pipeline progress
+- architecture connection
+
+### Noise / Material Texture
+
+Possible treatments:
+
+- film grain
+- industrial noise
+- paper texture
+- digital noise
+- metal-like texture
+
+Use subtly.
+
+### Split-Reality Composition
+
+One viewport may simultaneously show:
+
+- physical ↔ digital
+- raw data ↔ dashboard
+- sensor ↔ diagnosis
+
+The boundary may shift during narrative progression.
+
+### Temporal Scrubbing
+
+Scroll position may represent supported chronology.
+
+Do not fabricate continuity.
+
+### Visual Density Shift
+
+Information density itself may transform:
+
+```text
+chaos
+→ alignment
+→ structure
+→ system
+→ decision
+```
+
+This is a particularly important V2 technique.
+
+It can visually represent:
+
+```text
+Reality
+→ Structure
+→ Execution
+```
+
+## 14. Experimental Technique Priority
+
+High-value candidates for later prototypes:
+
+1. **Visual Density Shift**
+2. **Signal Trace**
+3. **Split-Reality Composition**
+4. **Visual Portal Transition**
+5. **Light as Data**
+6. **Theme Morph**
+
+These are candidates, not guaranteed production requirements.
+
+Portfolio Shell must first establish:
+
+- structure
+- typography
+- palette
+- performance
+- responsive behavior
+- navigation
+
+Advanced visual techniques should then be promoted selectively.
+
+**Actual work remains the protagonist.**
+
+## 15. Image Treatment Contract
 
 A project atmosphere may define image treatment such as:
 
@@ -463,7 +1071,7 @@ For evidence-sensitive assets:
 - do not imply that a derivative is an original screen
 - provide classification near the asset when appropriate
 
-## 12. Data Visualization Treatment
+## 16. Data Visualization Treatment
 
 Data visuals may be integrated into atmosphere but should retain analytical clarity.
 
@@ -481,7 +1089,7 @@ For source-faithful evidence:
 - a recreated chart must be labeled `Visual Derivative`
 - thresholds / legal interpretations remain bounded by canonical source state
 
-## 13. Warning / Signal Semantics
+## 17. Warning / Signal Semantics
 
 Atmosphere profiles may define a `signal / warning` token.
 
@@ -501,7 +1109,32 @@ But visual warning semantics must not silently become:
 
 Evidence status, warning status, and legal/compliance status are separate concepts.
 
-## 14. Depth-Specific Surface Permission
+## 18. Evidence Color Boundary
+
+Actual source screenshots and evidence visuals retain source-faithful color meaning.
+
+Theme / gradient / glow may exist:
+
+- around
+- behind
+- beside
+- outside
+
+source evidence.
+
+Do not:
+
+- recolor source risk state
+- change chart semantic color
+- mask necessary labels
+- distort values
+- imply status through surrounding effect that contradicts evidence
+
+Atmosphere may dramatize context.
+
+It may not alter evidence interpretation.
+
+## 19. Depth-Specific Surface Permission
 
 ### L0
 
@@ -551,7 +1184,7 @@ Low theatrical permission:
 
 L3 should favor inspection over spectacle.
 
-## 15. Responsive Visual Adaptation
+## 20. Responsive Visual Adaptation
 
 Mobile should preserve hierarchy and atmosphere without imitating desktop spatial depth at reduced scale.
 
@@ -575,7 +1208,7 @@ Must preserve:
 - CTA clarity
 - current depth
 
-## 16. Accessibility & Contrast
+## 21. Accessibility & Contrast
 
 Atmosphere changes must maintain:
 
@@ -585,9 +1218,9 @@ Atmosphere changes must maintain:
 - source-image legibility
 - reduced-motion coherent presentation
 
-Glow, blur, and translucent surfaces must never be required to infer text or status.
+Glow, blur, translucent surfaces, and Theme Morph must never be required to infer text, state, or meaning.
 
-## 17. Implementation Boundary
+## 22. Implementation Boundary
 
 This file does not freeze:
 
