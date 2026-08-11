@@ -1,6 +1,6 @@
 # COLD-001 — Public Evidence Selection
 
-**Status:** Selection Review v0.3 — candidates identified; binary assets not yet promoted
+**Status:** Selection Review v0.3.0.1 — operational-intelligence candidate added; binary assets not yet promoted
 
 This document defines which visual evidence candidates best support the canonical COLD-001 transformation and what must be true before any future public asset promotion.
 
@@ -13,6 +13,7 @@ The canonical source remains:
 
 - [`README.md`](./README.md)
 - [`EVIDENCE.md`](./EVIDENCE.md)
+- [`OPERATIONAL_EVIDENCE.md`](./OPERATIONAL_EVIDENCE.md)
 
 ## Selection Purpose
 
@@ -22,6 +23,7 @@ The selection question is not which screenshot or chart looks best. The question
 Weak Visibility
 → Measurement
 → Analytical Visibility
+→ Operational Intelligence
 → Operational Risk Diagnosis
 → Engineering / Investment Decision Support
 ```
@@ -31,8 +33,26 @@ Public-facing shorthand:
 ```text
 DETECT
 → ANALYZE
+→ OPERATE
 → DIAGNOSE
 → DECIDE
+```
+
+`OPERATE` is distinct from `DIAGNOSE`.
+
+```text
+OPERATE
+current / recent operating state
++ maintenance history
+→ recommendation
+→ distribution
+→ human field check
+
+DIAGNOSE
+longer-horizon multi-CT dataset
+→ simultaneous degradation
+→ operating-pattern risk
+→ structural diagnosis
 ```
 
 A `PRIMARY` candidate must satisfy all three conditions:
@@ -67,24 +87,25 @@ A newly redrawn chart must not be labeled simply as `Evidence` if the original s
 |---|---|
 | **LOW** | Visual is already generic or contains little to no internal identification; only minor publication review is expected. |
 | **MEDIUM** | CT labels, dates, internal UI labels, contextual identifiers, or limited sensitive fields may need masking / generalization. |
-| **HIGH** | Visual may contain inventory names or values, approval information, vendor / commercial data, internal financial assumptions, infrastructure identifiers, or other confidential business detail. Equivalent lower-risk evidence should be preferred when available. |
+| **HIGH** | Visual may contain identities, email / message metadata, inventory names or values, approval information, vendor / commercial data, internal financial assumptions, infrastructure identifiers, or other confidential business detail. Equivalent lower-risk evidence should be preferred when available. |
 
 Risk levels in this selection are **preliminary** because the actual source image / page is not copied or published in this pass. Page-level review is required before promotion.
 
 ## Recommended Primary Public Set
 
-Maximum primary set: **4 visual assets**.
+Maximum primary set: **5 visual assets**.
 
 The recommended set follows the case transformation rather than document count:
 
 ```text
 01 Failure Visibility
 → 02 Analytical Visibility
-→ 03 Risk Diagnosis
-→ 04 Decision Support
+→ 03 Operational Intelligence
+→ 04 Risk Diagnosis
+→ 05 Decision Support
 ```
 
-Evidence density is preferred over evidence quantity. Duplicated PPT / PDF derivatives do not justify additional public assets.
+Evidence density is preferred over evidence quantity. Five candidates are retained because each supports a distinct transformation role; duplicated PPT / PDF derivatives do not justify additional public assets.
 
 ## Candidate 01 — Failure Visibility / Logger Demonstration
 
@@ -217,7 +238,127 @@ A source crop meeting those conditions remains `Sanitized Evidence`. A recreated
 
 **Proposal only — no file exists from this pass.**
 
-## Candidate 03 — Risk Diagnosis / Multi-CT Stability
+## Candidate 03 — Operational Intelligence / Automated Briefing
+
+**Transformation role:** OPERATE / Operational Intelligence  
+**Source period:** 2026-07 → 2026-08  
+**Primary representative source:** 2026-08-11 — Cold CT Operational Briefing  
+**Documentary class:** OPERATIONAL / DIRECT  
+**Sanitization risk:** HIGH  
+**Publication recommendation:** PRIMARY — actual visual review required before binary promotion
+
+### Supported claim
+
+Analysis was converted into an operating workflow that combined current condition, recent trend, and maintenance-history context with LLM-assisted inspection recommendations and distributed the result through automated email reporting.
+
+The operational evidence also supports:
+
+- urgent / caution / data-issue prioritization
+- priority-inspection list
+- current condition and recent multi-day issue persistence
+- maintenance / defrost / recovery history context
+- LLM-assisted contextual judgment
+- recommended checks / inspection actions
+- automated report generation
+- repeated operational distribution across multiple dated SENT records
+
+### Why it matters
+
+This candidate establishes the missing `OPERATE` layer between analytical visibility and longer-horizon risk diagnosis.
+
+The case did not stop at a user-facing analysis interface. Structured operating state was repeatedly converted into prioritized operational briefing and inspection guidance for human action.
+
+### Canonical architecture represented
+
+```text
+Temperature / Logger Data
+→ Deterministic Metric Analysis
+→ Current CT Condition + Recent Trend + Maintenance History
+→ LLM-assisted Contextual Judgment
+→ Inspection / Check Recommendation
+→ Priority List / Operational Report
+→ Automated Email Distribution
+→ Human Field Verification / Action
+```
+
+AI is not used as a substitute for measurement or deterministic metric analysis. It is inserted after structured analysis to contextualize current condition with maintenance history and suggest checks for human action.
+
+### Preferred public visual
+
+Prefer a privacy-preserving crop from the actual representative operational briefing that makes at least these layers understandable:
+
+- current operating-state / priority classification
+- recent trend or issue persistence
+- maintenance-history context
+- judgment / recommended action
+- automated-generation context, if it can be retained without exposing private system identifiers
+
+The visual should communicate operational intelligence rather than Gmail as a product interface.
+
+### Sanitization required
+
+The actual future email / report visual must remove or generalize:
+
+- sender identity
+- recipient identities
+- email addresses
+- Gmail message / thread identifiers
+- Gmail URLs
+- private label data
+- exact recipient distribution list
+- internal organizational identities where unnecessary
+- personal data
+- private links / Drive references
+- credentials / tokens / webhook secrets
+- internal configuration identifiers
+
+Potentially retain where safe and necessary to preserve evidentiary meaning:
+
+- generic CT identifiers
+- operating-state categories
+- canonical current metrics
+- maintenance-history date / type
+- judgment
+- recommended action
+- generic `자동 생성` indication
+- generic system attribution
+
+Actual source-image / source-page review is required before any binary asset creation.
+
+### Not supported from email visual
+
+- AI diagnostic accuracy
+- maintenance success rate
+- issue-resolution rate
+- repair-time reduction
+- labor saving
+- downtime reduction
+- failure prevention
+- recipient action-completion rate
+- report-open / read rate
+- exact scheduled frequency
+- total send count
+- ROI or quantified business impact
+
+### Human-in-the-loop boundary
+
+A recommendation is not a completed field action.
+
+```text
+Deterministic Analysis
+→ LLM-assisted Contextualization / Recommendation
+→ Human Field Verification / Action
+```
+
+Autonomous maintenance, autonomous repair, and autonomous engineering decision are not supported.
+
+### Proposed future path
+
+`forge/COLD-001/assets/03-operational-intelligence.png`
+
+**Proposal only — no file exists from this pass.**
+
+## Candidate 04 — Risk Diagnosis / Multi-CT Stability
 
 **Transformation role:** DIAGNOSE / Operational Risk Diagnosis  
 **Source date:** 2026-08-07  
@@ -280,11 +421,11 @@ The canonical observations remain dataset-specific. They are not universal laws 
 
 ### Proposed future path
 
-`forge/COLD-001/assets/03-risk-diagnosis.png`
+`forge/COLD-001/assets/04-risk-diagnosis.png`
 
 **Proposal only — no file exists from this pass.**
 
-## Candidate 04 — Decision Support / Storage Alternatives
+## Candidate 05 — Decision Support / Storage Alternatives
 
 **Transformation role:** DECIDE / Engineering & Investment Decision Support  
 **Source date:** 2026-08-07  
@@ -354,7 +495,7 @@ It does **not** support:
 
 ### Proposed future path
 
-`forge/COLD-001/assets/04-investment-options.png`
+`forge/COLD-001/assets/05-investment-options.png`
 
 **Proposal only — no file exists from this pass.**
 
@@ -364,10 +505,11 @@ It does **not** support:
 |---|---|---|---|---|
 | **01 — Failure Visibility / Logger Demonstration** | DETECT / Measurement | Measurement exposed a previously weakly visible abnormal operating condition in the demonstration scope | MEDIUM | **PRIMARY** |
 | **02 — Analytical Visibility / Multi-Container Heatmap** | ANALYZE / Analytical Visibility | Multiple containers could be compared in a user-facing workflow; retention was analyzed separately from minimum temperature | MEDIUM | **PRIMARY** |
-| **03 — Risk Diagnosis / Multi-CT Stability** | DIAGNOSE / Operational Risk Diagnosis | Multi-CT analysis exposed broader operating / environmental instability patterns | MEDIUM | **PRIMARY** |
-| **04 — Decision Support / Storage Alternatives** | DECIDE / Engineering & Investment Decision Support | Analysis was translated into maintain / partial-improvement / integrated-storage alternatives | HIGH | **PRIMARY** — page-level review required |
+| **03 — Operational Intelligence / Automated Briefing** | OPERATE / Operational Intelligence | Structured current state + recent trend + maintenance history were contextualized into prioritized LLM-assisted inspection recommendations and repeatedly distributed | HIGH | **PRIMARY** — actual visual review required |
+| **04 — Risk Diagnosis / Multi-CT Stability** | DIAGNOSE / Operational Risk Diagnosis | Multi-CT analysis exposed broader operating / environmental instability patterns | MEDIUM | **PRIMARY** |
+| **05 — Decision Support / Storage Alternatives** | DECIDE / Engineering & Investment Decision Support | Analysis was translated into maintain / partial-improvement / integrated-storage alternatives | HIGH | **PRIMARY** — page-level review required |
 
-Primary candidate count: **4**
+Primary candidate count: **5**
 
 These are selection recommendations, not binary publication approvals.
 
@@ -399,7 +541,9 @@ Do not expose internal IP maps, network topology, private identifiers, device in
 
 **Recommendation:** REJECT
 
-**Reason:** current copy is classified `EXCLUDED / CURRENT COPY NOT EVIDENTIARY` and does not establish email sending, report count, or operating history.
+**Reason:** current Drive copy remains classified `EXCLUDED / CURRENT COPY NOT EVIDENTIARY` and does not establish email sending, report count, or operating history.
+
+The exclusion remains correct even though separately evaluated Gmail SENT records now directly establish actual operational distribution.
 
 ### Other visuals excluded from primary selection by default
 
@@ -421,6 +565,8 @@ Before any future binary promotion, the actual source visual / page must be revi
 - evidence class
 - privacy and confidentiality
 - organization / employee identifiers
+- personal / email identities
+- Gmail message / UI identifiers
 - product / inventory information
 - exact internal financial values
 - vendor / quotation information
@@ -441,11 +587,18 @@ The following paths are naming proposals only:
 ```text
 forge/COLD-001/assets/01-failure-visibility.png
 forge/COLD-001/assets/02-analysis-heatmap.png
-forge/COLD-001/assets/03-risk-diagnosis.png
-forge/COLD-001/assets/04-investment-options.png
+forge/COLD-001/assets/03-operational-intelligence.png
+forge/COLD-001/assets/04-risk-diagnosis.png
+forge/COLD-001/assets/05-investment-options.png
 ```
 
 **No directory or binary asset is created by this selection review.**
+
+### Previous asset-promotion instruction status
+
+The previous four-image `COLD-001 v0.3.1 — Sanitized Evidence Asset Promotion` instruction is **OBSOLETE / DO NOT RUN** because the canonical evidence arc now includes a distinct `OPERATE / Operational Intelligence` layer.
+
+A new asset-promotion pass must be generated only after the representative operational-email visual has been reviewed with the user.
 
 ## Public Evidence Status
 
@@ -454,9 +607,10 @@ forge/COLD-001/assets/04-investment-options.png
 Current state:
 
 - documentary evidence lineage: promoted
-- public visual candidates: selected
+- operational intelligence evidence: promoted textually
+- public visual candidates: selected as five distinct transformation roles
 - binary publication approval: not yet granted
 - sanitized binary assets in repository: none from this pass
 - private source bytes copied to repository: none
 
-Next legitimate step is a source-image / source-page review with the user before any binary asset promotion.
+Next legitimate step is an operational-intelligence source-image / source-page review with the user before any binary asset promotion.
