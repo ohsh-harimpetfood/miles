@@ -1,6 +1,6 @@
 # COLD-001 — Cold Container Operational Risk & Storage Strategy
 
-**Status:** Canonical FORGE Case v0.3.0.1 — documentary lineage + operational intelligence evidence promoted; public visual evidence not yet promoted
+**Status:** Canonical FORGE Case v0.3.1 — documentary lineage + operational intelligence + 5 integrity-verified sanitized visual evidence assets
 
 COLD-001은 냉동 컨테이너 온도 측정값을 자동 분석하는 데서 끝나지 않고, 여러 CT의 운영 안정성과 반복적인 성능저하를 비교해 보이지 않던 시설 운영 리스크를 engineering / investment decision 문제로 전환한 사례다.
 
@@ -48,7 +48,8 @@ Repository promotion occurred after the field work. 아래 chronology의 날짜�
 - **2026** — user-operable analysis workflow, repeated operational reporting, multi-CT diagnosis, and engineering / investment framing documented
 
 [Detailed documentary evidence ledger](./EVIDENCE.md)  
-[Operational intelligence evidence ledger](./OPERATIONAL_EVIDENCE.md)
+[Operational intelligence evidence ledger](./OPERATIONAL_EVIDENCE.md)  
+[Public evidence ledger](./PUBLIC_EVIDENCE.md)
 
 ## 2. The Measurement Problem
 
@@ -283,16 +284,21 @@ Operational reporting evidence 역시 실제 workflow operation을 지지하지�
 
 ## 11. Public Evidence Status
 
-**Public Sanitized Visual Evidence:** Not Yet Promoted
+**Public Sanitized Visual Evidence:** 5  
+**Public Visual Derivatives:** 0
 
-현재 COLD-001에는 repository-hosted public sanitized visual evidence가 없다. Private operational source와 source-system operating evidence는 canonical truth boundary를 정리하는 근거로만 사용하며, 이번 pass에서는 image publication 또는 sanitization을 수행하지 않는다.
+Canonical public evidence arc:
 
-향후 별도의 sanitization / publication review를 거친 후보는 다음과 같다.
+```text
+01 DETECT — Failure Visibility / Logger Demonstration
+02 ANALYZE — Analytical Visibility / Multi-Container Heatmap
+03 OPERATE — Operational Intelligence / Automated Briefing
+04 DIAGNOSE — Risk Diagnosis / Multi-CT Stability
+05 DECIDE — Decision Support / Storage Alternatives
+```
 
-- sanitized failure-visibility / logger visualization
-- sanitized multi-container analysis visualization
-- sanitized operational-intelligence briefing
-- sanitized operational-risk chart
-- sanitized investment option matrix
+All five public evidence assets are repository-hosted Sanitized Evidence and completed exact-byte write / read-back integrity verification.
 
-후보가 존재한다는 사실은 publication approval 또는 evidence promotion 완료를 의미하지 않는다.
+[Public evidence ledger](./PUBLIC_EVIDENCE.md)
+
+The visual evidence supports the bounded claims documented in the evidence ledgers. It does not establish AI diagnostic accuracy, autonomous maintenance, business impact, approved investment, ROI, payback, or completed cold-storage construction.
