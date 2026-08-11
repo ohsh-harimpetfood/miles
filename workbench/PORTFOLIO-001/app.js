@@ -6,6 +6,13 @@
 
   const validThemes = new Set(['miles-core', 'enterprise', 'industrial']);
   const validLenses = new Set(['default', 'executive', 'engineer', 'manufacturer', 'ai-builder']);
+  const overviewLensCueCopy = new Map([
+    ['default', 'VIEWING THE WHOLE SYSTEM'],
+    ['executive', 'VIEWING FROM / SYSTEM-LEVEL OUTCOMES'],
+    ['engineer', 'VIEWING FROM / PROCESS & FACILITY ENGINEERING'],
+    ['manufacturer', 'VIEWING FROM / MANUFACTURING MANAGEMENT'],
+    ['ai-builder', 'VIEWING FROM / DIGITAL EXECUTION']
+  ]);
   const focusChapterOrder = [
     { id: 'who', label: '01 / WHO', name: 'WHO' },
     { id: 'what', label: '02 / WHAT', name: 'WHAT' },
@@ -32,6 +39,7 @@
   let narrativeContextNode = null;
   let narrativeAwarenessTargets = [];
   let scrollAwarenessObserver = null;
+  let overviewLensCueNode = null;
 
   function safeStoredValue(key) {
     try {
@@ -82,11 +90,38 @@
       .forEach((item) => domainGrid.appendChild(item));
   }
 
+  function ensureOverviewLensCue() {
+    if (overviewLensCueNode?.isConnected) return overviewLensCueNode;
+
+    const existing = document.getElementById('overview-lens-cue');
+    if (existing) {
+      overviewLensCueNode = existing;
+      return overviewLensCueNode;
+    }
+
+    const overviewCopy = document.querySelector('#overview .overview-copy');
+    if (!overviewCopy) return null;
+
+    overviewLensCueNode = element('p', 'overview-lens-cue', overviewLensCueCopy.get('default'));
+    overviewLensCueNode.id = 'overview-lens-cue';
+    overviewCopy.prepend(overviewLensCueNode);
+    return overviewLensCueNode;
+  }
+
+  function updateOverviewLensCue(lens) {
+    const cue = ensureOverviewLensCue();
+    if (!cue) return;
+
+    const copy = overviewLensCueCopy.get(lens) || overviewLensCueCopy.get('default');
+    if (cue.textContent !== copy) cue.textContent = copy;
+  }
+
   function applyLens(lens, shouldPersist = true) {
     const nextLens = validLenses.has(lens) ? lens : 'default';
     root.dataset.lens = nextLens;
     if (lensSelect) lensSelect.value = nextLens;
     reorderDomains(nextLens);
+    updateOverviewLensCue(nextLens);
     if (shouldPersist) persist(LENS_KEY, nextLens);
   }
 
