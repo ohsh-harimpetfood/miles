@@ -6,16 +6,17 @@
 
   const validThemes = new Set(['miles-core', 'enterprise', 'industrial']);
   const validLenses = new Set(['default', 'executive', 'engineer', 'manufacturer', 'ai-builder']);
-  const focusChapterLabels = new Map([
-    ['who', '01 / WHO'],
-    ['what', '02 / WHAT'],
-    ['how', '03 / HOW'],
-    ['proof', '04 / PROOF'],
-    ['evolution', '05 / EVOLUTION'],
-    ['impact', '06 / IMPACT'],
-    ['method', '07 / METHOD']
-  ]);
-  const supportedFocusChapters = new Set(focusChapterLabels.keys());
+  const focusChapterOrder = [
+    { id: 'who', label: '01 / WHO', name: 'WHO' },
+    { id: 'what', label: '02 / WHAT', name: 'WHAT' },
+    { id: 'how', label: '03 / HOW', name: 'HOW' },
+    { id: 'proof', label: '04 / PROOF', name: 'PROOF' },
+    { id: 'evolution', label: '05 / EVOLUTION', name: 'EVOLUTION' },
+    { id: 'impact', label: '06 / IMPACT', name: 'IMPACT' },
+    { id: 'method', label: '07 / METHOD', name: 'METHOD' }
+  ];
+  const focusChapterLabels = new Map(focusChapterOrder.map(({ id, label }) => [id, label]));
+  const supportedFocusChapters = new Set(focusChapterOrder.map(({ id }) => id));
 
   const root = document.documentElement;
   const themeSelect = document.getElementById('theme-select');
@@ -291,6 +292,16 @@
     return supportedFocusChapters.has(chapterId) ? chapterId : null;
   }
 
+  function chapterMeta(chapterId) {
+    return focusChapterOrder.find(({ id }) => id === chapterId) || null;
+  }
+
+  function adjacentChapter(chapterId, offset) {
+    const index = focusChapterOrder.findIndex(({ id }) => id === chapterId);
+    if (index < 0) return null;
+    return focusChapterOrder[index + offset] || null;
+  }
+
   function updateFocusHistory(chapterId, mode) {
     const hash = chapterId ? `#${chapterId}` : '';
     const state = supportedFocusChapters.has(chapterId)
@@ -348,25 +359,53 @@
       .forEach((section) => section.classList.remove('is-focused-chapter'));
   }
 
+  function createChapterSwitchButton(chapter, direction) {
+    const isPrevious = direction === 'previous';
+    const text = isPrevious ? `← ${chapter.label}` : `${chapter.label} →`;
+    const button = element('button', `chapter-focus-nav chapter-focus-${isPrevious ? 'prev' : 'next'}`, text);
+    button.type = 'button';
+    button.setAttribute('aria-label', `${isPrevious ? 'Previous' : 'Next'} chapter: ${chapter.name}`);
+    button.addEventListener('click', () => {
+      switchFocusChapter(chapter.id, null, { historyMode: 'replace' });
+    });
+    return button;
+  }
+
   function createFocusBar(chapterId, section) {
     removeFocusBar();
 
     const inner = section.querySelector('.section-inner');
-    if (!inner) return;
+    const currentChapter = chapterMeta(chapterId);
+    if (!inner || !currentChapter) return;
 
+    const previousChapter = adjacentChapter(chapterId, -1);
+    const nextChapter = adjacentChapter(chapterId, 1);
     const bar = element('div', 'chapter-focus-bar');
     bar.id = 'chapter-focus-bar';
 
-    const label = element('span', 'chapter-focus-label', focusChapterLabels.get(chapterId) || chapterId.toUpperCase());
-    const button = element('button', 'chapter-focus-return', '← OVERVIEW');
-    button.type = 'button';
-    button.setAttribute('aria-label', 'Return to portfolio overview');
-    button.addEventListener('click', () => {
+    const previousSlot = element('div', 'chapter-focus-slot chapter-focus-slot--prev');
+    if (previousChapter) {
+      previousSlot.appendChild(createChapterSwitchButton(previousChapter, 'previous'));
+    }
+
+    const current = element('span', 'chapter-focus-label chapter-focus-current', currentChapter.label);
+
+    const nextSlot = element('div', 'chapter-focus-slot chapter-focus-slot--next');
+    if (nextChapter) {
+      nextSlot.appendChild(createChapterSwitchButton(nextChapter, 'next'));
+    }
+
+    const overviewButton = element('button', 'chapter-focus-return', 'OVERVIEW');
+    overviewButton.type = 'button';
+    overviewButton.setAttribute('aria-label', 'Return to portfolio overview');
+    overviewButton.addEventListener('click', () => {
       exitFocusMode({ historyMode: 'replace', restoreFocus: true, scrollTargetId: 'overview' });
     });
 
-    bar.appendChild(label);
-    bar.appendChild(button);
+    bar.appendChild(previousSlot);
+    bar.appendChild(current);
+    bar.appendChild(nextSlot);
+    bar.appendChild(overviewButton);
     inner.prepend(bar);
   }
 
