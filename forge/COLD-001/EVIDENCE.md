@@ -28,6 +28,8 @@ Logical source family를 기준으로 해석하며, 같은 내용을 담은 PPT 
 | **INFRASTRUCTURE / CONTEXT** | monitoring을 가능하게 한 digital / network precondition. Cold Chain 자체의 성과로 사용하지 않는다. |
 | **INFRASTRUCTURE / SUPPORTING** | monitoring deployment와 infrastructure evolution의 chronology를 보강한다. 직접적인 Cold Chain outcome proof는 아니다. |
 | **SUPPORTING / DIRECT ADOPTION EVIDENCE** | monitoring 또는 analysis workflow의 adoption state를 source-stated 범위에서 직접 지지한다. |
+| **OPERATIONAL / DIRECT** | Source-system SENT state 또는 operational report가 실제 보고 생성·배포·workflow execution 상태를 직접 기록한다. |
+| **SYSTEM / CORROBORATING** | Build material, checklist, manual 등은 architecture / workflow를 지지하지만 특정 report의 actual send 자체는 증명하지 않는다. |
 | **HISTORICAL CLAIM** | 문서에 표현은 존재하지만 baseline, definition 또는 independent measurement protocol이 충분히 확립되지 않아 canonical metric으로 승격하지 않는다. |
 | **EXCLUDED** | 현재 artifact가 intended claim을 지지할 usable evidence를 제공하지 않는다. |
 
@@ -252,7 +254,39 @@ Current copy에서 usable cell content가 확인되지 않는 상태로 분류�
 - report count
 - operating history
 
-Stronger future evidence could include report logs, sent/draft email evidence, Apps Script payload 또는 populated output sheet. 이번 pass에서는 추가 evidence를 publish하지 않는다.
+This exclusion applies only to that blank Drive copy. It does **not** exclude separately evaluated source-system evidence. Subsequent Gmail SENT records directly establish operational report distribution and are handled as `OPERATIONAL / DIRECT` evidence.
+
+Stronger evidence is mapped in the operational ledger below rather than inferred from the blank copy.
+
+### 2026-06 → 2026-08 — Operational Intelligence & Automated Reporting
+
+**Class:** OPERATIONAL / DIRECT + SYSTEM / CORROBORATING
+
+[Operational intelligence evidence ledger](./OPERATIONAL_EVIDENCE.md)
+
+Sanitized operating evidence documents the progression from early report distribution through TEST, PILOT, broader distribution, and repeated SENT operation across multiple dates.
+
+Representative operational evidence further documents:
+
+- current CT condition + recent multi-day trend
+- maintenance / defrost / recovery history context
+- LLM-assisted contextual judgment
+- inspection / check recommendations
+- urgent / caution / data-issue prioritization
+- automated report generation and email distribution
+- human final field verification / action
+
+Canonical control sequence:
+
+```text
+Deterministic Metric Analysis
+→ Current Condition + Recent Trend + Maintenance History
+→ LLM-assisted Contextualization / Inspection Recommendation
+→ Automated Operational Report Distribution
+→ Human Field Verification / Action
+```
+
+**Boundary:** Gmail SENT state proves actual distribution, not report-open rate, recipient action-completion rate, AI diagnostic accuracy, maintenance success, or measured business impact.
 
 ### 2026-07-03 — Cold Container Temperature Analysis Program User Manual
 
@@ -321,6 +355,8 @@ Monitoring expansion
 ↓
 Operationalization
 ↓
+Operational Intelligence
+↓
 Multi-CT risk diagnosis
 ↓
 Engineering alternative evaluation
@@ -331,9 +367,9 @@ Infrastructure는 enabling context / precondition이다. COLD-001의 core case a
 ```text
 Measurement
 → Analysis
-→ Risk Visibility
-→ Engineering Judgment
-→ Investment Options
+→ Operational Intelligence
+→ Risk Diagnosis
+→ Engineering / Investment Decision
 ```
 
 ### Investment decision lineage
@@ -365,10 +401,25 @@ Measurement
 | Minimum-temperature trap observed | 2026-08 | PRIMARY / DIRECT | Promoted | 104 / 529; dataset-specific observation |
 | Engineering options expanded beyond equipment repair | 2025-07 → 2026-08 | PRIMARY / DIRECT | Promoted | Alternative evaluation, not construction delivery |
 | Integrated cold-storage facility was considered | 2025-07 → 2026-08 | PRIMARY / DIRECT | Promoted | Not approved, selected or built |
+| Operational report emails were actually sent | 2026-06 → 2026-08 | OPERATIONAL / DIRECT | **CONFIRMED** | SENT state proves distribution, not reading or action |
+| TEST distribution occurred | 2026-07-02 | OPERATIONAL / DIRECT | **CONFIRMED** | Controlled test only |
+| PILOT distribution occurred | 2026-07-02 | OPERATIONAL / DIRECT | **CONFIRMED** | Does not equal organization-wide rollout |
+| Broader multi-recipient distribution occurred | 2026-07-03 | OPERATIONAL / DIRECT | **CONFIRMED** | Recipient identities / counts withheld; no read/action inference |
+| Reporting operated repeatedly across multiple dates | 2026-07 → 2026-08-11 | OPERATIONAL / DIRECT | **CONFIRMED** | Exact frequency / total send count not established |
+| Current condition and recent multi-day trend were included | 2026-08-11 | OPERATIONAL / DIRECT | **CONFIRMED** | Representative operational report scope |
+| Maintenance-history context was included | 2026-08-11 | OPERATIONAL / DIRECT | **CONFIRMED** | Completeness / causal diagnostic value not established |
+| LLM-assisted contextual judgment was generated | 2026-08-11 | OPERATIONAL / DIRECT | **CONFIRMED** | Execution evidence, not diagnostic-accuracy validation |
+| Inspection recommendations were generated | 2026-08-11 | OPERATIONAL / DIRECT | **CONFIRMED** | Recommendation does not equal completed action |
+| Final field verification / action remained human | 2026-08-11 | Workflow boundary | **PROMOTED** | No autonomous maintenance / repair / engineering decision claim |
+| Report generation used Streamlit + Apps Script Webhook | 2026-08-11 | OPERATIONAL / DIRECT + SYSTEM / CORROBORATING | **CONFIRMED** | Source-stated implementation at that operating point |
+| Gmail evidence establishes report-open rate | 2026-06 → 2026-08 | OPERATIONAL / DIRECT | **NOT ESTABLISHED** | SENT state does not prove open/read behavior |
+| Gmail evidence establishes action-completion rate | 2026-06 → 2026-08 | OPERATIONAL / DIRECT | **NOT ESTABLISHED** | No action-completion measurement promoted |
+| AI diagnostic accuracy is validated | 2026-08-11 | OPERATIONAL / DIRECT | **NOT ESTABLISHED** | No validation protocol / measured accuracy promoted |
+| Quantified maintenance / business outcome is established | 2026-06 → 2026-08 | Operational evidence | **NOT ESTABLISHED** | No labor, time, downtime, prevention, financial, or ROI metric promoted |
 | Quantified productivity claims from 2025 are canonical | 2025-07 | HISTORICAL CLAIM | **NOT PROMOTED** | Definitions / baselines / protocols conflict or are insufficient |
 | Legacy `44 → 116` efficiency is comparable to 2026 retention | 2025-09 | HISTORICAL CLAIM | **NOT PROMOTED** | Legacy metric requires reconciliation; not directly comparable |
-| Current automatic-report blank copy proves reporting history | 2026-06 | EXCLUDED | **EXCLUDED** | Current copy has no usable operating record |
-| Repository-hosted sanitized visual evidence is promoted | Current | Public evidence status | **NOT YET PROMOTED** | Textual documentary lineage only |
+| Current automatic-report blank copy proves reporting history | 2026-06 | EXCLUDED | **EXCLUDED** | Current copy has no usable operating record; Gmail SENT evidence evaluated separately |
+| Repository-hosted sanitized visual evidence is promoted | Current | Public evidence status | **NOT YET PROMOTED** | Textual documentary + operational lineage only |
 
 ## Metric Lineage & Comparability
 
@@ -454,6 +505,8 @@ The current copy does not contain usable operating records sufficient to establi
 
 File existence alone is not treated as operational evidence.
 
+This exclusion applies only to the blank Drive copy. Gmail SENT evidence is independently evaluated in [`OPERATIONAL_EVIDENCE.md`](./OPERATIONAL_EVIDENCE.md) and directly supports actual report distribution without changing the status of this excluded artifact.
+
 ## Privacy & Sanitization Boundary
 
 This public ledger intentionally does **not** promote:
@@ -466,8 +519,13 @@ This public ledger intentionally does **not** promote:
 - vendor contact information
 - vendor-specific pricing or confidential quotations
 - individual employee names or email addresses
+- Gmail message IDs / thread IDs / URLs
+- sender / recipient identities or email addresses
+- exact recipient distribution lists
+- private label identifiers
 - raw inventory / product lists
 - exact internal inventory monetary exposure
+- credentials, API keys, webhook secrets, or spreadsheet IDs
 
 `withheld / not promoted` means the sensitive detail is intentionally excluded from public durable memory. It does not mean no private source exists.
 
@@ -477,6 +535,6 @@ Only sanitized source labels, dates, evidence classification, supported claims a
 
 **Public Sanitized Visual Evidence:** Not Yet Promoted
 
-No PDF, PPT, DOCX, source report, screenshot, chart, image derivative or other private source bytes are committed by this promotion pass.
+No PDF, PPT, DOCX, source report, email screenshot, Gmail UI image, chart, image derivative or other private source bytes are committed by this promotion pass.
 
 Possible future visual evidence candidates remain subject to a separate privacy / confidentiality / sanitization / claim-support review before any asset publication.
