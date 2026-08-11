@@ -1,22 +1,26 @@
 # COLD-001 — Cold Container Operational Risk & Storage Strategy
 
-**Status:** Canonical FORGE Case v0.2 — documentary evidence lineage promoted; public visual evidence not yet promoted
+**Status:** Canonical FORGE Case v0.3.0.1 — documentary lineage + operational intelligence evidence promoted; public visual evidence not yet promoted
 
 COLD-001은 냉동 컨테이너 온도 측정값을 자동 분석하는 데서 끝나지 않고, 여러 CT의 운영 안정성과 반복적인 성능저하를 비교해 보이지 않던 시설 운영 리스크를 engineering / investment decision 문제로 전환한 사례다.
+
+분석 workflow는 이후 실제 운영보고 단계로 확장되었다. Recent CT condition과 multi-day trend를 maintenance / defrost / recovery history와 결합하고, LLM-assisted contextual judgment / inspection recommendation을 생성해 관계자에게 반복 배포하는 human-in-the-loop operational intelligence workflow가 운영되었다.
 
 ```text
 Measurement
 → Analysis
-→ Risk Visibility
-→ Engineering Judgment
-→ Investment Options
+→ Operational Intelligence
+→ Risk Diagnosis
+→ Engineering / Investment Decision
 ```
 
 ## 1. Case at a Glance
 
 냉동 컨테이너의 온도 데이터는 존재했지만, 개별 측정값과 그래프만으로는 여러 CT의 운영 안정성, 작업조건 영향, 반복적인 성능저하와 시설 리스크를 일관되게 비교하기 어려웠다.
 
-초기에는 Google Sheets / CSV, Colab / Python, Streamlit을 이용해 온도 데이터를 자동 분석 가능한 구조로 전환했다. 이후 분석 범위를 개별 온도 확인에서 다수 CT의 안정성 비교와 운영 패턴 진단으로 확장하고, 최종적으로 다음 구조적 대안을 비교하는 decision-support problem으로 발전시켰다.
+초기에는 Google Sheets / CSV, Colab / Python, Streamlit을 이용해 온도 데이터를 자동 분석 가능한 구조로 전환했다. 이후 분석 범위를 개별 온도 확인에서 다수 CT의 안정성 비교와 운영 패턴 진단으로 확장하고, 최근 operating state와 maintenance-history context를 결합한 LLM-assisted inspection recommendation을 반복적인 operational report로 배포하는 단계까지 확장했다.
+
+그 위에서 최종적으로 다음 구조적 대안을 비교하는 decision-support problem으로 발전시켰다.
 
 - 현행 유지 / 반복수리
 - 취약 CT 선별 교체 + 작업환경 개선
@@ -26,9 +30,9 @@ Measurement
 
 ### External Source Boundary
 
-현재 canonical case는 2024-06 → 2026-08 기간의 dated private operational documents를 logical source family 단위로 검토해 구성한다. Source set에는 enabling infrastructure context, Cold Container temperature-management review, logger demonstration, analysis-system implementation material, monitoring expansion material, user manual, operational stability diagnosis가 포함된다.
+현재 canonical case는 2024-06 → 2026-08 기간의 dated private operational documents와 sanitized source-system SENT evidence를 logical source family 단위로 검토해 구성한다. Source set에는 enabling infrastructure context, Cold Container temperature-management review, logger demonstration, analysis-system implementation material, monitoring expansion material, user manual, operational reporting evidence, operational stability diagnosis가 포함된다.
 
-같은 내용을 담은 PPT / PDF derivative는 독립 evidence 여러 건으로 세지 않는다. Public repository에는 source date, sanitized title / family, evidence class, supported claim, boundary 수준만 남기며 Private Drive URL, file ID, internal sharing path, approval identifier, private infrastructure identifier, exact internal inventory value, vendor pricing 또는 personal identifiers는 기록하지 않는다.
+같은 내용을 담은 PPT / PDF derivative는 독립 evidence 여러 건으로 세지 않는다. Public repository에는 source date, sanitized title / family, evidence class, supported claim, boundary 수준만 남기며 Private Drive URL, file ID, internal sharing path, approval identifier, private infrastructure identifier, exact internal inventory value, vendor pricing, Gmail message/thread IDs, sender/recipient identity, email address 또는 credentials는 기록하지 않는다.
 
 ## Documentary Evidence Lineage
 
@@ -41,9 +45,10 @@ Repository promotion occurred after the field work. 아래 chronology의 날짜�
 
 - **2024** — enabling infrastructure reliability issues identified; Cold Container monitoring appears as a planned infrastructure use case
 - **2025** — operational weakness formalized; logger demonstration, analysis automation, monitoring / infrastructure expansion documented
-- **2026** — user-operable analysis workflow documented; multi-CT operational diagnosis strengthened engineering / investment framing
+- **2026** — user-operable analysis workflow, repeated operational reporting, multi-CT diagnosis, and engineering / investment framing documented
 
-[Detailed documentary evidence ledger](./EVIDENCE.md)
+[Detailed documentary evidence ledger](./EVIDENCE.md)  
+[Operational intelligence evidence ledger](./OPERATIONAL_EVIDENCE.md)
 
 ## 2. The Measurement Problem
 
@@ -84,6 +89,25 @@ Analysis visualization / report-style result
 이 단계의 목적은 반복적인 온도 데이터를 비교 가능한 형태로 처리하고 분석 결과를 확인할 수 있는 실행 가능한 analysis workflow를 만드는 것이었다.
 
 과거 자료에 포함된 특정 시간절감, 오류율, productivity, food-safety improvement 또는 ROI 관련 정량 표현은 이번 canonical truth로 promote하지 않는다.
+
+### Operational Intelligence extension
+
+이후 operating workflow는 structured analysis result를 실제 operational intelligence로 연결했다.
+
+```text
+Temperature / Logger Data
+→ Deterministic Metric Analysis
+→ Current CT Condition + Recent Trend + Maintenance History
+→ LLM-assisted Contextualization / Inspection Recommendation
+→ Automated Operational Report Distribution
+→ Human Field Verification / Action
+```
+
+AI는 measurement나 deterministic analysis를 대체하지 않는다. Rule / metric analysis가 먼저 존재하고, LLM은 current condition을 maintenance history와 함께 해석하고 inspection / check recommendation을 생성하는 데 사용된다.
+
+**Deterministic analysis → LLM-assisted contextualization → Human field action.**
+
+Autonomous maintenance, autonomous repair, autonomous engineering decision 또는 operator judgment replacement를 주장하지 않는다.
 
 ## 4. From Measurement to Risk Visibility
 
@@ -213,11 +237,17 @@ Operational Data
 - 투자 효과 검증 완료
 - ROI / payback 확정
 
+Operational reporting evidence 역시 실제 workflow operation을 지지하지만 labor saving, repair reduction, downtime reduction, failure prevention, energy saving 또는 financial outcome을 자체적으로 증명하지 않는다.
+
 ## 9. What This Case Proves
 
 ### DATA & ANALYSIS
 
 흩어진 temperature data를 비교 가능한 analysis structure로 전환했다.
+
+### OPERATIONAL INTELLIGENCE
+
+분석 결과를 화면에서 끝내지 않고, recent operating state와 maintenance / defrost / recovery history를 결합해 점검 우선순위와 LLM-assisted inspection recommendation으로 전환하고 실제 operational email로 반복 배포했다.
 
 ### OPERATIONAL RISK FRAMING
 
@@ -244,6 +274,10 @@ Operational Data
 - labor saving
 - product-loss reduction
 - validated quality improvement
+- AI diagnostic accuracy
+- maintenance success rate
+- issue-resolution rate
+- recipient action-completion rate
 
 정량 business outcome을 새로 만들거나 추정하지 않는다.
 
@@ -251,12 +285,13 @@ Operational Data
 
 **Public Sanitized Visual Evidence:** Not Yet Promoted
 
-현재 COLD-001에는 repository-hosted public sanitized visual evidence가 없다. Private operational source는 canonical truth boundary를 정리하는 근거로만 사용하며, 이번 pass에서는 image publication 또는 sanitization을 수행하지 않는다.
+현재 COLD-001에는 repository-hosted public sanitized visual evidence가 없다. Private operational source와 source-system operating evidence는 canonical truth boundary를 정리하는 근거로만 사용하며, 이번 pass에서는 image publication 또는 sanitization을 수행하지 않는다.
 
 향후 별도의 sanitization / publication review를 거친 후보는 다음과 같다.
 
-- sanitized temperature analysis visualization
-- sanitized CT comparison
+- sanitized failure-visibility / logger visualization
+- sanitized multi-container analysis visualization
+- sanitized operational-intelligence briefing
 - sanitized operational-risk chart
 - sanitized investment option matrix
 
