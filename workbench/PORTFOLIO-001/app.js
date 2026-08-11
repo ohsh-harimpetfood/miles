@@ -15,6 +15,10 @@
     { id: 'impact', label: '06 / IMPACT', name: 'IMPACT' },
     { id: 'method', label: '07 / METHOD', name: 'METHOD' }
   ];
+  const narrativeChapterOrder = [
+    { id: 'overview', label: '00 / OVERVIEW', name: 'OVERVIEW' },
+    ...focusChapterOrder
+  ];
   const focusChapterLabels = new Map(focusChapterOrder.map(({ id, label }) => [id, label]));
   const supportedFocusChapters = new Set(focusChapterOrder.map(({ id }) => id));
 
@@ -25,6 +29,9 @@
 
   let focusReturnLink = null;
   let temporaryFocusedHeading = null;
+  let narrativeContextNode = null;
+  let narrativeAwarenessTargets = [];
+  let scrollAwarenessObserver = null;
 
   function safeStoredValue(key) {
     try {
@@ -459,6 +466,7 @@
 
     const scrollTarget = document.getElementById(scrollTargetId) || document.getElementById('overview');
     scrollTarget?.scrollIntoView({ block: 'start', behavior: 'auto' });
+    window.requestAnimationFrame(refreshNarrativeContext);
 
     focusReturnLink = null;
 
@@ -531,6 +539,95 @@
     });
   }
 
+  function narrativeChapterMeta(chapterId) {
+    return narrativeChapterOrder.find(({ id }) => id === chapterId) || null;
+  }
+
+  function setNarrativeContext(chapterId) {
+    if (!narrativeContextNode || document.body.classList.contains('portfolio-focus-mode')) return;
+
+    const chapter = narrativeChapterMeta(chapterId);
+    if (!chapter) return;
+
+    if (narrativeContextNode.textContent !== chapter.label) {
+      narrativeContextNode.textContent = chapter.label;
+    }
+    root.dataset.activeChapter = chapter.id;
+  }
+
+  function refreshNarrativeContext() {
+    if (!narrativeContextNode || document.body.classList.contains('portfolio-focus-mode')) return;
+    if (narrativeAwarenessTargets.length === 0) return;
+
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const readingZoneTop = viewportHeight * 0.28;
+    const readingZoneBottom = viewportHeight * 0.38;
+    const readingZoneCenter = (readingZoneTop + readingZoneBottom) / 2;
+
+    const active = narrativeAwarenessTargets
+      .map((section, order) => {
+        const rect = section.getBoundingClientRect();
+        const overlap = Math.max(
+          0,
+          Math.min(rect.bottom, readingZoneBottom) - Math.max(rect.top, readingZoneTop)
+        );
+        const distance = overlap > 0
+          ? 0
+          : Math.min(
+            Math.abs(rect.top - readingZoneCenter),
+            Math.abs(rect.bottom - readingZoneCenter)
+          );
+
+        return { id: section.id, overlap, distance, order };
+      })
+      .sort((a, b) => {
+        if (b.overlap !== a.overlap) return b.overlap - a.overlap;
+        if (a.distance !== b.distance) return a.distance - b.distance;
+        return a.order - b.order;
+      })[0];
+
+    if (active) setNarrativeContext(active.id);
+  }
+
+  function initScrollAwareness() {
+    if (document.body.dataset.scrollAwarenessReady === 'true') return;
+
+    const headerInner = document.querySelector('.site-header .header-inner');
+    if (!headerInner) return;
+
+    narrativeContextNode = document.getElementById('narrative-context');
+    if (!narrativeContextNode) {
+      narrativeContextNode = element('span', 'narrative-context', '00 / OVERVIEW');
+      narrativeContextNode.id = 'narrative-context';
+      const controls = headerInner.querySelector('.header-controls');
+      headerInner.insertBefore(narrativeContextNode, controls || null);
+    }
+
+    narrativeAwarenessTargets = narrativeChapterOrder
+      .map(({ id }) => document.getElementById(id))
+      .filter(Boolean);
+
+    document.body.dataset.scrollAwarenessReady = 'true';
+    setNarrativeContext('overview');
+
+    if (!('IntersectionObserver' in window) || narrativeAwarenessTargets.length === 0) return;
+
+    scrollAwarenessObserver = new IntersectionObserver(() => {
+      if (document.body.classList.contains('portfolio-focus-mode')) return;
+      refreshNarrativeContext();
+    }, {
+      root: null,
+      rootMargin: '-28% 0px -62% 0px',
+      threshold: 0
+    });
+
+    narrativeAwarenessTargets.forEach((section) => {
+      scrollAwarenessObserver.observe(section);
+    });
+
+    window.requestAnimationFrame(refreshNarrativeContext);
+  }
+
   const storedTheme = safeStoredValue(THEME_KEY);
   const storedLens = safeStoredValue(LENS_KEY);
 
@@ -542,6 +639,7 @@
   addPortfolioNarrativeArc();
   addRealProblemSeeds();
   initFocusMode();
+  initScrollAwareness();
 
   themeSelect?.addEventListener('change', (event) => {
     applyTheme(event.target.value);
