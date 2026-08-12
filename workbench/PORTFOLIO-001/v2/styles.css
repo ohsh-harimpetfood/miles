@@ -1735,3 +1735,72 @@ html.is-theme-morphing .site-atmosphere { opacity:.45; }
   .wms-evidence-actions { align-items: stretch; }
   .wms-evidence-actions .cta { width: 100%; }
 }
+
+/* WMS Reading Density Rebalance v0.4.3 — L1/L2 vertical spacing only */
+.page-wms-case .wms-case-hero {
+  padding: clamp(58px, 6vw, 88px) 0 clamp(64px, 7vw, 96px);
+}
+.page-wms-case .wms-story-section {
+  padding: clamp(54px, 6vw, 82px) 0;
+}
+.page-wms-case .wms-prose { margin-top: 24px; }
+.page-wms-case .wms-field-signals,
+.page-wms-case .wms-trigger-field,
+.page-wms-case .wms-control-field { margin-top: 22px; }
+.page-wms-case .wms-signal-statement { margin-top: 22px; }
+.page-wms-case .wms-hypothesis-grid,
+.page-wms-case .wms-architecture-flow,
+.page-wms-case .wms-operating-flow,
+.page-wms-case .wms-physical-flow {
+  margin-top: 24px;
+  padding: 14px 0;
+}
+.page-wms-case .wms-initial-model {
+  margin-top: 20px;
+  padding: 18px;
+}
+.page-wms-case .wms-viewpoint-module {
+  margin-top: 32px;
+  padding: clamp(24px, 3vw, 36px);
+}
+.page-wms-case .wms-case-band {
+  padding: clamp(52px, 6vw, 78px) 0;
+}
+.page-wms-case .wms-band-signal { margin-top: 20px; }
+.page-wms-case .wms-next-depth {
+  padding: clamp(64px, 7vw, 92px) 0 18px;
+}
+.page-wms-case .wms-next-grid { margin-top: 32px; }
+.page-wms-case .wms-next-card { min-height: 205px; }
+.page-wms-case .wms-next-card strong { margin-top: 38px; }
+
+.page-wms-showcase .wms-showcase-hero {
+  padding: clamp(54px, 6vw, 82px) 0 clamp(42px, 5vw, 62px);
+}
+.page-wms-showcase .wms-classification-key {
+  padding: 18px;
+  gap: 10px;
+}
+.page-wms-showcase .wms-showcase-stage {
+  padding: clamp(50px, 5.5vw, 76px) 0;
+}
+.page-wms-showcase .wms-showcase-copy > p:not(.wms-showcase-kicker) {
+  margin-top: 14px;
+}
+.page-wms-showcase .wms-showcase-microflow {
+  margin-top: 18px;
+  padding: 10px 0;
+}
+.page-wms-showcase .wms-showcase-next {
+  padding: clamp(46px, 5vw, 66px) 0;
+}
+
+@media (max-width: 720px) {
+  .page-wms-case .wms-case-hero { padding-top: 48px; padding-bottom: 60px; }
+  .page-wms-case .wms-story-section { padding: 52px 0; }
+  .page-wms-case .wms-case-band { padding: 52px 0; }
+  .page-wms-case .wms-next-depth { padding: 58px 0 18px; }
+  .page-wms-showcase .wms-showcase-hero { padding-top: 44px; padding-bottom: 38px; }
+  .page-wms-showcase .wms-showcase-stage { padding: 50px 0; }
+  .page-wms-showcase .wms-showcase-next { padding: 46px 0; }
+}
