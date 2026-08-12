@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko" data-theme="acid">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="WMS-001 L2 Showcase — public-safe operational visuals connecting physical warehouse state to a digital operating model.">
+  <title>OH SEUNGHOON — WMS Showcase</title>
+  <link rel="stylesheet" href="../../../styles.css">
+</head>
+<body class="page depth-shell depth-l2 page-wms-showcase">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="site-atmosphere" aria-hidden="true"></div>
+
+  <nav class="depth-nav wms-showcase-depth-nav" aria-label="WMS showcase depth navigation">
+    <div class="depth-crumbs">
+      <a href="../../../">PORTFOLIO</a><i>/</i>
+      <a href="../../">WORK</a><i>/</i>
+      <a href="../">WMS-001</a><i>/</i>
+      <strong>L2 SHOWCASE</strong>
+    </div>
+    <div class="depth-actions">
+      <span class="depth-chip">PROMOTED L2</span>
+      <button type="button" class="theme-button" data-theme-set="acid" aria-pressed="true">ACID</button>
+      <button type="button" class="theme-button" data-theme-set="gold" aria-pressed="false">GOLD</button>
+    </div>
+  </nav>
+
+  <main id="main" class="wms-showcase-main">
+    <header class="wms-showcase-hero reveal" aria-labelledby="showcase-title">
+      <div class="wms-showcase-hero-copy">
+        <p class="eyebrow">WMS-001 / L2 SHOWCASE</p>
+        <h1 id="showcase-title"><span>THE SYSTEM</span><span class="wms-showcase-title-signal">IN OPERATION.</span></h1>
+        <p class="wms-showcase-flowline">PHYSICAL WAREHOUSE → DIGITAL OPERATING MODEL</p>
+        <p class="wms-showcase-lead">실제 운영 화면을 따라가며<br>물리 창고가 어떻게 위치·수불·권한·검증 구조로 연결됐는지 보여줍니다.</p>
+      </div>
+
+      <aside class="wms-classification-key" aria-label="Visual classification key">
+        <div><span class="wms-class-badge is-evidence">SANITIZED EVIDENCE</span><p>실제 운영 화면을 public-safe하게 처리한 자료입니다.</p></div>
+        <div><span class="wms-class-badge is-derivative">PUBLIC VISUAL DERIVATIVE</span><p>engineering concept 설명용 public representation입니다.</p></div>
+      </aside>
+    </header>
+
+    <nav class="wms-showcase-rail" aria-label="Showcase chapters">
+      <a href="#map"><span>01</span>MAP</a>
+      <a href="#physical-interface"><span>02</span>PHYSICAL INTERFACE</a>
+      <a href="#transactions"><span>03</span>TRANSACTIONS</a>
+      <a href="#control"><span>04</span>CONTROL</a>
+      <a href="#storage-topology"><span>05</span>STORAGE TOPOLOGY</a>
+      <a href="#verify"><span>06</span>VERIFY</a>
+    </nav>
+
+    <section class="wms-showcase-stage stage-map reveal" id="map" aria-labelledby="map-title">
+      <div class="wms-showcase-copy">
+        <p class="wms-showcase-kicker">01 / PHYSICAL → DIGITAL</p>
+        <h2 id="map-title">THE WAREHOUSE<br>BECAME A MAP.</h2>
+        <p>창고의 물리 랙과 저장 구조를 관리 가능한 digital location model로 표현했습니다.</p>
+        <p>위치와 점유 상태를 작업자가 한 화면에서 읽을 수 있는 구조로 연결했습니다.</p>
+        <div class="wms-supports" aria-label="Warehouse map directly supports">
+          <span>SUPPORTS</span>
+          <strong>PHYSICAL-DIGITAL MAPPING</strong>
+          <strong>RACK OCCUPANCY</strong>
+          <strong>WAREHOUSE TOPOLOGY</strong>
+        </div>
+      </div>
+      <figure class="wms-showcase-figure is-primary-evidence">
+        <figcaption><span class="wms-class-badge is-evidence">SANITIZED EVIDENCE</span><span>WAREHOUSE MAP</span></figcaption>
+        <img src="../../../../../../forge/WMS-001/assets/01-warehouse-map.png" alt="Sanitized operational WMS warehouse map showing rack topology and occupancy visualization" loading="eager" decoding="async">
+        <a class="wms-asset-link" href="../../../../../../forge/WMS-001/assets/01-warehouse-map.png" target="_blank" rel="noopener noreferrer">VIEW ORIGINAL-SIZE ASSET ↗</a>
+      </figure>
+    </section>
+
+    <section class="wms-showcase-stage" id="physical-interface" aria-labelledby="physical-interface-title">
+      <div class="wms-showcase-copy">
+        <p class="wms-showcase-kicker">02 / LOCATION IDENTITY</p>
+        <h2 id="physical-interface-title">DIGITAL LOCATION<br>HAD TO EXIST PHYSICALLY.</h2>
+        <p>관리된 location identity를 QR와 rack card를 통해 실제 창고 위치에 다시 연결했습니다.</p>
+        <div class="wms-showcase-microflow" aria-label="Physical interface flow"><span>LOCATION IDENTITY</span><i>→</i><span>QR / RACK CARD</span><i>→</i><span>OPERATOR VIEW</span></div>
+      </div>
+      <div class="wms-showcase-duo">
+        <figure class="wms-showcase-figure is-evidence-figure">
+          <figcaption><span class="wms-class-badge is-evidence">SANITIZED EVIDENCE</span><span>RACK CARD BULK PRINT</span></figcaption>
+          <img src="../../../../../../forge/WMS-001/assets/02-rack-card-bulk-print.png" alt="Sanitized WMS rack-card bulk print interface showing QR-based physical location output" loading="lazy" decoding="async">
+          <p class="wms-figure-note">Managed location identity → physical rack-card · QR-based physical-digital interface.</p>
+        </figure>
+        <figure class="wms-showcase-figure is-derivative-figure">
+          <figcaption><span class="wms-class-badge is-derivative">PUBLIC VISUAL DERIVATIVE</span><span>SIDE 2 MIRRORING</span></figcaption>
+          <img src="../../../../../../forge/WMS-001/assets/05-side2-mirroring-derivative.png" alt="Public visual derivative explaining the Side 2 operator-view mirroring decision" loading="lazy" decoding="async">
+          <p class="wms-figure-note">데이터베이스 좌표가 아니라 작업자가 실제 랙을 바라보는 방향을 기준으로 화면 표현을 조정한 engineering concept입니다. Raw operational evidence가 아닙니다.</p>
+        </figure>
+      </div>
+    </section>
+
+    <section class="wms-showcase-stage" id="transactions" aria-labelledby="transactions-title">
+      <div class="wms-showcase-copy">
+        <p class="wms-showcase-kicker">03 / OPERATION</p>
+        <h2 id="transactions-title">MOVEMENT<br>BECAME RECORD.</h2>
+        <p>입고·이동·출고와 같은 현장 변화가 시스템 transaction으로 축적되고 운영 이력으로 남는 구조입니다.</p>
+        <div class="wms-supports" aria-label="Transaction history directly supports">
+          <span>SUPPORTS</span>
+          <strong>OPERATIONAL TRANSACTION HISTORY</strong>
+          <strong>SYSTEM RECORD</strong>
+          <strong>TRACEABILITY SURFACE</strong>
+        </div>
+      </div>
+      <figure class="wms-showcase-figure is-primary-evidence">
+        <figcaption><span class="wms-class-badge is-evidence">SANITIZED EVIDENCE</span><span>TRANSACTION HISTORY</span></figcaption>
+        <img src="../../../../../../forge/WMS-001/assets/03-transaction-history.png" alt="Sanitized WMS transaction history showing operational records in the deployed system" loading="lazy" decoding="async">
+      </figure>
+    </section>
+
+    <section class="wms-showcase-stage" id="control" aria-labelledby="control-title">
+      <div class="wms-showcase-copy">
+        <p class="wms-showcase-kicker">04 / CONTROL</p>
+        <h2 id="control-title">AN OPERATING SYSTEM<br>NEEDS CONTROL.</h2>
+        <p>복수 사용자가 같은 시스템을 사용하되, 역할에 따라 접근 가능한 기능을 구분하는 role / feature permission 구조를 적용했습니다.</p>
+        <div class="wms-supports" aria-label="Role and permission view directly supports">
+          <span>SUPPORTS</span>
+          <strong>MULTI-USER ROLE STRUCTURE</strong>
+          <strong>FEATURE-LEVEL PERMISSION</strong>
+          <strong>OPERATIONAL GOVERNANCE</strong>
+        </div>
+      </div>
+      <figure class="wms-showcase-figure is-primary-evidence">
+        <figcaption><span class="wms-class-badge is-evidence">SANITIZED EVIDENCE</span><span>ROLE / PERMISSION</span></figcaption>
+        <img src="../../../../../../forge/WMS-001/assets/04-role-permission.png" alt="Sanitized WMS role and feature permission interface showing multi-user operational controls" loading="lazy" decoding="async">
+      </figure>
+    </section>
+
+    <section class="wms-showcase-stage" id="storage-topology" aria-labelledby="storage-topology-title">
+      <div class="wms-showcase-copy">
+        <p class="wms-showcase-kicker">05 / TOPOLOGY</p>
+        <h2 id="storage-topology-title">NOT EVERY STORAGE SPACE<br>LOOKS LIKE A RACK.</h2>
+        <p>WMS의 공간 모델은 일반 랙 하나만을 전제로 하지 않습니다.</p>
+        <p>서로 다른 저장 구조를 각 물리적 특성에 맞게 digital topology로 표현할 수 있도록 확장됐습니다.</p>
+      </div>
+      <div class="wms-showcase-duo is-storage-duo">
+        <figure class="wms-showcase-figure is-evidence-figure">
+          <figcaption><span class="wms-class-badge is-evidence">SANITIZED EVIDENCE</span><span>COLD STORAGE OVERVIEW</span></figcaption>
+          <img src="../../../../../../forge/WMS-001/assets/06-cold-storage-overview.png" alt="Sanitized WMS cold-storage overview showing heterogeneous container-based storage topology and utilization visualization" loading="lazy" decoding="async">
+          <p class="wms-figure-note">Heterogeneous storage topology · container-based storage representation · utilization visualization.</p>
+        </figure>
+        <figure class="wms-showcase-figure is-derivative-figure">
+          <figcaption><span class="wms-class-badge is-derivative">PUBLIC VISUAL DERIVATIVE</span><span>COLD STORAGE DETAIL</span></figcaption>
+          <img src="../../../../../../forge/WMS-001/assets/07-cold-storage-detail-derivative.png" alt="Public visual derivative explaining a container internal loading model" loading="lazy" decoding="async">
+          <p class="wms-figure-note">Container internal loading model 설명용 representation입니다. Actual stock state, exact operational quantity, or live utilization을 증명하지 않습니다.</p>
+        </figure>
+      </div>
+    </section>
+
+    <section class="wms-showcase-stage" id="verify" aria-labelledby="verify-title">
+      <div class="wms-showcase-copy">
+        <p class="wms-showcase-kicker">06 / CLOSED LOOP</p>
+        <h2 id="verify-title">DIGITAL INVENTORY<br>RETURNS TO THE FLOOR.</h2>
+        <p>디지털 재고는 화면 안에서 끝나지 않습니다.</p>
+        <p>실사 출력과 현장 확인, 필요한 조정·정합성 확인을 통해 다시 물리 창고와 연결됩니다.</p>
+        <div class="wms-showcase-microflow is-verify-flow" aria-label="Stocktake verification flow"><span>DIGITAL INVENTORY</span><i>→</i><span>STOCKTAKE SHEET</span><i>→</i><span>PHYSICAL VERIFICATION</span><i>→</i><span>ADJUSTMENT / RECONCILIATION</span></div>
+        <div class="wms-supports" aria-label="Stocktake print directly supports">
+          <span>SUPPORTS</span>
+          <strong>STOCKTAKE / RECONCILIATION</strong>
+          <strong>PRINTABLE PHYSICAL VERIFICATION</strong>
+          <strong>SYSTEM ↔ PHYSICAL CHECK</strong>
+        </div>
+      </div>
+      <figure class="wms-showcase-figure is-primary-evidence">
+        <figcaption><span class="wms-class-badge is-evidence">SANITIZED EVIDENCE</span><span>STOCKTAKE PRINT</span></figcaption>
+        <img src="../../../../../../forge/WMS-001/assets/08-stocktake-print.png" alt="Sanitized WMS stocktake print workflow supporting physical verification and reconciliation" loading="lazy" decoding="async">
+      </figure>
+    </section>
+
+    <section class="wms-showcase-synthesis reveal" aria-labelledby="synthesis-title">
+      <div>
+        <p class="eyebrow">SYNTHESIS</p>
+        <h2 id="synthesis-title">ONE WAREHOUSE.<br>ONE OPERATING MODEL.</h2>
+        <p>WMS-001의 핵심은 기능 수가 아니라, 물리 창고의 상태를 하나의 운영 모델 안에서 계속 연결하고 기록할 수 있게 만든 것입니다.</p>
+      </div>
+      <div class="wms-synthesis-flow" aria-label="WMS showcase synthesis flow">
+        <span>LOCATION</span><i>→</i><span>PHYSICAL INTERFACE</span><i>→</i><span>TRANSACTION</span><i>→</i><span>PERMISSION</span><i>→</i><span>STORAGE MODEL</span><i>→</i><span>PHYSICAL VERIFICATION</span>
+      </div>
+    </section>
+
+    <section class="wms-showcase-boundary reveal" aria-labelledby="showcase-boundary-title">
+      <div>
+        <p class="eyebrow">L2 CLAIM BOUNDARY</p>
+        <h2 id="showcase-boundary-title">IMPLEMENTED CAPABILITY.<br>NOT QUANTIFIED IMPACT.</h2>
+      </div>
+      <div>
+        <div class="wms-boundary-state" aria-label="Confirmed WMS state and measured impact boundary">
+          <span>BUILT · CONFIRMED</span>
+          <span>DEPLOYED · CONFIRMED</span>
+          <span>OPERATIONAL USE · CONFIRMED</span>
+          <span>MULTI-USER · CONFIRMED</span>
+          <span>PHYSICAL-DIGITAL MAPPING · CONFIRMED</span>
+          <strong>MEASURED BUSINESS IMPACT · NOT YET ESTABLISHED</strong>
+        </div>
+        <p>These visuals show implemented operational capability. They do not establish quantified ROI, time saving, labor reduction, or inventory-accuracy improvement.</p>
+      </div>
+    </section>
+
+    <section class="wms-showcase-next reveal" aria-labelledby="showcase-next-title">
+      <div>
+        <p class="eyebrow">NEXT DEPTH</p>
+        <h2 id="showcase-next-title">SHOWCASE PROMOTED.<br>DOSSIER NOT YET.</h2>
+        <p class="wms-boundary-note">L3 WMS-SPECIFIC DOSSIER NOT YET PROMOTED</p>
+      </div>
+      <div class="wms-showcase-actions">
+        <a class="cta cta-primary" href="../">BACK TO CASE STORY</a>
+        <a class="cta cta-secondary" href="../../shell/evidence/?case=wms">PREVIEW EVIDENCE DOSSIER</a>
+        <a class="cta cta-secondary" href="../../">BACK TO WORK INDEX</a>
+        <a class="cta cta-secondary" href="../../../">PORTFOLIO</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>WMS-001 / L2 SHOWCASE / PROMOTED</span>
+    <span>6 SANITIZED EVIDENCE · 2 PUBLIC VISUAL DERIVATIVES · MEASURED IMPACT NOT YET ESTABLISHED</span>
+  </footer>
+
+  <script src="../../../app.js" defer></script>
+</body>
+</html>
