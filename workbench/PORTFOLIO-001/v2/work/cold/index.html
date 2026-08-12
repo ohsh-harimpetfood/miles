@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko" data-theme="acid">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="COLD-001 case story — from temperature visibility to operational intelligence, facility-risk diagnosis, and engineering decision support.">
+  <title>OH SEUNGHOON — COLD Case Story</title>
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="page depth-shell depth-l1 page-cold-case">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="site-atmosphere" aria-hidden="true"></div>
+
+  <nav class="depth-nav cold-depth-nav" aria-label="COLD case depth navigation">
+    <div class="depth-crumbs">
+      <a href="../../">PORTFOLIO</a><i>/</i>
+      <a href="../">WORK</a><i>/</i>
+      <strong>COLD-001</strong><i>/</i>
+      <strong>L1 CASE STORY</strong>
+    </div>
+    <div class="depth-actions">
+      <span class="depth-chip">PROMOTED L1</span>
+      <button type="button" class="theme-button" data-theme-set="acid" aria-pressed="true">ACID</button>
+      <button type="button" class="theme-button" data-theme-set="gold" aria-pressed="false">GOLD</button>
+    </div>
+  </nav>
+
+  <main id="main" class="cold-case-main">
+    <section class="cold-case-hero" aria-labelledby="cold-title">
+      <div class="cold-hero-copy reveal">
+        <p class="eyebrow">COLD-001 / DATA &amp; DECISION</p>
+        <h1 id="cold-title"><span>THE TEMPERATURE</span><span>WAS RECORDED.</span><span class="cold-title-signal">THE RISK WAS NOT VISIBLE.</span></h1>
+        <p class="cold-hero-lead">온도 데이터를 수집하는 것에서 시작해, 여러 냉동 컨테이너의 운영 안정성을 비교하고, 정비 이력과 운영 상태를 연결해 시설 리스크와 개선 대안을 판단할 수 있는 구조로 확장했습니다.</p>
+
+        <div class="cold-state-strip" aria-label="Supported COLD workflow state">
+          <span>ANALYSIS WORKFLOW</span>
+          <span>OPERATIONAL REPORTING</span>
+          <span>MULTI-CT DIAGNOSIS</span>
+          <span>DECISION SUPPORT</span>
+        </div>
+
+        <p class="cold-arc-line">DETECT <i>→</i> ANALYZE <i>→</i> OPERATE <i>→</i> DIAGNOSE <i>→</i> DECIDE</p>
+      </div>
+
+      <div class="cold-hero-visual reveal" aria-label="Explanatory thermal diagnostic visual, not evidence">
+        <p class="prototype-label">EXPLANATORY VISUAL / NOT EVIDENCE</p>
+        <div class="cold-sensor-grid" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="cold-trace trace-a" aria-hidden="true"></div>
+        <div class="cold-trace trace-b" aria-hidden="true"></div>
+        <div class="cold-trace trace-c" aria-hidden="true"></div>
+        <div class="cold-diagnostic-node node-detect"><small>DETECT</small><strong>MEASUREMENT</strong></div>
+        <div class="cold-diagnostic-node node-analyze"><small>ANALYZE</small><strong>STABILITY</strong></div>
+        <div class="cold-diagnostic-node node-decide"><small>DECIDE</small><strong>RISK / OPTIONS</strong></div>
+        <p class="cold-visual-caption">THERMAL DIAGNOSTIC / SENSOR INTELLIGENCE / FACILITY RISK</p>
+      </div>
+    </section>
+
+    <section class="cold-story-section reveal" aria-labelledby="visibility-title">
+      <div class="cold-section-index">
+        <span>01</span>
+        <p>VISIBILITY → ANALYSIS</p>
+      </div>
+      <div class="cold-story-body">
+        <h2 id="visibility-title">MEASUREMENT WAS NOT<br>THE SAME AS VISIBILITY.</h2>
+        <div class="cold-prose">
+          <p>문제는 데이터가 없다는 것이 아니라, 개별 측정값과 특정 시점의 minimum temperature만으로 여러 CT의 운영 안정성을 일관되게 비교하기 어려웠다는 점이었습니다.</p>
+          <p>그래서 관찰 단위를 단일 온도점에서 retention / stability, cross-CT comparison, operating pattern으로 확장했습니다.</p>
+        </div>
+
+        <div class="cold-flow" aria-label="Initial COLD analysis workflow">
+          <span>GOOGLE SHEETS / CSV</span><i>→</i><span>PYTHON / COLAB</span><i>→</i><span>METRIC / VISUALIZATION</span><i>→</i><span>STREAMLIT</span>
+        </div>
+        <div class="cold-observation-ladder" aria-label="Expansion of analytical observation unit">
+          <span>TEMPERATURE POINT</span><i>→</i><span>RETENTION / STABILITY</span><i>→</i><span>CROSS-CT COMPARISON</span><i>→</i><strong>OPERATIONAL PATTERN</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="cold-story-section reveal" aria-labelledby="operate-title">
+      <div class="cold-section-index">
+        <span>02</span>
+        <p>ANALYSIS → OPERATIONAL INTELLIGENCE</p>
+      </div>
+      <div class="cold-story-body">
+        <h2 id="operate-title">ANALYSIS HAD TO<br>LEAD TO ACTION.</h2>
+        <p class="cold-signal-statement">DETERMINISTIC FIRST. CONTEXTUALIZATION SECOND. HUMAN ACTION LAST.</p>
+
+        <div class="cold-intelligence-flow" aria-label="Canonical COLD operational intelligence flow">
+          <span>TEMPERATURE / LOGGER DATA</span><i>→</i>
+          <span>DETERMINISTIC METRIC ANALYSIS</span><i>→</i>
+          <span>CURRENT CONDITION + RECENT TREND + MAINTENANCE HISTORY</span><i>→</i>
+          <span>LLM-ASSISTED CONTEXTUALIZATION / RECOMMENDATION</span><i>→</i>
+          <span>AUTOMATED OPERATIONAL REPORT</span><i>→</i>
+          <strong>HUMAN FIELD VERIFICATION / ACTION</strong>
+        </div>
+
+        <div class="cold-operating-context">
+          <div class="cold-prose">
+            <p>Rule / metric analysis가 measurement와 stability 판단을 먼저 수행하고, LLM은 current condition을 maintenance / defrost / recovery history와 함께 해석해 inspection / check recommendation을 만드는 데 사용됐습니다.</p>
+            <p>이 구조는 반복적인 operational report generation / distribution으로 실제 운영 단계까지 확장됐습니다.</p>
+          </div>
+          <div class="cold-human-ai-boundary" aria-label="Human and AI boundary">
+            <p class="cold-micro-label">HUMAN-IN-THE-LOOP BOUNDARY</p>
+            <div><span>DETERMINISTIC ANALYSIS</span><i>→</i><span>HISTORY CONTEXT</span><i>→</i><span>LLM CONTEXTUALIZATION</span><i>→</i><strong>HUMAN ACTION</strong></div>
+            <small>NO autonomous diagnosis · NO autonomous maintenance / repair · NO AI accuracy claim · NO human judgment replacement</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cold-story-section reveal" aria-labelledby="decision-title">
+      <div class="cold-section-index">
+        <span>03</span>
+        <p>RISK → DECISION</p>
+      </div>
+      <div class="cold-story-body">
+        <h2 id="decision-title">THE QUESTION<br>CHANGED.</h2>
+        <div class="cold-prose">
+          <p>분석은 bad-CT ranking에서 끝나지 않고, 여러 CT에서 반복되는 불안정성을 operating / environmental risk로 보고 engineering alternative evaluation으로 확장됐습니다.</p>
+        </div>
+
+        <div class="cold-risk-flow" aria-label="Operational risk to engineering decision flow">
+          <span>OPERATIONAL DATA</span><i>→</i><span>FACILITY RISK DIAGNOSIS</span><i>→</i><strong>ENGINEERING ALTERNATIVE EVALUATION</strong>
+        </div>
+
+        <div class="cold-observation-module" aria-labelledby="observations-title">
+          <header>
+            <p class="cold-micro-label">DATASET-SPECIFIC ANALYTICAL OBSERVATIONS</p>
+            <h3 id="observations-title">MULTI-CT RISK BECAME COMPARABLE.</h3>
+          </header>
+          <dl class="cold-observation-grid">
+            <div><dt>ANALYSIS PERIOD</dt><dd>41 DAYS</dd></div>
+            <div><dt>DAILY AGGREGATE RECORDS</dt><dd>529</dd></div>
+            <div><dt>OPERATING CT</dt><dd>12</dd></div>
+            <div><dt>COMPLETE CONTAINER-DAYS</dt><dd>465</dd></div>
+            <div><dt>WEEKDAY RETENTION DIFFERENCE</dt><dd>11.1 PERCENTAGE POINTS LOWER THAN WEEKEND</dd></div>
+            <div><dt>SIMULTANEOUS DEGRADATION</dt><dd>20 / 41 DAYS · 5 OR MORE OPERATING CT BELOW RETENTION 80%</dd></div>
+            <div><dt>MINIMUM-TEMPERATURE TRAP</dt><dd>104 / 529 RECORDS · MINIMUM ≤ -18℃ WHILE RETENTION &lt;80%</dd></div>
+          </dl>
+          <p class="cold-criteria-note"><strong>ANALYTICAL CRITERIA ONLY.</strong> `-15℃`, `80%`, and `90% retention` are criteria for this analysis, not statutory, legal, product-acceptance, or universal food-safety standards. These observations are dataset-specific and do not establish causality by themselves.</p>
+        </div>
+
+        <div class="cold-decision-module" aria-labelledby="options-title">
+          <header>
+            <p class="cold-micro-label">ENGINEERING / INVESTMENT ALTERNATIVES</p>
+            <h3 id="options-title">FROM REPAIR QUESTION<br>TO STRUCTURAL OPTIONS.</h3>
+          </header>
+          <div class="cold-option-grid">
+            <article><span>A</span><strong>MAINTAIN + REPEATED REPAIR</strong><p>현재 분산형 CT 운영구조를 유지하면서 필요한 수리를 반복하는 대안.</p></article>
+            <article><span>B</span><strong>SELECTED CT REPLACEMENT + OPERATING-ENVIRONMENT IMPROVEMENT</strong><p>취약 CT를 선별 교체하고 작업환경 / 개방구조 개선을 함께 검토하는 대안.</p></article>
+            <article><span>C</span><strong>INTEGRATED COLD-STORAGE FACILITY</strong><p>분산형 CT 구조를 통합형 냉동창고로 전환하는 구조적 대안.</p></article>
+          </div>
+          <p class="cold-investment-boundary">SUPPORTED: alternative evaluation / feasibility-review basis. NOT ESTABLISHED: selected option · approved investment / CAPEX · construction completed · ROI · payback.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cold-proof-band reveal" aria-label="COLD supported scope and claim boundary">
+      <div>
+        <p class="eyebrow">WHAT THIS CASE SUPPORTS</p>
+        <h2>VISIBILITY → OPERATION → DECISION.</h2>
+        <ul>
+          <li>temperature data → comparable analysis structure</li>
+          <li>multi-container analytical visibility</li>
+          <li>repeated operational intelligence / reporting workflow</li>
+          <li>maintenance-history-aware contextualization</li>
+          <li>multi-CT operational risk diagnosis</li>
+          <li>engineering / investment alternative framing</li>
+        </ul>
+      </div>
+      <div class="cold-boundary-panel">
+        <p class="eyebrow">NOT YET ESTABLISHED</p>
+        <h2>ANALYSIS ≠ BUSINESS IMPACT.</h2>
+        <p>ROI · payback · labor saving · energy saving · downtime reduction · product-loss reduction · validated quality improvement · AI diagnostic accuracy · completed cold-storage construction</p>
+        <p class="cold-boundary-principle">VISUAL INTENSITY MAY INCREASE. CLAIM STRENGTH MAY NOT.</p>
+      </div>
+    </section>
+
+    <section class="cold-next-depth reveal" aria-labelledby="cold-next-title">
+      <div>
+        <p class="eyebrow">NEXT DEPTH</p>
+        <h2 id="cold-next-title">CASE STORY PROMOTED.<br>DEEPER COLD LAYERS ARE NOT YET.</h2>
+        <p class="cold-boundary-note">L2 / L3 COLD-SPECIFIC CONTENT NOT YET PROMOTED</p>
+      </div>
+      <div class="cold-next-grid">
+        <a href="../shell/showcase/?case=cold" class="cold-next-card">
+          <span>SHOWCASE / NEXT DEPTH</span>
+          <strong>PREVIEW SHOWCASE SHELL</strong>
+          <small>Shared L2 prototype · COLD-specific visual sequence not yet promoted</small>
+          <b aria-hidden="true">↗</b>
+        </a>
+        <a href="../shell/evidence/?case=cold" class="cold-next-card">
+          <span>EVIDENCE / NEXT DEPTH</span>
+          <strong>PREVIEW DOSSIER SHELL</strong>
+          <small>Shared L3 prototype · COLD-specific dossier not yet promoted</small>
+          <b aria-hidden="true">↗</b>
+        </a>
+      </div>
+      <div class="cold-back-links">
+        <a class="cta cta-secondary" href="../../">BACK TO PORTFOLIO</a>
+        <a class="cta cta-secondary" href="../">BACK TO WORK INDEX</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>COLD-001 / L1 CASE STORY / DATA &amp; DECISION</span>
+    <span>DETECT → ANALYZE → OPERATE → DIAGNOSE → DECIDE</span>
+  </footer>
+
+  <script src="../../app.js" defer></script>
+</body>
+</html>
