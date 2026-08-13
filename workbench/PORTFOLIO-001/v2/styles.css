@@ -2552,3 +2552,162 @@ html.is-theme-morphing .site-atmosphere { opacity:.45; }
   .cold-showcase-actions { align-items: stretch; }
   .cold-showcase-actions .cta { width: 100%; }
 }
+
+/* Global Tone & Typography Correction Pass v0.6.0 — L0/L1/L2 only */
+:root {
+  --type-l0-hero: clamp(5rem, 6.3vw, 5.5rem);
+  --type-l0-section: clamp(3.375rem, 4.3vw, 3.75rem);
+  --type-l1-hero: clamp(4.75rem, 5.9vw, 5.125rem);
+  --type-l1-section: clamp(3.25rem, 4.2vw, 3.625rem);
+  --type-l2-hero: clamp(5rem, 6.1vw, 5.375rem);
+  --type-l2-stage: clamp(2.875rem, 3.4vw, 3.125rem);
+  --type-supporting-h3: clamp(2rem, 2.6vw, 2.375rem);
+}
+
+.page-home .hero::before { inset: 2% 0 7% 36%; }
+.page-wms-case .wms-case-hero::before { inset: 8% 0 8% 30%; }
+.page-cold-case .cold-case-hero::before { inset: 10% 0 8% 34%; }
+
+.page-home .hero-primary,
+.page-home .hero-copy,
+.page-home .hero-stage,
+.page-home .profile-band,
+.page-home .section-intro,
+.page-home .selected-heading,
+.page-home .work-copy,
+.page-wms-case .wms-case-hero,
+.page-wms-case .wms-hero-copy,
+.page-wms-case .wms-story-body,
+.page-wms-case .wms-band-heading,
+.page-cold-case .cold-case-hero,
+.page-cold-case .cold-hero-copy,
+.page-cold-case .cold-story-body,
+.page-cold-case .cold-proof-band > div,
+.page-wms-showcase .wms-showcase-hero-copy,
+.page-wms-showcase .wms-showcase-copy,
+.page-wms-showcase .wms-showcase-figure,
+.page-cold-showcase .cold-showcase-hero > div,
+.page-cold-showcase .cold-showcase-copy,
+.page-cold-showcase .cold-showcase-figure {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.page-home .hero-title,
+.page-home .section-intro h2,
+.page-home .selected-heading h2,
+.page-home .profile-heading h2,
+.page-home .work-copy h3,
+.page-home .technology-layer header h3,
+.page-home .evolution-concept h3,
+.page-home .method-personal .method-identity h2,
+.page-work-index .index-hero h1,
+.page-wms-case .wms-hero-copy h1,
+.page-wms-case .wms-story-body h2,
+.page-wms-case .wms-band-heading h2,
+.page-wms-case .wms-next-depth h2,
+.page-wms-case .wms-viewpoint-module h3,
+.page-cold-case .cold-hero-copy h1,
+.page-cold-case .cold-story-body h2,
+.page-cold-case .cold-proof-band h2,
+.page-cold-case .cold-next-depth h2,
+.page-cold-case .cold-observation-module h3,
+.page-cold-case .cold-decision-module h3,
+.page-wms-showcase .wms-showcase-hero-copy h1,
+.page-wms-showcase .wms-showcase-copy h2,
+.page-wms-showcase .wms-showcase-next h2,
+.page-cold-showcase .cold-showcase-hero h1,
+.page-cold-showcase .cold-showcase-copy h2,
+.page-cold-showcase .cold-showcase-next h2 {
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-wrap: balance;
+}
+
+.page-home .hero-title { font-size: var(--type-l0-hero); line-height: .9; }
+.page-home .section-intro h2,
+.page-home .selected-heading h2,
+.page-home .profile-heading h2 { font-size: var(--type-l0-section); line-height: .96; }
+.page-home .work-copy h3,
+.page-home .technology-layer header h3,
+.page-home .evolution-concept h3 { font-size: var(--type-supporting-h3); line-height: 1; letter-spacing: -.04em; }
+.page-home .method-personal .method-identity h2 { font-size: clamp(4.25rem, 5.4vw, 5rem); line-height: .86; }
+.page-home .worklog-layer h3 {
+  margin: 0;
+  color: var(--accent);
+  font: 800 .82rem/1.4 var(--font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.page-work-index .index-hero h1 { font-size: clamp(5.5rem, 6.7vw, 6rem); line-height: .86; }
+
+.page-wms-case .wms-hero-copy h1,
+.page-cold-case .cold-hero-copy h1 { font-size: var(--type-l1-hero); line-height: .88; }
+.page-wms-case .wms-story-body h2,
+.page-wms-case .wms-band-heading h2,
+.page-wms-case .wms-next-depth h2,
+.page-cold-case .cold-story-body h2,
+.page-cold-case .cold-proof-band h2,
+.page-cold-case .cold-next-depth h2 { font-size: var(--type-l1-section); line-height: .98; }
+.page-wms-case .wms-viewpoint-module h3,
+.page-cold-case .cold-observation-module h3,
+.page-cold-case .cold-decision-module h3 { font-size: var(--type-supporting-h3); line-height: 1.05; }
+
+.page-wms-showcase .wms-showcase-hero-copy h1,
+.page-cold-showcase .cold-showcase-hero h1 { font-size: var(--type-l2-hero); line-height: .88; }
+.page-wms-showcase .wms-showcase-copy h2,
+.page-wms-showcase .wms-showcase-next h2,
+.page-cold-showcase .cold-showcase-copy h2,
+.page-cold-showcase .cold-showcase-next h2 { font-size: var(--type-l2-stage); line-height: 1; letter-spacing: -.045em; }
+
+.page-cold-showcase #diagnose .cold-showcase-signals { grid-template-columns: 1fr; }
+.page-cold-showcase #diagnose .cold-showcase-signals div { min-height: auto; }
+.page-cold-showcase #diagnose .cold-showcase-signals dd { overflow-wrap: anywhere; word-break: normal; }
+
+@media (max-width: 720px) {
+  .page-home .hero-title,
+  .page-work-index .index-hero h1,
+  .page-wms-case .wms-hero-copy h1,
+  .page-cold-case .cold-hero-copy h1,
+  .page-wms-showcase .wms-showcase-hero-copy h1,
+  .page-cold-showcase .cold-showcase-hero h1 {
+    font-size: clamp(2.75rem, 12vw, 3.5rem);
+    line-height: .94;
+  }
+
+  .page-home .section-intro h2,
+  .page-home .selected-heading h2,
+  .page-home .profile-heading h2,
+  .page-wms-case .wms-story-body h2,
+  .page-wms-case .wms-band-heading h2,
+  .page-wms-case .wms-next-depth h2,
+  .page-cold-case .cold-story-body h2,
+  .page-cold-case .cold-proof-band h2,
+  .page-cold-case .cold-next-depth h2 {
+    font-size: clamp(2.125rem, 9.4vw, 2.625rem);
+    line-height: 1;
+  }
+
+  .page-wms-showcase .wms-showcase-copy h2,
+  .page-wms-showcase .wms-showcase-next h2,
+  .page-cold-showcase .cold-showcase-copy h2,
+  .page-cold-showcase .cold-showcase-next h2 {
+    font-size: clamp(2.125rem, 8.9vw, 2.5rem);
+    line-height: 1.02;
+  }
+
+  .page-home .work-copy h3,
+  .page-home .technology-layer header h3,
+  .page-home .evolution-concept h3,
+  .page-wms-case .wms-viewpoint-module h3,
+  .page-cold-case .cold-observation-module h3,
+  .page-cold-case .cold-decision-module h3 {
+    font-size: clamp(1.75rem, 7.5vw, 2.125rem);
+    line-height: 1.06;
+  }
+
+  .page-home .method-personal .method-identity h2 { font-size: clamp(3rem, 13vw, 3.5rem); line-height: .92; }
+}
