@@ -17,10 +17,10 @@
       <a href="../../">PORTFOLIO</a><i>/</i>
       <a href="../">WORK</a><i>/</i>
       <strong>WMS-001</strong><i>/</i>
-      <strong>L1 CASE STORY</strong>
+      <strong>CASE STORY</strong>
     </div>
     <div class="depth-actions">
-      <span class="depth-chip">PROMOTED L1</span>
+      <span class="depth-chip">CASE STORY</span>
       <button type="button" class="theme-button" data-theme-set="acid" aria-pressed="true">ACID</button>
       <button type="button" class="theme-button" data-theme-set="gold" aria-pressed="false">GOLD</button>
     </div>
@@ -29,22 +29,22 @@
   <main id="main" class="wms-case-main">
     <section class="wms-case-hero" aria-labelledby="wms-title">
       <div class="wms-hero-copy reveal">
-        <p class="eyebrow">WMS-001 / DIGITAL EXECUTION SYSTEMS</p>
+        <p class="eyebrow">WMS-001 / WAREHOUSE OPERATIONS</p>
         <h1 id="wms-title"><span>BUILDING A</span><span>WAREHOUSE</span><span class="wms-title-signal">OPERATING SYSTEM</span></h1>
-        <p class="wms-hero-lead">창고 위치를 조회하는 화면 하나를 만드는 것이 아니라,<br>물리 창고의 상태를 신뢰 가능한 디지털 운영 모델로 연결하는 것이 목표였습니다.</p>
+        <p class="wms-hero-lead">창고 위치를 조회하는 화면 하나를 만드는 것이 아니라,<br>실제 창고의 위치·재고·이동 상태를 하나의 시스템에서 믿고 확인할 수 있게 만드는 것이 목표였습니다.</p>
 
         <div class="wms-state-strip" aria-label="Confirmed WMS operating state">
           <span>BUILT</span>
           <span>DEPLOYED</span>
-          <span>OPERATIONAL</span>
+          <span>IN USE</span>
           <span>MULTI-USER</span>
-          <span>PHYSICAL ↔ DIGITAL</span>
+          <span>WAREHOUSE ↔ SYSTEM</span>
         </div>
 
         <div class="wms-contribution" aria-labelledby="wms-role-title">
-          <p class="wms-micro-label" id="wms-role-title">DIRECT CONTRIBUTION</p>
+          <p class="wms-micro-label" id="wms-role-title">WHAT I DID</p>
           <div class="wms-token-line">
-            <span>Problem Framing</span><i>·</i><span>Business Rules</span><i>·</i><span>Data Model</span><i>·</i><span>Architecture Decisions</span><i>·</i><span>Implementation Direction</span><i>·</i><span>Operational Verification</span>
+            <span>Problem Definition</span><i>·</i><span>Work Rules</span><i>·</i><span>Data Structure</span><i>·</i><span>System Design</span><i>·</i><span>Implementation</span><i>·</i><span>Field Verification</span>
           </div>
         </div>
       </div>
@@ -59,55 +59,55 @@
         </div>
         <div class="wms-signal-line signal-line-a" aria-hidden="true"></div>
         <div class="wms-signal-line signal-line-b" aria-hidden="true"></div>
-        <div class="wms-visual-node node-physical"><small>PHYSICAL</small><strong>LOCATION</strong></div>
-        <div class="wms-visual-node node-transaction"><small>OPERATING</small><strong>TRANSACTION</strong></div>
-        <div class="wms-visual-node node-digital"><small>DIGITAL</small><strong>STATE</strong></div>
-        <p class="wms-visual-caption">PHYSICAL WAREHOUSE → MANAGED DIGITAL MODEL</p>
+        <div class="wms-visual-node node-physical"><small>WAREHOUSE</small><strong>LOCATION</strong></div>
+        <div class="wms-visual-node node-transaction"><small>WORK</small><strong>MOVEMENT</strong></div>
+        <div class="wms-visual-node node-digital"><small>SYSTEM</small><strong>STATE</strong></div>
+        <p class="wms-visual-caption">REAL WAREHOUSE → RELIABLE SYSTEM VIEW</p>
       </div>
     </section>
 
     <section class="wms-story-section reveal" aria-labelledby="story-arc-title">
       <div class="wms-section-index">
         <span>01</span>
-        <p>WHY / FIRST MOVE / PIVOT</p>
+        <p>PROBLEM / FIRST TRY / PIVOT</p>
       </div>
       <div class="wms-story-body">
-        <h2 id="story-arc-title">FROM FIELD PROBLEM TO SYSTEM ARCHITECTURE.</h2>
+        <h2 id="story-arc-title">FROM A FIELD PROBLEM TO A WORKING SYSTEM.</h2>
         <div class="wms-prose">
-          <p>창고의 위치, 품목, 재고 상태 확인은 랙카드와 현장 탐색, 사람 간 확인에 크게 의존했고, 위치·품목 불일치와 재고 탐색·정합성 확인 부담이 운영 불확실성을 키웠습니다.</p>
-          <p>핵심 문제는 새 화면이 아니라, 물리 창고의 상태를 더 신뢰할 수 있는 디지털 상태와 연결하는 것이었습니다.</p>
+          <p>창고의 위치, 품목, 재고 상태 확인은 랙카드와 현장 탐색, 사람 간 확인에 크게 의존했습니다. 위치와 품목이 맞지 않거나 재고를 찾고 다시 확인하는 일이 운영 부담으로 이어졌습니다.</p>
+          <p>그래서 새 화면을 만드는 것보다, 실제 창고의 상태와 시스템의 기록이 서로 맞도록 만드는 것을 먼저 해결해야 했습니다.</p>
         </div>
         <div class="wms-field-signals" aria-label="Originating warehouse problems">
-          <span>MANUAL RACK CARD</span>
+          <span>HANDWRITTEN RACK CARDS</span>
           <span>LOCATION / ITEM MISMATCH</span>
-          <span>SEARCH FRICTION</span>
-          <span>RECONCILIATION BURDEN</span>
-          <span>STOCKTAKE VERIFICATION</span>
+          <span>HARD TO FIND STOCK</span>
+          <span>REPEATED CHECKING</span>
+          <span>STOCKTAKE</span>
         </div>
 
-        <p class="wms-signal-statement">APPSHEET AS THE FIRST WORKING HYPOTHESIS.</p>
+        <p class="wms-signal-statement">APPSHEET WAS THE FIRST WORKING TEST.</p>
         <div class="wms-prose">
-          <p>Location / Item / Transaction 구조와 QR 기반 현장 흐름을 먼저 실행해 보며 데이터 모델과 모바일 작업 방식을 검증했고, AppSheet는 최종 기술이 아니라 빠른 현장 검증 수단으로 사용했습니다.</p>
+          <p>위치(Location), 품목(Item), 이동 기록(Transaction)을 연결하고 QR로 현장에서 처리하는 방식을 먼저 시험했습니다. AppSheet는 최종 시스템이 아니라, 데이터 구조와 모바일 작업 방식이 실제 현장에서 통하는지 빠르게 확인하기 위한 첫 실행안이었습니다.</p>
         </div>
         <div class="wms-hypothesis-grid" aria-label="Initial executable hypothesis">
           <span>LOCATION QR</span><b>+</b><span>ITEM QR</span><b>+</b><span>APPSHEET</span><b>+</b><span>GOOGLE SHEETS</span><b>+</b><span>PC LOOKUP</span>
         </div>
         <div class="wms-initial-model" aria-label="Initial generalized data model">
-          <p class="wms-micro-label">INITIAL PUBLIC-SAFE MODEL</p>
-          <div><span>LOCATION</span><i>→</i><span>ITEM</span><i>→</i><span>TRANSACTION</span></div>
+          <p class="wms-micro-label">FIRST DATA STRUCTURE</p>
+          <div><span>LOCATION</span><i>→</i><span>ITEM</span><i>→</i><span>MOVEMENT RECORD</span></div>
         </div>
 
         <div class="wms-trigger-field" aria-label="Architecture pivot constraints">
-          <span>UX CONTROL</span>
+          <span>EASIER UI CONTROL</span>
           <span>PERFORMANCE</span>
-          <span>DEPLOYMENT FLEXIBILITY</span>
-          <span>EXTENSIBILITY</span>
+          <span>DEPLOYMENT</span>
+          <span>FUTURE EXPANSION</span>
         </div>
         <div class="wms-architecture-flow" aria-label="Architecture progression">
           <span>APPSHEET</span><i>→</i><span>NEXT.JS</span><i>→</i><span>SUPABASE / POSTGRESQL</span><i>→</i><span>GIT</span><i>→</i><span>VERCEL</span>
         </div>
         <div class="wms-prose">
-          <p>운영 요구가 늘어나자 검증한 현장 문제와 데이터 모델은 유지하고, 더 높은 UX 제어·성능·배포 유연성·확장성을 위해 custom web architecture로 옮겼습니다. 이 전환은 WMS의 시작이 아니라 이미 검증하기 시작한 운영 모델의 확장이었습니다.</p>
+          <p>운영 요구가 늘면서 첫 시험에서 확인한 문제와 데이터 구조는 유지하고, 화면 제어와 성능, 배포, 확장성을 높이기 위해 직접 만든 웹 시스템으로 옮겼습니다. 처음부터 다시 만든 것이 아니라, 현장에서 확인한 방식을 더 크게 운영할 수 있도록 확장한 것입니다.</p>
         </div>
       </div>
     </section>
@@ -115,23 +115,23 @@
     <section class="wms-story-section reveal" aria-labelledby="operating-system-title">
       <div class="wms-section-index">
         <span>02</span>
-        <p>HOW / OPERATING FLOW</p>
+        <p>HOW / DAILY WORK FLOW</p>
       </div>
       <div class="wms-story-body">
-        <h2 id="operating-system-title">FROM FEATURES TO AN OPERATING FLOW.</h2>
+        <h2 id="operating-system-title">ONE FLOW FROM INBOUND TO HISTORY.</h2>
         <div class="wms-operating-flow" aria-label="WMS operating flow">
-          <span>INBOUND</span><i>→</i><span>INVENTORY</span><i>→</i><span>MOVEMENT</span><i>→</i><span>OUTBOUND</span><i>→</i><span>TRANSACTION HISTORY</span>
+          <span>INBOUND</span><i>→</i><span>INVENTORY</span><i>→</i><span>MOVEMENT</span><i>→</i><span>OUTBOUND</span><i>→</i><span>HISTORY</span>
         </div>
         <div class="wms-prose">
-          <p>입고부터 재고·이동·출고·이력까지 하나의 운영 흐름으로 연결하고, 거래 기록 주변에 기준정보·권한·조정·실사/정합성 확인 구조를 배치했습니다.</p>
-          <p>Movement logic은 partial / full / merge handling과 packing-information preservation을 포함해 현장의 물류 상태와 packaging constraint를 보존하는 방향으로 확장됐습니다.</p>
+          <p>입고부터 재고·이동·출고·이력까지 하나의 흐름으로 연결했습니다. 품목 기준정보, 사용자 권한, 재고 조정, 실사와 확인 기능도 같은 운영 흐름 안에 배치했습니다.</p>
+          <p>재고를 일부만 옮기거나 전부 옮기고, 같은 위치에서 합치는 경우에도 포장 정보를 유지하도록 이동 규칙을 확장했습니다.</p>
         </div>
         <div class="wms-control-field" aria-label="Supporting WMS control layers">
-          <span>MASTER DATA</span>
+          <span>ITEM / LOCATION DATA</span>
           <span>ADJUSTMENT</span>
-          <span>STOCKTAKE / RECONCILIATION</span>
-          <span>AUTH</span>
-          <span>ROLE / FEATURE PERMISSION</span>
+          <span>STOCKTAKE</span>
+          <span>LOGIN</span>
+          <span>USER PERMISSIONS</span>
           <span>QR</span>
         </div>
       </div>
@@ -140,25 +140,25 @@
     <section class="wms-story-section reveal" aria-labelledby="physical-digital-title">
       <div class="wms-section-index">
         <span>03</span>
-        <p>HOW / PHYSICAL ↔ DIGITAL</p>
+        <p>HOW / WAREHOUSE ↔ SYSTEM</p>
       </div>
       <div class="wms-story-body">
-        <h2 id="physical-digital-title">ALIGNING PHYSICAL AND DIGITAL WAREHOUSE STATE.</h2>
+        <h2 id="physical-digital-title">MAKE THE SYSTEM MATCH THE REAL WAREHOUSE.</h2>
         <div class="wms-physical-flow" aria-label="Physical to digital warehouse model">
-          <span>PHYSICAL LOCATION</span><i>→</i><span>MANAGED LOCATION IDENTITY</span><i>→</i><span>QR / RACK CARD</span><i>→</i><span>TRANSACTION</span><i>→</i><span>INVENTORY</span><i>→</i><span>DIGITAL MAP</span>
+          <span>WAREHOUSE LOCATION</span><i>→</i><span>LOCATION ID</span><i>→</i><span>QR / RACK CARD</span><i>→</i><span>MOVEMENT</span><i>→</i><span>INVENTORY</span><i>→</i><span>WAREHOUSE MAP</span>
         </div>
         <div class="wms-prose">
-          <p>Location을 관리 가능한 공간 단위로 구조화해 QR·랙카드·수불·재고·창고 맵과 연결했고, location master / builder, warehouse map / occupancy visualization, mixed-stock location view와 서로 다른 storage topology까지 지원하도록 확장했습니다.</p>
+          <p>실제 창고 위치마다 관리 가능한 ID를 부여하고 QR·랙카드·재고 이동 기록·창고 맵을 연결했습니다. 여러 형태의 보관 공간과 한 위치에 여러 재고가 있는 경우도 화면에서 확인할 수 있도록 확장했습니다.</p>
         </div>
 
         <div class="wms-viewpoint-module" aria-labelledby="viewpoint-title">
           <div>
-            <p class="wms-micro-label">DOMAIN-LED UI DECISION</p>
-            <h3 id="viewpoint-title">DESIGNED AROUND THE OPERATOR VIEWPOINT.</h3>
-            <p>데이터베이스 좌표를 그대로 보여주기보다 작업자가 실제 랙을 바라보는 방향과 맞추기 위해 일부 맵 표현에서 배열을 뒤집는 UI 결정을 적용했습니다.</p>
+            <p class="wms-micro-label">DESIGNED FOR THE PERSON USING IT</p>
+            <h3 id="viewpoint-title">THE MAP FOLLOWS THE OPERATOR'S VIEW.</h3>
+            <p>데이터베이스의 좌표를 그대로 보여주기보다, 작업자가 실제 랙을 바라보는 방향과 화면이 맞도록 일부 맵의 배열을 뒤집었습니다.</p>
           </div>
           <div class="wms-viewpoint-flow" aria-label="Operator viewpoint decision flow">
-            <span>DATABASE COORDINATE</span><i>→</i><span>PHYSICAL RACK GEOMETRY</span><i>→</i><span>OPERATOR VIEWPOINT</span><i>→</i><strong>MIRRORED UI</strong>
+            <span>SYSTEM COORDINATE</span><i>→</i><span>REAL RACK</span><i>→</i><span>OPERATOR VIEW</span><i>→</i><strong>MIRRORED UI</strong>
             <small>EXPLANATORY VISUAL / NOT EVIDENCE</small>
           </div>
         </div>
@@ -167,40 +167,40 @@
 
     <section class="wms-case-band reveal" aria-labelledby="implementation-context-title">
       <div class="wms-band-heading">
-        <p class="eyebrow">IMPLEMENTATION CONTEXT / COMPACT</p>
-        <h2 id="implementation-context-title">VERIFIED INCREMENTS WITH HUMAN CONTROL.</h2>
+        <p class="eyebrow">HOW IT GREW / COMPACT</p>
+        <h2 id="implementation-context-title">BUILT STEP BY STEP, WITH HUMAN CONTROL.</h2>
         <p class="wms-band-signal">Complexity accumulated through verified increments.</p>
-        <p class="wms-boundary-note">SUPPORTED CHRONOLOGY · 2025.11 FIELD / INITIAL DATA MODEL [SUPPORTED] → 2026.01 ARCHITECTURE PIVOT [STRONGLY SUPPORTED] → 2026.02 OPERATIONAL BASELINE [SUPPORTED / PARTIALLY GIT-CORROBORATED] → 2026.02–03 OPERATIONAL-FIT EXPANSION [SUPPORTED / INCREASINGLY GIT-CORROBORATED] → 2026.03 MANAGEMENT / CONTROL EXPANSION [DIRECTION / IMPLEMENTATION STATUS NOT UNIFORM] · VERSION BOUNDARIES NOT FULLY ASSERTED</p>
-        <p>Problem framing, business rules, architecture decisions, and operational verification stayed human-controlled. Implementation was AI-assisted; exact AI involvement was not uniform across every feature.</p>
-        <p class="wms-boundary-note">ROI / TIME SAVING / INVENTORY ACCURACY IMPROVEMENT / SEARCH-TIME REDUCTION / LABOR REDUCTION remain NOT YET ESTABLISHED / MEASURED. Full verification is maintained in L3.</p>
+        <p class="wms-boundary-note">2025.11 첫 현장 모델 → 2026.01 웹 시스템 전환 → 2026.02 운영 기반 구축 → 2026.02–03 현장 적합성 확장 → 2026.03 관리 기능 확장. 세부 구현 시점과 모든 버전 경계가 동일한 수준으로 확인된 것은 아닙니다.</p>
+        <p>문제 정의, 업무 규칙, 시스템 구조 결정, 현장 확인은 사람이 주도했습니다. 구현 과정에는 AI를 활용했지만 모든 기능에 같은 방식과 비중으로 사용한 것은 아닙니다.</p>
+        <p class="wms-boundary-note">투자수익률(ROI), 시간 절감, 재고 정확도 향상, 탐색 시간 감소, 인력 절감은 아직 측정된 성과로 확정하지 않습니다. 자세한 검증 범위는 Evidence 페이지에서 확인할 수 있습니다.</p>
       </div>
       <dl class="wms-state-ledger">
         <div><dt>BUILT</dt><dd>CONFIRMED</dd></div>
         <div><dt>DEPLOYED</dt><dd>CONFIRMED</dd></div>
-        <div><dt>OPERATIONAL USE</dt><dd>CONFIRMED</dd></div>
+        <div><dt>IN USE</dt><dd>CONFIRMED</dd></div>
         <div><dt>MULTI-USER</dt><dd>CONFIRMED</dd></div>
-        <div><dt>PHYSICAL-DIGITAL MAPPING</dt><dd>CONFIRMED</dd></div>
+        <div><dt>WAREHOUSE-SYSTEM MAPPING</dt><dd>CONFIRMED</dd></div>
         <div class="wms-state-impact"><dt>MEASURED BUSINESS IMPACT</dt><dd>NOT YET ESTABLISHED</dd></div>
       </dl>
     </section>
 
     <section class="wms-next-depth reveal" aria-labelledby="next-depth-title">
       <div>
-        <p class="eyebrow">CASE DEPTH</p>
-        <h2 id="next-depth-title">L1 CASE STORY · L2 SHOWCASE · L3 DOSSIER</h2>
-        <p class="wms-boundary-note">L1 = WHY / HOW · L2 = ACTUAL SYSTEM · L3 = VERIFICATION</p>
+        <p class="eyebrow">EXPLORE MORE</p>
+        <h2 id="next-depth-title">STORY · ACTUAL SYSTEM · EVIDENCE</h2>
+        <p class="wms-boundary-note">이 페이지는 WHY / HOW를 설명합니다. 실제 화면은 Showcase에서, 검증 자료와 주장 범위는 Evidence에서 확인할 수 있습니다.</p>
       </div>
       <div class="wms-next-grid">
         <a href="showcase/" class="wms-next-card">
-          <span>SHOWCASE / NEXT DEPTH</span>
+          <span>ACTUAL SYSTEM</span>
           <strong>OPEN SHOWCASE</strong>
-          <small>Promoted WMS L2 · public-safe operational visuals</small>
+          <small>실제 운영 화면과 작업 흐름</small>
           <b aria-hidden="true">↗</b>
         </a>
         <a href="evidence/" class="wms-next-card">
-          <span>EVIDENCE / NEXT DEPTH</span>
-          <strong>OPEN EVIDENCE DOSSIER</strong>
-          <small>Promoted WMS L3 · evidence matrix, provenance, and claim boundaries</small>
+          <span>VERIFICATION</span>
+          <strong>OPEN EVIDENCE</strong>
+          <small>근거 자료, 출처, 확인된 범위와 아직 확인되지 않은 범위</small>
           <b aria-hidden="true">↗</b>
         </a>
       </div>
@@ -212,7 +212,7 @@
   </main>
 
   <footer class="site-footer">
-    <span>WMS-001 / L1 CASE STORY / DIGITAL EXECUTION SYSTEMS</span>
+    <span>WMS-001 / CASE STORY / WAREHOUSE OPERATIONS</span>
     <span>MEASURED BUSINESS IMPACT · NOT YET ESTABLISHED</span>
   </footer>
 
