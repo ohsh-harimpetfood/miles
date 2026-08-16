@@ -8,21 +8,14 @@
   <title>COLD-001 Showcase — PORTFOLIO-001 v2</title>
   <link rel="stylesheet" href="../../../styles.css" />
   <style>
-    /* COLD L2 optical correction: give editorial headings enough measure while preserving evidence priority. */
-    .page-cold-showcase .cold-showcase-copy h2 {
-      text-wrap: balance;
-    }
+    /* Page-scoped optical correction: readable display copy without reducing evidence prominence. */
+    .page-cold-showcase .cold-showcase-copy h2 { text-wrap: balance; max-width: 11.5em; }
     @media (min-width: 901px) {
-      .page-cold-showcase .cold-showcase-stage {
-        grid-template-columns: minmax(440px, 34%) minmax(0, 1fr);
-        column-gap: clamp(2rem, 4vw, 5rem);
-      }
-      .page-cold-showcase .cold-showcase-copy h2 {
-        max-width: 12.5em;
-        font-size: clamp(2.35rem, 2.8vw, 3.4rem);
-        line-height: .98;
-        letter-spacing: -.045em;
-      }
+      .page-cold-showcase .cold-showcase-stage { grid-template-columns: minmax(460px, 35%) minmax(0, 1fr); column-gap: clamp(2rem, 4vw, 5rem); }
+      .page-cold-showcase .cold-showcase-copy h2 { font-size: clamp(2.25rem, 2.65vw, 3.2rem); line-height: 1; letter-spacing: -.04em; }
+    }
+    @media (max-width: 900px) {
+      .page-cold-showcase .cold-showcase-copy h2 { max-width: 14em; }
     }
   </style>
   <script>document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')||'acid';</script>
@@ -32,170 +25,54 @@
   <div class="site-atmosphere" aria-hidden="true"></div>
 
   <nav class="depth-nav cold-showcase-depth-nav" aria-label="Case depth navigation">
-    <div class="depth-crumbs">
-      <a href="../../../">PORTFOLIO</a><i>→</i><a href="../../">WORK</a><i>→</i><a href="../">COLD-001</a><i>→</i><strong>SHOWCASE</strong>
-    </div>
-    <div class="depth-actions">
-      <span class="depth-chip">L2 / ACTUAL WORK</span>
-      <a class="depth-chip" href="../">CASE STORY</a>
-    </div>
+    <div class="depth-crumbs"><a href="../../../">PORTFOLIO</a><i>→</i><a href="../../">WORK</a><i>→</i><a href="../">COLD-001</a><i>→</i><strong>SHOWCASE</strong></div>
+    <div class="depth-actions"><span class="depth-chip">L2 / 실제 화면</span><a class="depth-chip" href="../">CASE STORY</a></div>
   </nav>
 
   <main id="main" class="cold-showcase-main">
     <header class="cold-showcase-hero">
       <div class="reveal">
-        <p class="eyebrow">COLD-001 / L2 SHOWCASE</p>
-        <h1>
-          <span>SEE THE</span>
-          <span class="cold-showcase-title-signal">TRANSFORMATION.</span>
-        </h1>
-        <div class="cold-showcase-flowline" aria-label="Canonical evidence arc">
-          <span>DETECT</span><i>→</i><span>ANALYZE</span><i>→</i><span>OPERATE</span><i>→</i><span>DIAGNOSE</span><i>→</i><span>DECIDE</span>
-        </div>
-        <p class="cold-showcase-lead">Five source-faithful public visuals show how a temperature-monitoring problem became a comparable analytical workflow, an operated reporting loop, a multi-container risk diagnosis, and an engineering decision frame.</p>
+        <p class="eyebrow">COLD-001 / 실제 화면</p>
+        <h1><span>SEE THE</span><span class="cold-showcase-title-signal">TRANSFORMATION.</span></h1>
+        <div class="cold-showcase-flowline" aria-label="Canonical evidence arc"><span>발견</span><i>→</i><span>분석</span><i>→</i><span>운영</span><i>→</i><span>진단</span><i>→</i><span>결정</span></div>
+        <p class="cold-showcase-lead">5개의 실제 공개 화면으로, 온도 모니터링 문제가 비교 가능한 분석과 반복 운영 보고를 거쳐 여러 컨테이너의 위험 진단과 시설 개선 대안 검토로 확장된 과정을 보여줍니다.</p>
       </div>
       <aside class="cold-showcase-classification reveal" aria-label="Evidence classification summary">
-        <div><strong>5 SANITIZED EVIDENCE</strong><span>Integrity-verified public visual assets.</span></div>
-        <div><strong class="is-zero">0 VISUAL DERIVATIVES</strong><span>No reconstructed portfolio graphic is presented as evidence in this sequence.</span></div>
-        <div><strong>CLASSIFICATION LOCKED</strong><span>Showcase presentation does not change FORGE evidence status.</span></div>
+        <div><strong>5 SANITIZED EVIDENCE</strong><span>민감 정보를 제거하고 원본 의미를 보존한 공개 검증 자료입니다.</span></div>
+        <div><strong class="is-zero">0 VISUAL DERIVATIVES</strong><span>재구성한 포트폴리오 그래픽을 원본 검증 자료처럼 제시하지 않습니다.</span></div>
+        <div><strong>CLASSIFICATION LOCKED</strong><span>이 페이지의 연출은 FORGE의 자료 분류를 바꾸지 않습니다.</span></div>
       </aside>
     </header>
 
-    <nav class="cold-showcase-rail" aria-label="Showcase sequence">
-      <a href="#detect"><span>01</span> DETECT</a>
-      <a href="#analyze"><span>02</span> ANALYZE</a>
-      <a href="#operate"><span>03</span> OPERATE</a>
-      <a href="#diagnose"><span>04</span> DIAGNOSE</a>
-      <a href="#decide"><span>05</span> DECIDE</a>
-    </nav>
+    <nav class="cold-showcase-rail" aria-label="Showcase sequence"><a href="#detect"><span>01</span> 발견</a><a href="#analyze"><span>02</span> 분석</a><a href="#operate"><span>03</span> 운영</a><a href="#diagnose"><span>04</span> 진단</a><a href="#decide"><span>05</span> 결정</a></nav>
 
     <section class="cold-showcase-stage" id="detect" aria-labelledby="detect-title">
-      <div class="cold-showcase-copy reveal">
-        <p class="cold-showcase-kicker">01 / DETECT · FAILURE VISIBILITY</p>
-        <h2 id="detect-title">MAKE THE HIDDEN CONDITION VISIBLE.</h2>
-        <p>기존 monitoring만으로 충분히 보이지 않던 내부 operating condition을 logger measurement로 드러낸 첫 단계입니다.</p>
-        <div class="cold-showcase-microflow" aria-label="Detect flow">
-          <span>WEAK VISIBILITY</span><i>→</i><span>LOGGER MEASUREMENT</span><i>→</i><strong>OBSERVABLE CONDITION</strong>
-        </div>
-        <p class="cold-showcase-boundary"><strong>BOUNDARY —</strong> one demonstrated operating condition. Not population-wide performance, failure reduction, or business impact.</p>
-      </div>
-      <figure class="cold-showcase-figure reveal">
-        <figcaption>
-          <span>01-failure-visibility.png</span>
-          <span class="cold-evidence-badge">SANITIZED EVIDENCE</span>
-        </figcaption>
-        <a href="../../../../../../forge/COLD-001/assets/01-failure-visibility.png" aria-label="Open original-size DETECT evidence">
-          <img src="../../../../../../forge/COLD-001/assets/01-failure-visibility.png" alt="Sanitized logger demonstration showing CT10 temperature trend, analysis summary, and intervention transition." loading="eager" />
-        </a>
-        <a class="cold-showcase-asset-link" href="../../../../../../forge/COLD-001/assets/01-failure-visibility.png">OPEN ORIGINAL SIZE ↗</a>
-      </figure>
+      <div class="cold-showcase-copy reveal"><p class="cold-showcase-kicker">01 / 발견 · 보이지 않던 상태</p><h2 id="detect-title">MAKE THE HIDDEN VISIBLE.</h2><p>기존 모니터링만으로 충분히 보이지 않던 내부 상태를 별도 로거 측정으로 드러낸 첫 단계입니다.</p><div class="cold-showcase-microflow" aria-label="Detect flow"><span>낮은 가시성</span><i>→</i><span>로거 측정</span><i>→</i><strong>상태 확인</strong></div><p class="cold-showcase-boundary"><strong>범위 —</strong> 한 운영 조건에서 확인한 사례입니다. 전체 장비의 성능, 고장 감소 또는 사업 성과를 의미하지 않습니다.</p></div>
+      <figure class="cold-showcase-figure reveal"><figcaption><span>01-failure-visibility.png</span><span class="cold-evidence-badge">SANITIZED EVIDENCE</span></figcaption><a href="../../../../../../forge/COLD-001/assets/01-failure-visibility.png" aria-label="Open original-size DETECT evidence"><img src="../../../../../../forge/COLD-001/assets/01-failure-visibility.png" alt="Sanitized logger demonstration showing CT10 temperature trend, analysis summary, and intervention transition." loading="eager" /></a><a class="cold-showcase-asset-link" href="../../../../../../forge/COLD-001/assets/01-failure-visibility.png">원본 크기로 보기 ↗</a></figure>
     </section>
 
     <section class="cold-showcase-stage" id="analyze" aria-labelledby="analyze-title">
-      <div class="cold-showcase-copy reveal">
-        <p class="cold-showcase-kicker">02 / ANALYZE · ANALYTICAL VISIBILITY</p>
-        <h2 id="analyze-title">COMPARE STABILITY, NOT JUST LOW POINTS.</h2>
-        <p>single chart review에서 multi-container comparison으로 관찰 단위를 확장합니다. Retention과 minimum temperature를 분리해 보는 것이 핵심입니다.</p>
-        <div class="cold-showcase-microflow" aria-label="Analyze flow">
-          <span>SINGLE CT</span><i>→</i><span>MULTI-CT HEATMAP</span><i>→</i><strong>RETENTION / STABILITY</strong>
-        </div>
-        <p class="cold-showcase-boundary"><strong>BOUNDARY —</strong> supports a user-facing comparison workflow. It does not establish causality, usage frequency, user count, AI accuracy, or business impact.</p>
-      </div>
-      <figure class="cold-showcase-figure reveal">
-        <figcaption>
-          <span>02-analysis-heatmap.png</span>
-          <span class="cold-evidence-badge">SANITIZED EVIDENCE</span>
-        </figcaption>
-        <a href="../../../../../../forge/COLD-001/assets/02-analysis-heatmap.png" aria-label="Open original-size ANALYZE evidence">
-          <img src="../../../../../../forge/COLD-001/assets/02-analysis-heatmap.png" alt="Sanitized multi-container temperature analysis interface showing overall status and retention heatmaps." loading="lazy" />
-        </a>
-        <a class="cold-showcase-asset-link" href="../../../../../../forge/COLD-001/assets/02-analysis-heatmap.png">OPEN ORIGINAL SIZE ↗</a>
-      </figure>
+      <div class="cold-showcase-copy reveal"><p class="cold-showcase-kicker">02 / 분석 · 여러 CT 비교</p><h2 id="analyze-title">COMPARE STABILITY, NOT JUST LOWS.</h2><p>한 대의 차트만 보는 방식에서 여러 컨테이너를 함께 비교하는 방식으로 확장했습니다. 최저온도와 일정 온도 이하를 유지한 비율을 따로 보며 안정성을 비교합니다.</p><div class="cold-showcase-microflow" aria-label="Analyze flow"><span>개별 CT</span><i>→</i><span>여러 CT 비교</span><i>→</i><strong>유지율 / 안정성</strong></div><p class="cold-showcase-boundary"><strong>범위 —</strong> 여러 CT를 비교하는 분석 화면이 있다는 것을 보여줍니다. 원인 관계, 사용 빈도, 사용자 수, AI 정확도 또는 사업 성과까지 입증하지는 않습니다.</p></div>
+      <figure class="cold-showcase-figure reveal"><figcaption><span>02-analysis-heatmap.png</span><span class="cold-evidence-badge">SANITIZED EVIDENCE</span></figcaption><a href="../../../../../../forge/COLD-001/assets/02-analysis-heatmap.png" aria-label="Open original-size ANALYZE evidence"><img src="../../../../../../forge/COLD-001/assets/02-analysis-heatmap.png" alt="Sanitized multi-container temperature analysis interface showing overall status and retention heatmaps." loading="lazy" /></a><a class="cold-showcase-asset-link" href="../../../../../../forge/COLD-001/assets/02-analysis-heatmap.png">원본 크기로 보기 ↗</a></figure>
     </section>
 
     <section class="cold-showcase-stage" id="operate" aria-labelledby="operate-title">
-      <div class="cold-showcase-copy reveal">
-        <p class="cold-showcase-kicker">03 / OPERATE · OPERATIONAL INTELLIGENCE</p>
-        <h2 id="operate-title">ANALYSIS HAD TO LEAD TO ACTION.</h2>
-        <p>current condition과 maintenance history를 함께 읽고, 구조화된 분석 위에서 LLM-assisted contextual recommendation을 만들어 human field check로 연결하는 operated workflow입니다.</p>
-        <div class="cold-showcase-microflow" aria-label="Operate flow">
-          <span>DETERMINISTIC ANALYSIS</span><i>→</i><span>HISTORY CONTEXT</span><i>→</i><span>LLM CONTEXT</span><i>→</i><strong>HUMAN ACTION</strong>
-        </div>
-        <p class="cold-showcase-boundary"><strong>BOUNDARY —</strong> HTML-source-preserving render of an actual SENT operational briefing. No autonomous diagnosis, autonomous maintenance, AI-accuracy, or measured-impact claim.</p>
-      </div>
-      <figure class="cold-showcase-figure reveal">
-        <figcaption>
-          <span>03-operational-intelligence.png</span>
-          <span class="cold-evidence-badge">SANITIZED EVIDENCE · HTML-SOURCE-PRESERVING RENDER</span>
-        </figcaption>
-        <a href="../../../../../../forge/COLD-001/assets/03-operational-intelligence.png" aria-label="Open original-size OPERATE evidence">
-          <img src="../../../../../../forge/COLD-001/assets/03-operational-intelligence.png" alt="Sanitized source-faithful render of operational briefing content showing current condition, history, judgment, and recommended checks." loading="lazy" />
-        </a>
-        <a class="cold-showcase-asset-link" href="../../../../../../forge/COLD-001/assets/03-operational-intelligence.png">OPEN ORIGINAL SIZE ↗</a>
-      </figure>
+      <div class="cold-showcase-copy reveal"><p class="cold-showcase-kicker">03 / 운영 · 분석에서 행동으로</p><h2 id="operate-title">ANALYSIS MUST LEAD TO ACTION.</h2><p>현재 상태와 정비 이력을 함께 보고, 정해진 기준의 분석 결과 위에서 AI가 점검 맥락과 권장 조치를 정리합니다. 최종 현장 확인과 행동은 사람이 담당합니다.</p><div class="cold-showcase-microflow" aria-label="Operate flow"><span>기준 분석</span><i>→</i><span>정비 이력</span><i>→</i><span>AI 맥락 정리</span><i>→</i><strong>사람의 조치</strong></div><p class="cold-showcase-boundary"><strong>범위 —</strong> 실제 발송된 운영 보고 내용을 원문 구조에 맞춰 렌더링한 자료입니다. 자율 진단·자율 정비·AI 정확도·측정된 사업 성과를 주장하지 않습니다.</p></div>
+      <figure class="cold-showcase-figure reveal"><figcaption><span>03-operational-intelligence.png</span><span class="cold-evidence-badge">SANITIZED EVIDENCE · HTML-SOURCE-PRESERVING RENDER</span></figcaption><a href="../../../../../../forge/COLD-001/assets/03-operational-intelligence.png" aria-label="Open original-size OPERATE evidence"><img src="../../../../../../forge/COLD-001/assets/03-operational-intelligence.png" alt="Sanitized source-faithful render of operational briefing content showing current condition, history, judgment, and recommended checks." loading="lazy" /></a><a class="cold-showcase-asset-link" href="../../../../../../forge/COLD-001/assets/03-operational-intelligence.png">원본 크기로 보기 ↗</a></figure>
     </section>
 
     <section class="cold-showcase-stage" id="diagnose" aria-labelledby="diagnose-title">
-      <div class="cold-showcase-copy reveal">
-        <p class="cold-showcase-kicker">04 / DIAGNOSE · MULTI-CT STABILITY</p>
-        <h2 id="diagnose-title">THE QUESTION BECAME STRUCTURAL.</h2>
-        <p>longer-horizon cross-CT analysis를 통해 “한 대가 고장났는가?”보다 “운영 패턴과 환경이 함께 악화되는가?”를 검토하는 단계입니다.</p>
-        <dl class="cold-showcase-signals">
-          <div><dt>WEEKDAY RETENTION DIFFERENCE</dt><dd>11.1 PERCENTAGE POINTS LOWER THAN WEEKEND</dd></div>
-          <div><dt>SIMULTANEOUS DEGRADATION</dt><dd>20 / 41 DAYS · 5+ OPERATING CT BELOW RETENTION 80%</dd></div>
-          <div><dt>MINIMUM-TEMPERATURE TRAP</dt><dd>104 / 529 · MINIMUM ≤ -18℃ WHILE RETENTION &lt; 80%</dd></div>
-        </dl>
-        <p class="cold-showcase-boundary"><strong>DATASET-SPECIFIC OBSERVATIONS —</strong> these values are analytical observations, not business KPIs. The criteria are not presented as statutory or universal food-safety standards.</p>
-      </div>
-      <figure class="cold-showcase-figure reveal">
-        <figcaption>
-          <span>04-risk-diagnosis.png</span>
-          <span class="cold-evidence-badge">SANITIZED EVIDENCE</span>
-        </figcaption>
-        <a href="../../../../../../forge/COLD-001/assets/04-risk-diagnosis.png" aria-label="Open original-size DIAGNOSE evidence">
-          <img src="../../../../../../forge/COLD-001/assets/04-risk-diagnosis.png" alt="Sanitized multi-container stability diagnosis visual showing weekday versus weekend retention difference and simultaneous degradation." loading="lazy" />
-        </a>
-        <a class="cold-showcase-asset-link" href="../../../../../../forge/COLD-001/assets/04-risk-diagnosis.png">OPEN ORIGINAL SIZE ↗</a>
-      </figure>
+      <div class="cold-showcase-copy reveal"><p class="cold-showcase-kicker">04 / 진단 · 여러 CT의 패턴</p><h2 id="diagnose-title">LOOK FOR PATTERNS, NOT ONE BAD CT.</h2><p>여러 CT를 장기간 함께 분석해 “한 대가 고장났는가?”를 넘어 “여러 장비의 운영 패턴과 환경이 함께 나빠지는가?”를 살펴봅니다.</p><dl class="cold-showcase-signals"><div><dt>평일 유지율 차이</dt><dd>주말보다 11.1%p 낮음</dd></div><div><dt>여러 CT 동시 저하</dt><dd>20 / 41일 · 운영 CT 5대 이상이 유지율 80% 미만</dd></div><div><dt>최저온도만 보면 놓치는 경우</dt><dd>104 / 529 · 최저온도 ≤ -18℃이지만 유지율 &lt; 80%</dd></div></dl><p class="cold-showcase-boundary"><strong>이 데이터에서 관찰한 값 —</strong> 사업 성과 KPI가 아닙니다. 사용한 온도·유지율 기준도 법규나 모든 식품에 적용되는 안전 기준으로 제시하지 않습니다.</p></div>
+      <figure class="cold-showcase-figure reveal"><figcaption><span>04-risk-diagnosis.png</span><span class="cold-evidence-badge">SANITIZED EVIDENCE</span></figcaption><a href="../../../../../../forge/COLD-001/assets/04-risk-diagnosis.png" aria-label="Open original-size DIAGNOSE evidence"><img src="../../../../../../forge/COLD-001/assets/04-risk-diagnosis.png" alt="Sanitized multi-container stability diagnosis visual showing weekday versus weekend retention difference and simultaneous degradation." loading="lazy" /></a><a class="cold-showcase-asset-link" href="../../../../../../forge/COLD-001/assets/04-risk-diagnosis.png">원본 크기로 보기 ↗</a></figure>
     </section>
 
     <section class="cold-showcase-stage" id="decide" aria-labelledby="decide-title">
-      <div class="cold-showcase-copy reveal">
-        <p class="cold-showcase-kicker">05 / DECIDE · ENGINEERING ALTERNATIVES</p>
-        <h2 id="decide-title">ANALYSIS BECAME A DECISION FRAME.</h2>
-        <p>diagnosis는 dashboard에서 끝나지 않고 repeated repair, selected replacement + operating-environment improvement, integrated cold-storage facility라는 engineering alternatives를 비교하는 단계로 확장됩니다.</p>
-        <div class="cold-showcase-microflow" aria-label="Decision flow">
-          <span>OPERATING RISK</span><i>→</i><span>ALTERNATIVES</span><i>→</i><strong>FEASIBILITY REVIEW BASIS</strong>
-        </div>
-        <p class="cold-showcase-boundary"><strong>INVESTMENT BOUNDARY —</strong> alternative evaluation is supported. Selected option, approved CAPEX, completed construction, ROI, and payback are not established.</p>
-      </div>
-      <figure class="cold-showcase-figure reveal">
-        <figcaption>
-          <span>05-investment-options.png</span>
-          <span class="cold-evidence-badge">SANITIZED EVIDENCE</span>
-        </figcaption>
-        <a href="../../../../../../forge/COLD-001/assets/05-investment-options.png" aria-label="Open original-size DECIDE evidence">
-          <img src="../../../../../../forge/COLD-001/assets/05-investment-options.png" alt="Sanitized three-option engineering and investment comparison for cold storage alternatives." loading="lazy" />
-        </a>
-        <a class="cold-showcase-asset-link" href="../../../../../../forge/COLD-001/assets/05-investment-options.png">OPEN ORIGINAL SIZE ↗</a>
-      </figure>
+      <div class="cold-showcase-copy reveal"><p class="cold-showcase-kicker">05 / 결정 · 개선 대안 비교</p><h2 id="decide-title">TURN ANALYSIS INTO OPTIONS.</h2><p>진단은 화면에서 끝나지 않았습니다. 반복 수리, 취약 CT 선별 교체와 운영 환경 개선, 통합 냉동창고라는 세 가지 개선 대안을 비교하는 단계로 확장했습니다.</p><div class="cold-showcase-microflow" aria-label="Decision flow"><span>운영 위험</span><i>→</i><span>개선 대안</span><i>→</i><strong>타당성 검토 근거</strong></div><p class="cold-showcase-boundary"><strong>투자 범위 —</strong> 대안 비교까지는 자료가 지지합니다. 최종안 선택, 투자 승인, 공사 완료, ROI, 투자회수기간은 확정하지 않습니다.</p></div>
+      <figure class="cold-showcase-figure reveal"><figcaption><span>05-investment-options.png</span><span class="cold-evidence-badge">SANITIZED EVIDENCE</span></figcaption><a href="../../../../../../forge/COLD-001/assets/05-investment-options.png" aria-label="Open original-size DECIDE evidence"><img src="../../../../../../forge/COLD-001/assets/05-investment-options.png" alt="Sanitized three-option engineering and investment comparison for cold storage alternatives." loading="lazy" /></a><a class="cold-showcase-asset-link" href="../../../../../../forge/COLD-001/assets/05-investment-options.png">원본 크기로 보기 ↗</a></figure>
     </section>
 
-    <section class="cold-showcase-next" aria-labelledby="next-title">
-      <div>
-        <p class="eyebrow">NEXT DEPTH</p>
-        <h2 id="next-title">EVIDENCE IN L2. PROVENANCE IN L3.</h2>
-        <p class="cold-showcase-next-note">L2 preserves the visual evidence arc. L3 carries the detailed source, claim-boundary, and integrity inspection layer.</p>
-      </div>
-      <div class="cold-showcase-actions">
-        <a class="cta cta-primary" href="../evidence/">OPEN EVIDENCE DOSSIER</a>
-        <a class="cta cta-secondary" href="../">BACK TO CASE STORY</a>
-        <a class="cta cta-secondary" href="../../">WORK INDEX</a>
-        <a class="cta cta-secondary" href="../../../">PORTFOLIO</a>
-      </div>
-    </section>
+    <section class="cold-showcase-next" aria-labelledby="next-title"><div><p class="eyebrow">다음 단계</p><h2 id="next-title">SEE THE WORK. THEN VERIFY IT.</h2><p class="cold-showcase-next-note">이 페이지는 실제 공개 화면을 보여줍니다. 출처, 주장 범위, 파일 무결성은 Evidence 페이지에서 더 자세히 확인할 수 있습니다.</p></div><div class="cold-showcase-actions"><a class="cta cta-primary" href="../evidence/">검증 자료 보기</a><a class="cta cta-secondary" href="../">CASE STORY</a><a class="cta cta-secondary" href="../../">전체 프로젝트</a><a class="cta cta-secondary" href="../../../">포트폴리오</a></div></section>
   </main>
-
   <script src="../../../app.js"></script>
 </body>
 </html>
